@@ -1,0 +1,173 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    height: 100%;
+    background-color: black;
+    overflow: hidden;
+    font-family: 'Open Sans', sans-serif;
+}
+/*
+.pozadina{
+    height: 100%;
+    background: url("pozadina.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    opacity: 60%;
+    filter: blur(3px);
+}*/
+.centar h1{
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    color: #54e346;
+    font-size: 45px;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+.centar{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    border-radius: 10px;
+    border: 1px solid white;
+    padding: 20px;
+}
+
+.centar h2{
+    text-align: center;
+    padding: 0px 0 20px 0;
+    color: white;
+    font-size: 35px;
+}
+
+.centar form{
+    padding: 0 40px;
+
+    box-sizing: border-box;
+}
+form .polje{
+    position: relative;
+    border-bottom: 2px solid #54e346;
+    margin: 30px 0;
+}
+
+.polje input{
+    width: 100%;
+    padding:  0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+    color: white;
+}
+.polje label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: white;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: .5s;
+}
+
+
+
+.polje input:focus~label,
+.polje input:valid~label{
+    top:-5px;
+    color: white;
+}
+
+
+.zaboravljena-sifra{
+    margin: -5px 0 20px 5px;
+    color: white;
+    cursor: pointer;
+}
+.zaboravljena-sifra:hover{
+    text-decoration: underline;
+}
+input[type="submit"]{
+    width: 100%;
+    height: 50px;
+    border: 1px solid #54e346;
+    border-radius: 25px;
+    background-color: transparent;
+    font-size: 18px;
+    color:white;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+}
+input[type=submit]:hover{
+    border-color: #54e346;
+    background-color: white;
+    color: black;
+    transition: .5s;
+}
+.registracija{
+    margin: 30px 0;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+
+}
+.registracija a{
+    color: #54e346;
+    text-decoration: none;
+}
+.registracija a:hover{
+    text-decoration: underline;
+}
+.pizicijatk{
+    margin-top: 5px;
+    margin-bottom: 55px;
+}
+.pizicijatk label{
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+#pozicija{
+
+    border-radius: 5px;
+    padding: 3px 3px;
+    border: 1px solid #54e346;
+    box-shadow: inset 0 3px 6px white;
+}
+.pizicijatk option{
+    font-size: 16px;
+}
+.datum{
+    margin-top: 5px;
+    margin-bottom: 25px;
+
+}
+.datum label{
+    color: white;
+}
+
+/*input[type="date"] {
+    background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+}
+input [type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+
+.datum input {
+    border: 1px solid #54e346;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 3px 5px;
+    box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+    width: 190px;
+}*/
