@@ -8,7 +8,7 @@ html,body{
     overflow: hidden;
     font-family: 'Open Sans', sans-serif;
 }
-/*
+
 .pozadina{
     height: 100%;
     background: url("pozadina.jpg");
@@ -18,7 +18,7 @@ html,body{
     background-attachment: fixed;
     opacity: 60%;
     filter: blur(3px);
-}*/
+}
 .centar h1{
     text-align: center;
     font-family: 'Oswald', sans-serif;

@@ -8,7 +8,7 @@ html,body{
     overflow: hidden;
     font-family: 'Open Sans', sans-serif;
 }
-/*
+
 .pozadina{
     height: 100%;
     background: url("pozadina.jpg");
@@ -18,7 +18,7 @@ html,body{
     background-attachment: fixed;
     opacity: 60%;
     filter: blur(3px);
-}*/
+}
 .centar h1{
     text-align: center;
     font-family: 'Oswald', sans-serif;
@@ -152,7 +152,7 @@ input[type=submit]:hover{
     color: white;
 }
 
-/*input[type="date"] {
+input[type="date"] {
     background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
 }
 input [type="date"]::-webkit-inner-spin-button {
@@ -170,4 +170,4 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 3px 5px;
     box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
     width: 190px;
-}*/
+}
