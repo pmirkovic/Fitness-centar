@@ -28,15 +28,18 @@ public class FitnessCentar implements Serializable {
     @Column
     private String email;
 
-    //trener
 
-    //Lista Sala
+    @OneToMany(mappedBy="fitnessCentar",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<Sala> sale = new ArrayList<>();
 
-    //Raspored Treninga
-
-
-    @OneToMany(mappedBy="FitnessCentar",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="fitnessCentar",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Korisnik> korisnik = new ArrayList<>();
+
+    @OneToMany(mappedBy="fitnessCentar",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<TerminskaLista> terminskaListaList = new ArrayList<>();
+
+    @OneToMany(mappedBy="fitnessCentar",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<Trener> treners = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -78,12 +81,36 @@ public class FitnessCentar implements Serializable {
         this.email = email;
     }
 
+    public List<Sala> getSale() {
+        return sale;
+    }
+
+    public void setSale(List<Sala> sale) {
+        this.sale = sale;
+    }
+
     public List<Korisnik> getKorisnik() {
         return korisnik;
     }
 
     public void setKorisnik(List<Korisnik> korisnik) {
         this.korisnik = korisnik;
+    }
+
+    public List<TerminskaLista> getTerminskaListaList() {
+        return terminskaListaList;
+    }
+
+    public void setTerminskaListaList(List<TerminskaLista> terminskaListaList) {
+        this.terminskaListaList = terminskaListaList;
+    }
+
+    public List<Trener> getTreners() {
+        return treners;
+    }
+
+    public void setTreners(List<Trener> treners) {
+        this.treners = treners;
     }
 
     @Override
@@ -94,7 +121,10 @@ public class FitnessCentar implements Serializable {
                 ", adresa='" + adresa + '\'' +
                 ", brTelefona=" + brTelefona +
                 ", email='" + email + '\'' +
+                ", sale=" + sale +
                 ", korisnik=" + korisnik +
+                ", terminskaListaList=" + terminskaListaList +
+                ", treners=" + treners +
                 '}';
     }
 }
