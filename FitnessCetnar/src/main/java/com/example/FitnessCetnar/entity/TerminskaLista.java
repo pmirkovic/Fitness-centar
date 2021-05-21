@@ -20,62 +20,79 @@ public class TerminskaLista implements Serializable {
 
     @Column
     private Integer brojClanova;
+    /*----------------------------------------------------------------------*/
 
     @OneToMany(mappedBy="trening",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Sala> treninzi = new ArrayList<>();
     @OneToMany(mappedBy="cene",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Trening> cene = new ArrayList<>();
-
     @ManyToOne(fetch = FetchType.EAGER)
     private FitnessCentar fitnessCentar;
 
-    public long getId() {
-        return id;
+    public TerminskaLista() {
     }
 
-    public void setId(long id) {
-        this.id = id;
+    /*----------------------------------------------------------------------*/
+
+    public long getId() {
+        return id;
     }
 
     public String getDan() {
         return dan;
     }
 
-    public void setDan(String dan) {
-        this.dan = dan;
-    }
-
     public Double getCena() {
         return cena;
-    }
-
-    public void setCena(Double cena) {
-        this.cena = cena;
     }
 
     public Integer getBrojClanova() {
         return brojClanova;
     }
 
-    public void setBrojClanova(Integer brojClanova) {
-        this.brojClanova = brojClanova;
-    }
-
     public List<Sala> getTreninzi() {
         return treninzi;
-    }
-
-    public void setTreninzi(List<Sala> treninzi) {
-        this.treninzi = treninzi;
     }
 
     public List<Trening> getCene() {
         return cene;
     }
 
+    public FitnessCentar getFitnessCentar() {
+        return fitnessCentar;
+    }
+
+    /*----------------------------------------------------------------------*/
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setDan(String dan) {
+        this.dan = dan;
+    }
+
+    public void setCena(Double cena) {
+        this.cena = cena;
+    }
+
+    public void setBrojClanova(Integer brojClanova) {
+        this.brojClanova = brojClanova;
+    }
+
+    public void setTreninzi(List<Sala> treninzi) {
+        this.treninzi = treninzi;
+    }
+
     public void setCene(List<Trening> cene) {
         this.cene = cene;
     }
+
+    public void setFitnessCentar(FitnessCentar fitnessCentar) {
+        this.fitnessCentar = fitnessCentar;
+    }
+
+    /*----------------------------------------------------------------------*/
 
     @Override
     public String toString() {
@@ -86,6 +103,7 @@ public class TerminskaLista implements Serializable {
                 ", brojClanova=" + brojClanova +
                 ", treninzi=" + treninzi +
                 ", cene=" + cene +
+                ", fitnessCentar=" + fitnessCentar +
                 '}';
     }
 }
