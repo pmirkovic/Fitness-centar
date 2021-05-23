@@ -13,7 +13,7 @@ public class AdministratorServis {
     @Autowired
     private FitnesCentarServis fitnesCentarServis;
 
-    public void addFitnesCentar(FitnesDTO fitnesDTO){
+    public void addFitnesCentar(FitnessCentar fitnesDTO){
         FitnessCentar fitnessCentar = new FitnessCentar();
         this.fitnesCentarServis.save(fitnessCentar);
     }

@@ -20,7 +20,7 @@ public class AdministratorController {
 
 
     @PostMapping("/add_fitnesCentar")
-    public ResponseEntity<?> add_fitnesCentar(@ResponseBody FitnessCentar fitnessCentar){
+    public ResponseEntity<?> add_fitnesCentar(FitnessCentar fitnessCentar){
         try{
             administratorServis.addFitnesCentar(fitnessCentar);
             return new ResponseEntity<>(HttpStatus.OK);
@@ -30,7 +30,7 @@ public class AdministratorController {
     }
 
     @PutMapping("edit_fitnesCentar")
-    public ResponseEntity<?> edit_fitnesCentar(@ResponseBody FitnessCentar fitnessCentar){
+    public ResponseEntity<?> edit_fitnesCentar(FitnessCentar fitnessCentar){
         try{
             this.administratorServis.editFitnesCentar(fitnessCentar);
             return new ResponseEntity<>(HttpStatus.OK);
