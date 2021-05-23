@@ -1,11 +1,14 @@
 package com.example.FitnessCetnar.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @Entity
 public class Sala implements Serializable {
 
@@ -23,13 +26,26 @@ public class Sala implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private FitnessCentar fitnessCentar;
+
     @ManyToOne(fetch = FetchType.EAGER)
-    private Trening trening;
+    private TerminskaLista trening;
 
 
-    public Sala() {
+
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "Sala_treninzi",
+    joinColumns = @JoinColumn(name = "sala_id",referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "trening_id",referencedColumnName = "id"))
+    private List<Trening> trenings = new ArrayList<>();
+
+
+    public Sala(Integer kapacitet, FitnessCentar fitnessCentar) {
     }
 
+
+    public FitnessCentar getFitnesCentar(){return  fitnessCentar;}
+    public void setFitnesCentar(FitnessCentar fitnessCentar){this.fitnessCentar=fitnessCentar;}
     /*----------------------------------------------------------------------*/
 
     public long getId() {
@@ -48,7 +64,11 @@ public class Sala implements Serializable {
         return fitnessCentar;
     }
 
-    public Trening getTrening() {
+    public List<Trening> getTrenings() {
+        return trenings;
+    }
+
+    public TerminskaLista getTrening() {
         return trening;
     }
 
@@ -70,7 +90,12 @@ public class Sala implements Serializable {
         this.fitnessCentar = fitnessCentar;
     }
 
-    public void setTrening(Trening trening) {
+
+    public void setTrenings(List<Trening> trenings) {
+        this.trenings = trenings;
+    }
+
+    public void setTrening(TerminskaLista trening) {
         this.trening = trening;
     }
 
@@ -83,7 +108,7 @@ public class Sala implements Serializable {
                 ", kapacitet=" + kapacitet +
                 ", oznakaSale=" + oznakaSale +
                 ", fitnessCentar=" + fitnessCentar +
-                ", trening=" + trening +
+                ", trenings=" + trenings +
                 '}';
     }
 }

@@ -1,10 +1,12 @@
 package com.example.FitnessCetnar.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @Entity
 public class TerminskaLista implements Serializable {
 

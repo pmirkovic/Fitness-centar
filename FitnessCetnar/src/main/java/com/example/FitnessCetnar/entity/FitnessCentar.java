@@ -1,5 +1,6 @@
 package com.example.FitnessCetnar.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ser.Serializers;
 
 import javax.persistence.*;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @Entity
 public class FitnessCentar implements Serializable {
 
@@ -41,7 +42,7 @@ public class FitnessCentar implements Serializable {
     @OneToMany(mappedBy="fitnessCentar",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Trener> treners = new ArrayList<>();
 
-    public FitnessCentar() {
+    public FitnessCentar(String adresa, Integer brTelefona, String naziv, String email) {
     }
 
     /*----------------------------------------------------------------------*/

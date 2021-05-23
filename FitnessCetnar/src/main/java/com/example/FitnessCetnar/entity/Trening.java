@@ -1,10 +1,14 @@
 package com.example.FitnessCetnar.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-
+import java.util.Set;
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @Entity
 public class Trening implements Serializable {
 
@@ -24,6 +28,9 @@ public class Trening implements Serializable {
     @Column
     private Double Trajanje;
 
+    @Column
+    private Double rating;
+
     @ManyToOne(fetch = FetchType.EAGER)
     private Trener trener;
 
@@ -33,6 +40,9 @@ public class Trening implements Serializable {
     private List<ClanFitnesCentra> Prijavljenih = new ArrayList<>();
     @ManyToMany(mappedBy = "OcenaOdradjenihTreninga")
     private List<ClanFitnesCentra> Ocena = new ArrayList<>();
+
+    @ManyToMany(mappedBy="trenings",cascade=CascadeType.ALL)
+    private List<Sala> salas=new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.EAGER)
     private TerminskaLista trening;
@@ -88,6 +98,14 @@ public class Trening implements Serializable {
         return cene;
     }
 
+    public List<Sala> getSalas() {
+        return salas;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
     /*----------------------------------------------------------------------*/
 
     public void setId(long id) {
@@ -134,22 +152,15 @@ public class Trening implements Serializable {
         this.cene = cene;
     }
 
+    public void setSalas(List<Sala> salas) {
+        this.salas = salas;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
+    }
+
     /*----------------------------------------------------------------------*/
 
-    @Override
-    public String toString() {
-        return "Trening{" +
-                "id=" + id +
-                ", naziv='" + naziv + '\'' +
-                ", opis='" + opis + '\'' +
-                ", tipTreninga='" + tipTreninga + '\'' +
-                ", Trajanje=" + Trajanje +
-                ", trener=" + trener +
-                ", Odradjenih=" + Odradjenih +
-                ", Prijavljenih=" + Prijavljenih +
-                ", Ocena=" + Ocena +
-                ", trening=" + trening +
-                ", cene=" + cene +
-                '}';
-    }
+
 }

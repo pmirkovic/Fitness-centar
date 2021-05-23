@@ -1,6 +1,8 @@
 
 package com.example.FitnessCetnar.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import javax.xml.crypto.Data;
 import java.io.Serializable;
@@ -9,15 +11,9 @@ import java.util.*;
 import static javax.persistence.DiscriminatorType.STRING;
 import static javax.persistence.InheritanceType.SINGLE_TABLE;
 
-
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @Entity
-@Table(name = "korisnik_teretane")
-
-@Inheritance(strategy = SINGLE_TABLE)
-
-@DiscriminatorColumn(name = "type",discriminatorType = STRING)
-
-public abstract class Korisnik implements Serializable {
+public class Korisnik implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,43 +21,44 @@ public abstract class Korisnik implements Serializable {
 
     /*----------------------------------------------------------------------*/
 
-    public Korisnik() {
-    }
-    /*----------------------------------------------------------------------*/
-
 
     /*Kolone*/
-    @Column(name = "username",nullable = false)
+    @Column(nullable = false)
     private String username;
 
-    @Column(name = "ime",nullable = false)
+    @Column(nullable = false)
     private String ime;
 
-    @Column(name = "prezime", nullable = false)
+    @Column( nullable = false)
     private String prezime;
 
-    @Column(name = "email", nullable = false,unique = true)
+    @Column(nullable = false,unique = true)
     private String email;
 
-    @Column(name = "password", nullable = false)
+    @Column( nullable = false)
     private Character password;
 
-    @Column(name = "telefon", nullable = false,unique = true)
+    @Column(nullable = false,unique = true)
     private Integer telefon;
 
-    @Column(name = "datum", nullable = false)
+    @Column( nullable = false)
     private Date datum;
 
-    @Column(name = "pozicija", nullable = false)
-    private String position;
+    @Column( nullable = false)
+    private Position position;
 
-    @Column(name = "aktivan", nullable = false)
+    @Column( nullable = false)
     private Boolean aktivan;
 
     /*----------------------------------------------------------------------*/
 
     @ManyToOne(fetch = FetchType.EAGER)
     private FitnessCentar fitnessCentar;
+
+    @OneToMany(mappedBy = "korisnik",fetch = FetchType.EAGER,orphanRemoval = true)
+    Set<Trener> treners=new HashSet<>();
+    @OneToMany(mappedBy = "korisnik",fetch = FetchType.EAGER,orphanRemoval = true)
+    Set<ClanFitnesCentra> clanFitnesCentras=new HashSet<>();
 
     /*----------------------------------------------------------------------*/
 
@@ -97,7 +94,7 @@ public abstract class Korisnik implements Serializable {
         return datum;
     }
 
-    public String getPosition() {
+    public Position getPosition() {
         return position;
     }
 
@@ -107,6 +104,14 @@ public abstract class Korisnik implements Serializable {
 
     public FitnessCentar getFitnessCentar() {
         return fitnessCentar;
+    }
+
+    public Set<Trener> getTreners() {
+        return treners;
+    }
+
+    public Set<ClanFitnesCentra> getClanFitnesCentras() {
+        return clanFitnesCentras;
     }
 
     /*----------------------------------------------------------------------*/
@@ -143,7 +148,7 @@ public abstract class Korisnik implements Serializable {
         this.datum = datum;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(Position position) {
         this.position = position;
     }
 
@@ -155,23 +160,17 @@ public abstract class Korisnik implements Serializable {
         this.fitnessCentar = fitnessCentar;
     }
 
+    public void setTreners(Set<Trener> treners) {
+        this.treners = treners;
+    }
+
+    public void setClanFitnesCentras(Set<ClanFitnesCentra> clanFitnesCentras) {
+        this.clanFitnesCentras = clanFitnesCentras;
+    }
+
     /*----------------------------------------------------------------------*/
 
-    @Override
-    public String toString() {
-        return "Korisnik{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", ime='" + ime + '\'' +
-                ", prezime='" + prezime + '\'' +
-                ", email='" + email + '\'' +
-                ", password=" + password +
-                ", telefon=" + telefon +
-                ", datum=" + datum +
-                ", position='" + position + '\'' +
-                ", aktivan=" + aktivan +
-                ", fitnessCentar=" + fitnessCentar +
-                '}';
+    public Korisnik() {
     }
 }
 

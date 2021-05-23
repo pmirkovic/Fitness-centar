@@ -1,14 +1,25 @@
 package com.example.FitnessCetnar.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @Entity
-@DiscriminatorValue("ClanFitnesCentra")
-public class ClanFitnesCentra extends Korisnik{
+
+public class ClanFitnesCentra implements Serializable{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @JsonIgnore
+    @ManyToOne
+    private Korisnik korisnik;
 
     @Column
     @ManyToMany
@@ -34,6 +45,14 @@ public class ClanFitnesCentra extends Korisnik{
 
     /*----------------------------------------------------------------------*/
 
+    public Long getId() {
+        return id;
+    }
+
+    public Korisnik getKorisnik() {
+        return korisnik;
+    }
+
     public List<Trening> getListaOdradjenihTreninga() {
         return ListaOdradjenihTreninga;
     }
@@ -45,7 +64,16 @@ public class ClanFitnesCentra extends Korisnik{
     public List<Trening> getOcenaOdradjenihTreninga() {
         return OcenaOdradjenihTreninga;
     }
+
     /*----------------------------------------------------------------------*/
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setKorisnik(Korisnik korisnik) {
+        this.korisnik = korisnik;
+    }
 
     public void setListaOdradjenihTreninga(List<Trening> listaOdradjenihTreninga) {
         ListaOdradjenihTreninga = listaOdradjenihTreninga;
@@ -64,7 +92,9 @@ public class ClanFitnesCentra extends Korisnik{
     @Override
     public String toString() {
         return "ClanFitnesCentra{" +
-                "ListaOdradjenihTreninga=" + ListaOdradjenihTreninga +
+                "id=" + id +
+                ", korisnik=" + korisnik +
+                ", ListaOdradjenihTreninga=" + ListaOdradjenihTreninga +
                 ", ListaPrijavljenihTreninga=" + ListaPrijavljenihTreninga +
                 ", OcenaOdradjenihTreninga=" + OcenaOdradjenihTreninga +
                 '}';

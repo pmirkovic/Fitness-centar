@@ -1,9 +1,14 @@
 package com.example.FitnessCetnar.entity;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.persistence.*;
+import java.io.Serializable;
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @Entity
-@DiscriminatorValue("administrator")
-public class Administrator extends Korisnik{
+
+public class Administrator implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 }
