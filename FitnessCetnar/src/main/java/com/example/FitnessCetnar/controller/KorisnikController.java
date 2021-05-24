@@ -2,9 +2,12 @@ package com.example.FitnessCetnar.controller;
 
 import com.example.FitnessCetnar.entity.FitnessCentar;
 import com.example.FitnessCetnar.entity.Korisnik;
+import com.example.FitnessCetnar.entity.Sala;
 import com.example.FitnessCetnar.entity.dto.FitnescentarDTO;
+import com.example.FitnessCetnar.entity.dto.SalaDTO;
 import com.example.FitnessCetnar.service.FitnescentarService;
 import com.example.FitnessCetnar.service.KorisnikService;
+import com.example.FitnessCetnar.service.SalaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +21,8 @@ public class KorisnikController {
     private KorisnikService korisnikService;
     @Autowired
     private FitnescentarService fitnescentarService;
+    @Autowired
+    private SalaService salaService;
 
     @GetMapping("/registracija")
     public String registracija() {return "registracija.html";}
@@ -32,7 +37,7 @@ public class KorisnikController {
         }
         return new ResponseEntity<Korisnik>(korisnik1,HttpStatus.OK);
     }
-
+    /*FITNESCENTART DODAVANJE IZMENA BRISANJE*/
     @PostMapping("/add_fitnescentar")
     public ResponseEntity<?> add_fitnescentar(@RequestBody FitnescentarDTO fitnescentarDTO){
         try{
@@ -62,6 +67,37 @@ public class KorisnikController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-
+    /*----------*/
+    /*SALA DODAVANJE IZMNA BRISANJE*/
+    @DeleteMapping("/delete_sala/{fitness_centar_id}/sala/{sala_id}")
+    public ResponseEntity<?> delete_sala(@PathVariable(name = "fitness_centar_id") Long fitness_centar_id,@PathVariable(name = "sala_id") Long sala_id){
+        try{
+            if(this.salaService.deleteById(fitness_centar_id,sala_id))
+                return new ResponseEntity<>(HttpStatus.OK);
+            else
+                return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    @PostMapping("/add_sala")
+    public ResponseEntity<?> add_sala(@RequestBody SalaDTO salaDTO){
+        try{
+            korisnikService.addSala(salaDTO);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+    }
+    @PutMapping("/edit_sala")
+    public ResponseEntity<?> edit_sala(@RequestBody Sala sala){
+        try {
+            this.korisnikService.editSala(sala);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    /*----------*/
 
 }

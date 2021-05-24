@@ -2,8 +2,10 @@ package com.example.FitnessCetnar.service;
 
 import com.example.FitnessCetnar.entity.FitnessCentar;
 import com.example.FitnessCetnar.entity.Korisnik;
+import com.example.FitnessCetnar.entity.Sala;
 import com.example.FitnessCetnar.entity.dto.FitnescentarDTO;
 import com.example.FitnessCetnar.entity.dto.KorisnikDTO;
+import com.example.FitnessCetnar.entity.dto.SalaDTO;
 import com.example.FitnessCetnar.repository.KorisnikRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,8 @@ public class KorisnikService {
     private KorisnikRepository korisnikRepository;
     @Autowired
     private FitnescentarService fitnescentarService;
+    @Autowired
+    private SalaService salaService;
     /*Korisnik*/
     public Korisnik findOne(Long id){
         Korisnik korisnik = this.korisnikRepository.findById(id).get();
@@ -50,5 +54,12 @@ public class KorisnikService {
         FitnessCentar fitnessCentar = new FitnessCentar(fitnescentarDTO.getAdresa(),fitnescentarDTO.getBrTelefona(),fitnescentarDTO.getNaziv(),fitnescentarDTO.getEmail());
         this.fitnescentarService.save(fitnessCentar);
     }
+    /*----------*/
+    /**/
+    public void addSala(SalaDTO salaDTO){
+        FitnessCentar fitnessCentar=this.fitnescentarService.findOne(salaDTO.getFitness_centar_id());
+        Sala sala=new Sala(salaDTO.getOznakaSale(),salaDTO.getKapacitet(),null,fitnessCentar);
+    }
+    public void editSala(Sala sala){this.salaService.editSala(sala);}
     /*----------*/
 }

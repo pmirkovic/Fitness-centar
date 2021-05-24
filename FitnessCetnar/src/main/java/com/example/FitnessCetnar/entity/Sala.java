@@ -40,7 +40,7 @@ public class Sala implements Serializable {
     private List<Trening> trenings = new ArrayList<>();
 
 
-    public Sala(Integer kapacitet, FitnessCentar fitnessCentar) {
+    public Sala(Integer kapacitet, Integer salaDTOKapacitet, Trening trening, FitnessCentar centar) {
     }
 
 
