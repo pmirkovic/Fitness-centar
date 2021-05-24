@@ -10,6 +10,9 @@ import com.example.FitnessCetnar.entity.dto.TrenerDTO;
 import com.example.FitnessCetnar.repository.KorisnikRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -23,6 +26,8 @@ public class KorisnikService {
     private FitnescentarService fitnescentarService;
     @Autowired
     private SalaService salaService;
+    @Autowired
+    private KorisnikService korisnikService;
     /*Korisnik*/
     public Korisnik findOne(Long id){
         Korisnik korisnik = this.korisnikRepository.findById(id).get();
@@ -72,6 +77,14 @@ public class KorisnikService {
     }
     public void deleteKorisnik(Long id){
         this.korisnikRepository.deleteById(id);
+    }
+    /*----------*/
+    /**/
+    @GetMapping("/account/{id}")
+    public String account(@PathVariable(name = "id")Long id, Model model){
+        Korisnik korisnik=this.korisnikService.findOne(id);
+        model.addAttribute("korisnik",korisnik);
+        return "account.html";
     }
     /*----------*/
 }
