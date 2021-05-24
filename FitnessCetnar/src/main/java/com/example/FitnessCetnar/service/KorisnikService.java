@@ -6,6 +6,7 @@ import com.example.FitnessCetnar.entity.Sala;
 import com.example.FitnessCetnar.entity.dto.FitnescentarDTO;
 import com.example.FitnessCetnar.entity.dto.KorisnikDTO;
 import com.example.FitnessCetnar.entity.dto.SalaDTO;
+import com.example.FitnessCetnar.entity.dto.TrenerDTO;
 import com.example.FitnessCetnar.repository.KorisnikRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,5 +62,16 @@ public class KorisnikService {
         Sala sala=new Sala(salaDTO.getOznakaSale(),salaDTO.getKapacitet(),null,fitnessCentar);
     }
     public void editSala(Sala sala){this.salaService.editSala(sala);}
+    /*----------*/
+    /**/
+    public void saveTrener(TrenerDTO trenerDTO){
+        FitnessCentar fitnessCentar = fitnescentarService.findOne(trenerDTO.getFitness_centar_id());
+        Korisnik korisnik = new Korisnik(trenerDTO.getIme(),trenerDTO.getPrezime(),trenerDTO.getAktivan(),trenerDTO.getDatum(),
+                trenerDTO.getPassword(),trenerDTO.getEmail(),trenerDTO.getTelefon(),trenerDTO.getPosition(),trenerDTO.getUsername(),fitnessCentar);
+        this.korisnikRepository.save(korisnik);
+    }
+    public void deleteKorisnik(Long id){
+        this.korisnikRepository.deleteById(id);
+    }
     /*----------*/
 }

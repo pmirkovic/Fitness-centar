@@ -5,14 +5,19 @@ import com.example.FitnessCetnar.entity.Korisnik;
 import com.example.FitnessCetnar.entity.Sala;
 import com.example.FitnessCetnar.entity.dto.FitnescentarDTO;
 import com.example.FitnessCetnar.entity.dto.SalaDTO;
+import com.example.FitnessCetnar.entity.dto.TrenerDTO;
 import com.example.FitnessCetnar.service.FitnescentarService;
 import com.example.FitnessCetnar.service.KorisnikService;
 import com.example.FitnessCetnar.service.SalaService;
+import org.aspectj.weaver.patterns.ExactAnnotationTypePattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class KorisnikController {
@@ -93,6 +98,37 @@ public class KorisnikController {
     public ResponseEntity<?> edit_sala(@RequestBody Sala sala){
         try {
             this.korisnikService.editSala(sala);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    /*----------*/
+    /**/
+    @PostMapping("/registracija-trener")
+    public ResponseEntity<?> create_trenera(@RequestBody TrenerDTO trenerDTO){
+        try {
+            this.korisnikService.saveTrener(trenerDTO);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/registracija_trenera")
+    public String registracija_trenera(@PathVariable(name = "id") Long id, Model model){
+        List<FitnessCentar> fitnessCentarList = this.fitnescentarService.findAll();
+        Korisnik korisnik=this.korisnikService.findOne(id);
+        model.addAttribute("fitnes", fitnessCentarList);
+        model.addAttribute("korisnik",korisnik);
+        return "registracija_trenera.html";
+    }
+
+    @DeleteMapping("/remove_trener/{id}")
+    public ResponseEntity<?> remove_trener(@PathVariable(name = "id")Long id){
+        try{
+            this.korisnikService.deleteKorisnik(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

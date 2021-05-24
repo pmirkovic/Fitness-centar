@@ -170,7 +170,7 @@ public class Korisnik implements Serializable {
 
     /*----------------------------------------------------------------------*/
 
-    public Korisnik() {
+    public Korisnik(String ime, String prezime, Boolean aktivan, Date datum, Character password, String email, Integer telefon, Position position, String username, FitnessCentar fitnessCentar) {
     }
 }
 
