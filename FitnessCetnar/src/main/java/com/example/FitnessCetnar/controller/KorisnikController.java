@@ -135,5 +135,13 @@ public class KorisnikController {
         }
     }
     /*----------*/
+    /**/
+    @GetMapping("/account/{id}/odradjeni_treninzi")
+    public String odradjeni_treninzi(@PathVariable(name = "id")Long id,Model model){
+        Korisnik korisnik=this.korisnikService.findOne(id);
+        model.addAttribute("korisnik",korisnik);
+        return "odradjeni_trenizni.html";
+    }
+    /*----------*/
 
 }
