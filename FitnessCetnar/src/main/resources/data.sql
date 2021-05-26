@@ -19,3 +19,5 @@ INSERT INTO LISTA_PRIJAVLJENIH_TRENINGA (clan_id,termin_id) VALUES (1,1);
 INSERT INTO OCENA_ODRADJENIH_TRENINGA (clan_id,termin_id) VALUES (1,1);
 
 INSERT INTO SALA (kapacitet,oznaka_sale,fitness_centar_id,trening_id) VALUES ('20','1',1,1);
+
+INSERT INTO ODRADJENI_TRENINZI (ocena,korisnik_id,trening_id) VALUES ('5',1,1);

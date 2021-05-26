@@ -126,6 +126,15 @@ public class KorisnikController {
         return "registracija_trenera.html";
     }
 
+    @GetMapping("/odobrenje_trenera")
+    public String odobrenje_trenera(@PathVariable(name = "id") Long id, Model model){
+        List<FitnessCentar> fitnessCentarList = this.fitnescentarService.findAll();
+        Korisnik korisnik=this.korisnikService.findOne(id);
+        model.addAttribute("fitnes", fitnessCentarList);
+        model.addAttribute("korisnik",korisnik);
+        return "odobrenjea_trenera.html";
+    }
+
     @DeleteMapping("/remove_trener/{id}")
     public ResponseEntity<?> remove_trener(@PathVariable(name = "id")Long id){
         try{
@@ -137,6 +146,12 @@ public class KorisnikController {
     }
     /*----------*/
     /**/
+    @GetMapping("/account/{id}")
+    public String account(@PathVariable(name = "id") Long id,Model model){
+        Korisnik korisnik = this.korisnikService.findOne(id);
+        model.addAttribute("korisnik",korisnik);
+        return "account.html";
+    }
     @GetMapping("/account/{id}/odradjeni_treninzi")
     public String odradjeni_treninzi(@PathVariable(name = "id")Long id,Model model){
         Korisnik korisnik=this.korisnikService.findOne(id);
