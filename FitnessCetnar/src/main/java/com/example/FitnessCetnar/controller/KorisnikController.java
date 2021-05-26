@@ -4,6 +4,7 @@ import com.example.FitnessCetnar.entity.FitnessCentar;
 import com.example.FitnessCetnar.entity.Korisnik;
 import com.example.FitnessCetnar.entity.Sala;
 import com.example.FitnessCetnar.entity.dto.FitnescentarDTO;
+import com.example.FitnessCetnar.entity.dto.Prijava_treningaDTO;
 import com.example.FitnessCetnar.entity.dto.SalaDTO;
 import com.example.FitnessCetnar.entity.dto.TrenerDTO;
 import com.example.FitnessCetnar.service.FitnescentarService;
@@ -141,6 +142,30 @@ public class KorisnikController {
         Korisnik korisnik=this.korisnikService.findOne(id);
         model.addAttribute("korisnik",korisnik);
         return "odradjeni_trenizni.html";
+    }
+    /*----------*/
+    /**/
+    @PostMapping("/prijava_treninga")
+    public ResponseEntity<?> prijava_treninga(@RequestBody Prijava_treningaDTO prijava_treningaDTO){
+        boolean flag=false;
+        try{
+            flag = this.korisnikService.addPrijava_treninga(prijava_treningaDTO.getKorisnik_id(),prijava_treningaDTO.getTrening_id());
+            if(flag)
+                return new ResponseEntity<>(HttpStatus.OK);
+            else
+                return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    @DeleteMapping("/otkazivanje_treninga")
+    public ResponseEntity<?> otkazivanje(@RequestBody Prijava_treningaDTO prijava_treningaDTO){
+        try {
+            this.korisnikService.otkazivanjeTreninga(prijava_treningaDTO.getKorisnik_id(),prijava_treningaDTO.getTrening_id());
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
     /*----------*/
 

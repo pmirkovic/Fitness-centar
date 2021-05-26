@@ -1,5 +1,6 @@
 package com.example.FitnessCetnar.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -40,6 +41,13 @@ public class Trening implements Serializable {
     private List<ClanFitnesCentra> Prijavljenih = new ArrayList<>();
     @ManyToMany(mappedBy = "OcenaOdradjenihTreninga")
     private List<ClanFitnesCentra> Ocena = new ArrayList<>();
+
+    @JsonIgnore
+    @ManyToMany(mappedBy="prijava_treninga")
+    private Set<Korisnik> korisniks=new HashSet<>();
+
+    @OneToMany(mappedBy="trening",fetch=FetchType.EAGER,orphanRemoval=true)
+    Set<Odradjeni_treninzi> odradjeni_treninzis=new HashSet<>();
 
     @ManyToMany(mappedBy="trenings",cascade=CascadeType.ALL)
     private List<Sala> salas=new ArrayList<>();
@@ -106,6 +114,14 @@ public class Trening implements Serializable {
         return rating;
     }
 
+    public Set<Korisnik> getKorisniks() {
+        return korisniks;
+    }
+
+    public Set<Odradjeni_treninzi> getOdradjeni_treninzis() {
+        return odradjeni_treninzis;
+    }
+
     /*----------------------------------------------------------------------*/
 
     public void setId(long id) {
@@ -158,6 +174,14 @@ public class Trening implements Serializable {
 
     public void setRating(Double rating) {
         this.rating = rating;
+    }
+
+    public void setOdradjeni_treninzis(Set<Odradjeni_treninzi> odradjeni_treninzis) {
+        this.odradjeni_treninzis = odradjeni_treninzis;
+    }
+
+    public void setKorisniks(Set<Korisnik> korisniks) {
+        this.korisniks = korisniks;
     }
 
     /*----------------------------------------------------------------------*/

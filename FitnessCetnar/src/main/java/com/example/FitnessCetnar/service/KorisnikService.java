@@ -3,11 +3,13 @@ package com.example.FitnessCetnar.service;
 import com.example.FitnessCetnar.entity.FitnessCentar;
 import com.example.FitnessCetnar.entity.Korisnik;
 import com.example.FitnessCetnar.entity.Sala;
+import com.example.FitnessCetnar.entity.Trening;
 import com.example.FitnessCetnar.entity.dto.FitnescentarDTO;
 import com.example.FitnessCetnar.entity.dto.KorisnikDTO;
 import com.example.FitnessCetnar.entity.dto.SalaDTO;
 import com.example.FitnessCetnar.entity.dto.TrenerDTO;
 import com.example.FitnessCetnar.repository.KorisnikRepository;
+import com.example.FitnessCetnar.repository.TreningRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -28,6 +30,10 @@ public class KorisnikService {
     private SalaService salaService;
     @Autowired
     private KorisnikService korisnikService;
+    @Autowired
+    private TreningRepository treningRepository;
+    @Autowired
+    private TreningService treningService;
     /*Korisnik*/
     public Korisnik findOne(Long id){
         Korisnik korisnik = this.korisnikRepository.findById(id).get();
@@ -85,6 +91,29 @@ public class KorisnikService {
         Korisnik korisnik=this.korisnikService.findOne(id);
         model.addAttribute("korisnik",korisnik);
         return "account.html";
+    }
+    /*----------*/
+    /**/
+    public boolean addPrijava_treninga(Long korisnik_id,Long trening_id){
+        Korisnik korisnik=this.korisnikRepository.findById(korisnik_id).get();
+        Trening trening = this.treningService.findOne(trening_id);
+        if(korisnik.getPrijava_treninga().contains(trening)){
+            return false;
+        }
+        for(Sala sala: trening.getSalas()){
+            if(sala.getKapacitet()-trening.getKorisniks().size()>0){
+                korisnik.getPrijava_treninga().add(trening);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void otkazivanjeTreninga(Long korsinik_id,Long trening_id){
+        Korisnik korisnik = this.korisnikRepository.findById(korsinik_id).get();
+        Trening trening = this.treningService.findOne(trening_id);
+        korisnik.getPrijava_treninga().remove(trening);
+        return;
     }
     /*----------*/
 }

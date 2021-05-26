@@ -55,10 +55,18 @@ public class Korisnik implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     private FitnessCentar fitnessCentar;
 
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name = "Prijava",
+            joinColumns = @JoinColumn(name = "korisnik_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "trening_id", referencedColumnName = "id"))
+    Set<Trening> prijava_treninga=new HashSet<>();
+
     @OneToMany(mappedBy = "korisnik",fetch = FetchType.EAGER,orphanRemoval = true)
     Set<Trener> treners=new HashSet<>();
     @OneToMany(mappedBy = "korisnik",fetch = FetchType.EAGER,orphanRemoval = true)
     Set<ClanFitnesCentra> clanFitnesCentras=new HashSet<>();
+    @OneToMany(mappedBy="korisnik",fetch=FetchType.EAGER,orphanRemoval=true)
+    Set<Odradjeni_treninzi> odradjeni_treninzis=new HashSet<>();
 
     /*----------------------------------------------------------------------*/
 
@@ -114,6 +122,14 @@ public class Korisnik implements Serializable {
         return clanFitnesCentras;
     }
 
+    public Set<Odradjeni_treninzi> getOdradjeni_treninzis() {
+        return odradjeni_treninzis;
+    }
+
+    public Set<Trening> getPrijava_treninga() {
+        return prijava_treninga;
+    }
+
     /*----------------------------------------------------------------------*/
 
     public void setId(long id) {
@@ -166,6 +182,14 @@ public class Korisnik implements Serializable {
 
     public void setClanFitnesCentras(Set<ClanFitnesCentra> clanFitnesCentras) {
         this.clanFitnesCentras = clanFitnesCentras;
+    }
+
+    public void setOdradjeni_treninzis(Set<Odradjeni_treninzi> odradjeni_treninzis) {
+        this.odradjeni_treninzis = odradjeni_treninzis;
+    }
+
+    public void setPrijava_treninga(Set<Trening> prijava_treninga) {
+        this.prijava_treninga = prijava_treninga;
     }
 
     /*----------------------------------------------------------------------*/
