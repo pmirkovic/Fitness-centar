@@ -13,7 +13,10 @@ function login() {
         contentType: 'application/json',
         data: fromData,
         success: function (data) {
-            window.location.replace("/pocetna");
+            sessionStorage.setItem("id", data["id"]);
+            sessionStorage.setItem("position",data["position"]);
+
+            window.location.replace("/account/"+data["id"]);
         },
         error: function (jqXhr, textStatus, errorThrown) {
             if (jqXhr.status == 404) {
@@ -48,7 +51,8 @@ function registracija(){
         "password":password,
         "username":username,
         "datum":datum,
-
+        "position":0,
+        "aktivan":true
 
     });
     console.log(fromData);
@@ -60,7 +64,15 @@ function registracija(){
         data:fromData,
         success:function (data){
             console.log("success");
-            window.location.replace("/pocetna");
+            sessionStorage.setItem("id", data["id"]);
+            sessionStorage.setItem("position",data["position"]);
+            window.location.replace("/account/"+data["id"])
+        },
+        error: function( jqXhr, textStatus, errorThrown ){
+            if (jqXhr.status == 409) {
+                alert("Something went wrong!");
+                return;
+            }
         }
-    })
+    });
 }
