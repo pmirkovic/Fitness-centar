@@ -1,9 +1,6 @@
 package com.example.FitnessCetnar.service;
 
-import com.example.FitnessCetnar.entity.FitnessCentar;
-import com.example.FitnessCetnar.entity.Korisnik;
-import com.example.FitnessCetnar.entity.Sala;
-import com.example.FitnessCetnar.entity.Trening;
+import com.example.FitnessCetnar.entity.*;
 import com.example.FitnessCetnar.entity.dto.FitnescentarDTO;
 import com.example.FitnessCetnar.entity.dto.KorisnikDTO;
 import com.example.FitnessCetnar.entity.dto.SalaDTO;
@@ -75,6 +72,10 @@ public class KorisnikService {
     public void editSala(Sala sala){this.salaService.editSala(sala);}
     /*----------*/
     /**/
+    public List<Korisnik> getTrener() {
+        return this.korisnikRepository.findByPosition(Position.TRENER);
+    }
+
     public void saveTrener(TrenerDTO trenerDTO){
         FitnessCentar fitnessCentar = fitnescentarService.findOne(trenerDTO.getFitness_centar_id());
         Korisnik korisnik = new Korisnik(trenerDTO.getIme(),trenerDTO.getPrezime(),trenerDTO.getAktivan(),trenerDTO.getDatum(),

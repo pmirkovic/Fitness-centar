@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="style.css">
+    <script src="jq.js"></script>
+    <script src="js/login.js" type="text/javascript"></script>
+
     <title>FitnesCentar</title>
 </head>
 <body>
@@ -18,17 +22,17 @@
     <h2>Login</h2>
     <form method="POST">
         <div class="polje">
-            <input type="email" required>
+            <input type="email" id="email" required>
             <label>E-mail</label>
         </div>
         <div class="polje">
-            <input type="password" required>
+            <input type="password" id="password" required>
             <label>Password</label>
         </div>
         <div class="zaboravljena-sifra">
             Forgot Password?
         </div>
-        <input type="submit" value="Login">
+        <button type="button"  onclick="login()" >LogIn</button>
         <div class="registracija">Not a member?<a href="registracija.html">Registracija</a></div>
         <div class="registracija_trenera">Registriujte se kao trener?<a href="registracija_trenera.html">RegistracijaTrenera</a></div>
 
@@ -36,5 +40,6 @@
     </form>
 </div>
 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>
 </html>

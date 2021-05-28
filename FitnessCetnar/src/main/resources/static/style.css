@@ -5,7 +5,7 @@
 html,body{
     height: 100%;
     background-color: black;
-    overflow: hidden;
+    /*overflow: hidden;*/
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -208,7 +208,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     background-attachment: fixed;
     position: relative;
     margin-bottom: 150px;
-    overflow: hidden;
+
 
 }
 .pozadina_pocetna h1{
@@ -220,13 +220,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    overflow: hidden;
+
 }
 
 .about{
     position: relative;
     margin: 100px;
-    overflow: hidden;
+
 }
 
 .about .text1{
@@ -234,7 +234,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    overflow: hidden;
+
 }
 
 .about .text1 h1{
@@ -243,7 +243,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 45px;
     justify-content: center;
     background-color: #54e346;
-    overflow: hidden;
+
 }
 .about .text1 p,h1{
     text-align: center;

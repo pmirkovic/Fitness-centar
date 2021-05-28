@@ -36,7 +36,7 @@ public class Korisnik implements Serializable {
     private String email;
 
     @Column( nullable = false)
-    private Character password;
+    private String password;
 
     @Column(nullable = false,unique = true)
     private Integer telefon;
@@ -68,6 +68,9 @@ public class Korisnik implements Serializable {
     @OneToMany(mappedBy="korisnik",fetch=FetchType.EAGER,orphanRemoval=true)
     Set<Odradjeni_treninzi> odradjeni_treninzis=new HashSet<>();
 
+    public Korisnik(String ime, String prezime, Boolean aktivan, Date datum, Character password, String email, Integer telefon, Position position, String username, FitnessCentar fitnessCentar) {
+    }
+
     /*----------------------------------------------------------------------*/
 
     public long getId() {
@@ -90,7 +93,7 @@ public class Korisnik implements Serializable {
         return email;
     }
 
-    public Character getPassword() {
+    public String getPassword() {
         return password;
     }
 
@@ -152,7 +155,7 @@ public class Korisnik implements Serializable {
         this.email = email;
     }
 
-    public void setPassword(Character password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -193,8 +196,25 @@ public class Korisnik implements Serializable {
     }
 
     /*----------------------------------------------------------------------*/
+    public Korisnik(){}
+    
 
-    public Korisnik(String ime, String prezime, Boolean aktivan, Date datum, Character password, String email, Integer telefon, Position position, String username, FitnessCentar fitnessCentar) {
+    public Korisnik(long id, String username, String ime, String prezime, String email, String password, Integer telefon, Date datum, Position position, Boolean aktivan, FitnessCentar fitnessCentar, Set<Trening> prijava_treninga, Set<Trener> treners, Set<ClanFitnesCentra> clanFitnesCentras, Set<Odradjeni_treninzi> odradjeni_treninzis) {
+        this.id = id;
+        this.username = username;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.email = email;
+        this.password = password;
+        this.telefon = telefon;
+        this.datum = datum;
+        this.position = position;
+        this.aktivan = aktivan;
+        this.fitnessCentar = fitnessCentar;
+        this.prijava_treninga = prijava_treninga;
+        this.treners = treners;
+        this.clanFitnesCentras = clanFitnesCentras;
+        this.odradjeni_treninzis = odradjeni_treninzis;
     }
 }
 

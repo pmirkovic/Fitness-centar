@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="js/login.js" type="text/javascript"></script>
     <title>Document</title>
 </head>
 <body>
@@ -17,38 +18,39 @@
     <h1>Fitnes Centar</h1>
     <h2>SignUp</h2>
     <h2>Korisnik</h2>
-    <form method="POST">
+    <form>
         <div class="polje">
-            <input type="text" name="username" required>
+            <input type="text" id="username" required>
             <label>Username</label>
         </div>
         <div class="polje">
-            <input type="text" required>
+            <input type="text" id="ime" required>
             <label>Ime</label>
         </div>
         <div class="polje">
-            <input type="text" required>
+            <input type="text" id="prezime" required>
             <label>Prezime</label>
         </div>
         <div class="polje">
-            <input type="email" required>
+            <input type="email" id="email" required>
             <label>E-mail</label>
         </div>
         <div class="polje">
-            <input type="password" required>
+            <input type="password" id="password" required>
             <label>Password</label>
         </div>
         <div class="polje">
-            <input type="tel" required>
+            <input type="tel" id="telefon" required>
             <label>Kontakt telefon</label>
         </div>
-        <div class="datum">
+        <div class="datum" >
             <label>Datum rodjenja</label>
-            <input type="date" required placeholder="">
+            <input type="date" id="datum" required placeholder="">
 
         </div>
 
-        <input type="submit" value="SignUp">
+        <button type="button" onclick="registracija()" >SignUp</button>
+
         <div class="registracija">Vec imate nalog?<a href="index.html">Login</a></div>
     </form>
 </div>
@@ -57,6 +59,6 @@
 
 
 
-
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>
 </html>

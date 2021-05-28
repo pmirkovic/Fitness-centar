@@ -3,10 +3,7 @@ package com.example.FitnessCetnar.controller;
 import com.example.FitnessCetnar.entity.FitnessCentar;
 import com.example.FitnessCetnar.entity.Korisnik;
 import com.example.FitnessCetnar.entity.Sala;
-import com.example.FitnessCetnar.entity.dto.FitnescentarDTO;
-import com.example.FitnessCetnar.entity.dto.Prijava_treningaDTO;
-import com.example.FitnessCetnar.entity.dto.SalaDTO;
-import com.example.FitnessCetnar.entity.dto.TrenerDTO;
+import com.example.FitnessCetnar.entity.dto.*;
 import com.example.FitnessCetnar.service.FitnescentarService;
 import com.example.FitnessCetnar.service.KorisnikService;
 import com.example.FitnessCetnar.service.SalaService;
@@ -32,6 +29,28 @@ public class KorisnikController {
 
     @GetMapping("/registracija")
     public String registracija() {return "registracija.html";}
+    @GetMapping("/pocetna")
+    public String pocetna(){return "pocetna.html";}
+    @GetMapping("/registracija_trenera")
+    public String registracija_trenera() {return "registracija_trenera.html";}
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody KorisnikDTO korisnikDTO){
+        Korisnik korisnik;
+        try{
+            korisnik=this.korisnikService.proveraEmail(korisnikDTO);
+
+        }catch (Exception e){
+            return new ResponseEntity<String>(e.getMessage(),HttpStatus.NOT_ACCEPTABLE);
+        }
+        if(korisnik == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        if(!(this.korisnikService.login(korisnikDTO,korisnik))){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<Korisnik>(korisnik,HttpStatus.OK);
+    }
 
     @PostMapping("/registracija-korisnik")
     public ResponseEntity<?> registracija_korisnik(@RequestBody Korisnik korisnik){
@@ -117,7 +136,7 @@ public class KorisnikController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/registracija_trenera")
+    @GetMapping("/account/{id}/registracija_trenera")
     public String registracija_trenera(@PathVariable(name = "id") Long id, Model model){
         List<FitnessCentar> fitnessCentarList = this.fitnescentarService.findAll();
         Korisnik korisnik=this.korisnikService.findOne(id);
@@ -132,7 +151,7 @@ public class KorisnikController {
         Korisnik korisnik=this.korisnikService.findOne(id);
         model.addAttribute("fitnes", fitnessCentarList);
         model.addAttribute("korisnik",korisnik);
-        return "odobrenjea_trenera.html";
+        return "odobrenje_trenera.html";
     }
 
     @DeleteMapping("/remove_trener/{id}")
@@ -152,12 +171,22 @@ public class KorisnikController {
         model.addAttribute("korisnik",korisnik);
         return "account.html";
     }
+
     @GetMapping("/account/{id}/odradjeni_treninzi")
     public String odradjeni_treninzi(@PathVariable(name = "id")Long id,Model model){
         Korisnik korisnik=this.korisnikService.findOne(id);
         model.addAttribute("korisnik",korisnik);
         return "odradjeni_trenizni.html";
     }
+    @GetMapping("/account/{id}/trener")
+    public String trener(@PathVariable(name = "id")Long id,Model model){
+        List<Korisnik>korisniks=this.korisnikService.getTrener();
+        Korisnik korisnik=this.korisnikService.findOne(id);
+        model.addAttribute("trener",korisniks);
+        model.addAttribute("korsnik",korisnik);
+        return "trener.html";
+    }
+
     /*----------*/
     /**/
     @PostMapping("/prijava_treninga")
