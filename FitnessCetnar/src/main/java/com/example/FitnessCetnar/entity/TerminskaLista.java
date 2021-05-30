@@ -96,6 +96,16 @@ public class TerminskaLista implements Serializable {
 
     /*----------------------------------------------------------------------*/
 
+    public TerminskaLista(long id, String dan, Double cena, Integer brojClanova, List<Sala> treninzi, List<Trening> cene, FitnessCentar fitnessCentar) {
+        this.id = id;
+        this.dan = dan;
+        this.cena = cena;
+        this.brojClanova = brojClanova;
+        this.treninzi = treninzi;
+        this.cene = cene;
+        this.fitnessCentar = fitnessCentar;
+    }
+
     @Override
     public String toString() {
         return "TerminskaLista{" +

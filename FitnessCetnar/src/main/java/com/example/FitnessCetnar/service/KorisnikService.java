@@ -18,7 +18,8 @@ import java.util.List;
 
 
 @Service
-public class KorisnikService {
+public class KorisnikService{
+
     @Autowired
     private KorisnikRepository korisnikRepository;
     @Autowired
@@ -31,7 +32,7 @@ public class KorisnikService {
     private TreningRepository treningRepository;
     @Autowired
     private TreningService treningService;
-    /*Korisnik*/
+
     public Korisnik findOne(Long id){
         Korisnik korisnik = this.korisnikRepository.findById(id).get();
         return korisnik;
@@ -41,8 +42,7 @@ public class KorisnikService {
         return korisniks;
     }
     public Korisnik save(Korisnik korisnik){return this.korisnikRepository.save(korisnik);}
-    /*----------*/
-    /*Login*/
+
     public boolean login(KorisnikDTO korisnikDTO,Korisnik korisnik){
         if(korisnik.getPassword().equals(korisnikDTO.getPassword())){
             return true;
@@ -55,23 +55,20 @@ public class KorisnikService {
             return null;
         return korisnik;
     }
-    /*----------*/
-    /**/
+
     public void editFitnescentar(FitnessCentar fitnessCentar){this.fitnescentarService.editFitnescentar(fitnessCentar);}
 
     public void addFitnrescentar(FitnescentarDTO fitnescentarDTO){
         FitnessCentar fitnessCentar = new FitnessCentar(fitnescentarDTO.getAdresa(),fitnescentarDTO.getBrTelefona(),fitnescentarDTO.getNaziv(),fitnescentarDTO.getEmail());
         this.fitnescentarService.save(fitnessCentar);
     }
-    /*----------*/
-    /**/
+
     public void addSala(SalaDTO salaDTO){
         FitnessCentar fitnessCentar=this.fitnescentarService.findOne(salaDTO.getFitness_centar_id());
         Sala sala=new Sala(salaDTO.getOznakaSale(),salaDTO.getKapacitet(),null,fitnessCentar);
     }
     public void editSala(Sala sala){this.salaService.editSala(sala);}
-    /*----------*/
-    /**/
+
     public List<Korisnik> getTrener() {
         return this.korisnikRepository.findByPosition(Position.TRENER);
     }
@@ -85,16 +82,7 @@ public class KorisnikService {
     public void deleteKorisnik(Long id){
         this.korisnikRepository.deleteById(id);
     }
-    /*----------*/
-    /**/
-    @GetMapping("/account/{id}")
-    public String account(@PathVariable(name = "id")Long id, Model model){
-        Korisnik korisnik=this.korisnikService.findOne(id);
-        model.addAttribute("korisnik",korisnik);
-        return "account.html";
-    }
-    /*----------*/
-    /**/
+
     public boolean addPrijava_treninga(Long korisnik_id,Long trening_id){
         Korisnik korisnik=this.korisnikRepository.findById(korisnik_id).get();
         Trening trening = this.treningService.findOne(trening_id);
@@ -116,5 +104,16 @@ public class KorisnikService {
         korisnik.getPrijava_treninga().remove(trening);
         return;
     }
-    /*----------*/
+    /*
+
+    Korisnik findOne(Long id);
+
+    List<Korisnik> findAll();
+
+    Korisnik create(Korisnik employee) throws Exception;
+
+    Korisnik update(Korisnik employee) throws Exception;
+
+    void delete(Long id);*/
+
 }

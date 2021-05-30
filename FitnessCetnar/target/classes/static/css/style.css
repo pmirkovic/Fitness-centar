@@ -11,7 +11,7 @@ html,body{
 
 .pozadina{
     height: 100%;
-    background: url("pozadina.jpg");
+    background: url("../images/pozadina.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -201,7 +201,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .pozadina_pocetna{
     height: 900px;
-    background: url("pozadina.jpg");
+    background: url("../images/pozadina.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

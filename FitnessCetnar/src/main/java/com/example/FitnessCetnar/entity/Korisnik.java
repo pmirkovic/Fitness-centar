@@ -71,6 +71,10 @@ public class Korisnik implements Serializable {
     public Korisnik(String ime, String prezime, Boolean aktivan, Date datum, Character password, String email, Integer telefon, Position position, String username, FitnessCentar fitnessCentar) {
     }
 
+    public Korisnik() {
+
+    }
+
     /*----------------------------------------------------------------------*/
 
     public long getId() {
@@ -196,7 +200,7 @@ public class Korisnik implements Serializable {
     }
 
     /*----------------------------------------------------------------------*/
-    public Korisnik(){}
+    public Korisnik(String firstName, String lastName, Position position){}
     
 
     public Korisnik(long id, String username, String ime, String prezime, String email, String password, Integer telefon, Date datum, Position position, Boolean aktivan, FitnessCentar fitnessCentar, Set<Trening> prijava_treninga, Set<Trener> treners, Set<ClanFitnesCentra> clanFitnesCentras, Set<Odradjeni_treninzi> odradjeni_treninzis) {
@@ -215,6 +219,27 @@ public class Korisnik implements Serializable {
         this.treners = treners;
         this.clanFitnesCentras = clanFitnesCentras;
         this.odradjeni_treninzis = odradjeni_treninzis;
+    }
+
+    @Override
+    public String toString() {
+        return "Korisnik{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", ime='" + ime + '\'' +
+                ", prezime='" + prezime + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", telefon=" + telefon +
+                ", datum=" + datum +
+                ", position=" + position +
+                ", aktivan=" + aktivan +
+                ", fitnessCentar=" + fitnessCentar +
+                ", prijava_treninga=" + prijava_treninga +
+                ", treners=" + treners +
+                ", clanFitnesCentras=" + clanFitnesCentras +
+                ", odradjeni_treninzis=" + odradjeni_treninzis +
+                '}';
     }
 }
 

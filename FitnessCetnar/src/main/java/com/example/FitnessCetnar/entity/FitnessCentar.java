@@ -121,6 +121,21 @@ public class FitnessCentar implements Serializable {
     }
     /*----------------------------------------------------------------------*/
 
+    public FitnessCentar() {
+    }
+
+    public FitnessCentar(Long id, String naziv, String adresa, Integer brTelefona, String email, List<Sala> sale, List<Korisnik> korisnik, List<TerminskaLista> terminskaListaList, List<Trener> treners) {
+        this.id = id;
+        this.naziv = naziv;
+        this.adresa = adresa;
+        this.brTelefona = brTelefona;
+        this.email = email;
+        this.sale = sale;
+        this.korisnik = korisnik;
+        this.terminskaListaList = terminskaListaList;
+        this.treners = treners;
+    }
+
     @Override
     public String toString() {
         return "FitnessCentar{" +

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class TreningController {
-    @Autowired
+   @Autowired
     private TreningService treningService;
 
     @GetMapping("/treninzi")

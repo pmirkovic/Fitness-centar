@@ -89,6 +89,14 @@ public class ClanFitnesCentra implements Serializable{
 
     /*----------------------------------------------------------------------*/
 
+    public ClanFitnesCentra(Long id, Korisnik korisnik, List<Trening> listaOdradjenihTreninga, List<Trening> listaPrijavljenihTreninga, List<Trening> ocenaOdradjenihTreninga) {
+        this.id = id;
+        this.korisnik = korisnik;
+        ListaOdradjenihTreninga = listaOdradjenihTreninga;
+        ListaPrijavljenihTreninga = listaPrijavljenihTreninga;
+        OcenaOdradjenihTreninga = ocenaOdradjenihTreninga;
+    }
+
     @Override
     public String toString() {
         return "ClanFitnesCentra{" +

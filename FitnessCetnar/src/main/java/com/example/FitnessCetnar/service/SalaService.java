@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class SalaService {
-    @Autowired
+   @Autowired
     private SalaRepository salaRepository;
     @Autowired
     private FitnescentarService fitnescentarService;

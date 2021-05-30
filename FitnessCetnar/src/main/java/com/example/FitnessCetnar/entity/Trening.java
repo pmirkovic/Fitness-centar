@@ -186,5 +186,21 @@ public class Trening implements Serializable {
 
     /*----------------------------------------------------------------------*/
 
-
+    public Trening(long id, String naziv, String opis, String tipTreninga, Double trajanje, Double rating, Trener trener, List<ClanFitnesCentra> odradjenih, List<ClanFitnesCentra> prijavljenih, List<ClanFitnesCentra> ocena, Set<Korisnik> korisniks, Set<Odradjeni_treninzi> odradjeni_treninzis, List<Sala> salas, TerminskaLista trening, TerminskaLista cene) {
+        this.id = id;
+        this.naziv = naziv;
+        this.opis = opis;
+        this.tipTreninga = tipTreninga;
+        Trajanje = trajanje;
+        this.rating = rating;
+        this.trener = trener;
+        Odradjenih = odradjenih;
+        Prijavljenih = prijavljenih;
+        Ocena = ocena;
+        this.korisniks = korisniks;
+        this.odradjeni_treninzis = odradjeni_treninzis;
+        this.salas = salas;
+        this.trening = trening;
+        this.cene = cene;
+    }
 }

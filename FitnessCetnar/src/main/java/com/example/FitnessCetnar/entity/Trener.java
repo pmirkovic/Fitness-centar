@@ -57,6 +57,16 @@ public class Trener implements Serializable {
 
     /*----------------------------------------------------------------------*/
 
+    public Trener() {
+    }
+
+    public Trener(Long id, Korisnik korisnik, List<Trening> listaTreningaKojeDrzi, FitnessCentar fitnessCentar) {
+        this.id = id;
+        this.korisnik = korisnik;
+        ListaTreningaKojeDrzi = listaTreningaKojeDrzi;
+        this.fitnessCentar = fitnessCentar;
+    }
+
     @Override
     public String toString() {
         return "Trener{" +

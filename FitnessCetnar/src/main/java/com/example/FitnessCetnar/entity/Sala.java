@@ -101,6 +101,18 @@ public class Sala implements Serializable {
 
     /*----------------------------------------------------------------------*/
 
+    public Sala() {
+    }
+
+    public Sala(long id, Integer kapacitet, Integer oznakaSale, FitnessCentar fitnessCentar, TerminskaLista trening, List<Trening> trenings) {
+        this.id = id;
+        this.kapacitet = kapacitet;
+        this.oznakaSale = oznakaSale;
+        this.fitnessCentar = fitnessCentar;
+        this.trening = trening;
+        this.trenings = trenings;
+    }
+
     @Override
     public String toString() {
         return "Sala{" +
