@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/login.js" type="text/javascript"></script>
+    <script src="js/registracija.js" type="text/javascript"></script>
     <title>Document</title>
 </head>
 <body>
@@ -18,7 +18,7 @@
     <h1>Fitnes Centar</h1>
     <h2>SignUp</h2>
     <h2>Korisnik</h2>
-    <form>
+    <form id="addKorisnikForm">
         <div class="polje">
             <input type="text" id="username" required>
             <label>Username</label>
@@ -49,9 +49,9 @@
 
         </div>
 
-        <button type="button" onclick="registracija()" >SignUp</button>
+        <input type="submit" value="Add">
 
-        <div class="registracija">Vec imate nalog?<a th:href="@{'/'}">Login</a></div>
+        <div class="registracija">Vec imate nalog?<a href="">Login</a></div>
     </form>
 </div>
 

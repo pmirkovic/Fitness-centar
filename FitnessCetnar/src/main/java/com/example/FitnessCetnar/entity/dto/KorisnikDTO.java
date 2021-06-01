@@ -5,7 +5,7 @@ import com.example.FitnessCetnar.entity.Position;
 
 public class KorisnikDTO {
 
-    private Long id;
+    /*private Long id;
     private String email;
     private String password;
 
@@ -22,8 +22,8 @@ public class KorisnikDTO {
 
     public void setId(Long id) {
         this.id = id;
-    }
-/*
+    }*/
+
     private Long id;
     private String ime;
     private String prezime;
@@ -44,20 +44,20 @@ public class KorisnikDTO {
         this.id = id;
     }
 
-    public String getFirstName() {
+    public String getIme() {
         return ime;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setIme(String ime) {
+        this.ime = ime;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getPrezime() {
+        return prezime;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setPrezime(String prezime) {
+        this.prezime = prezime;
     }
 
     public Position getPosition() {
@@ -66,5 +66,5 @@ public class KorisnikDTO {
 
     public void setPosition(Position position) {
         this.position = position;
-    }*/
+    }
 }

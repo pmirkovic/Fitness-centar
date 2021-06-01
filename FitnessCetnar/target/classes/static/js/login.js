@@ -1,4 +1,4 @@
-function login() {
+/*function login() {
     // get the form data
     // there are many ways to get this data using jQuery (you can use the class or id also)
     let email = document.getElementById('email').value;
@@ -11,7 +11,7 @@ function login() {
     $.ajax({
         url: '/login',
         dataType: 'json',
-        type: 'get',
+        type: 'post',
         contentType: 'application/json',
         data: formData,
         success: function(data){
@@ -43,7 +43,7 @@ function registracija(){
     let username = document.getElementById('username').value;
     let datum = document.getElementById('datum').value;
 
-    var fromData = JSON.stringify({
+    var formData = JSON.stringify({
         "email":email,
         "ime":ime,
         "telefon":telefon,
@@ -55,18 +55,17 @@ function registracija(){
         "aktivan":true,
 
     });
-    console.log(fromData);
+    console.log(formData);
     $.ajax({
         url: '/registracija-korisnik',
         dataType: 'json',
         type: 'post',
         contentType: 'application/json',
-        data:fromData,
-        success:function (data){
+        data:formData,
+        success:function (){
             console.log("success");
-            sessionStorage.setItem("id", data["id"]);
-            sessionStorage.setItem("position",data["position"]);
-            window.location.replace("/account/"+data["id"]);
+
+            window.location.replace("/pocetna");
         },
         error: function( jqXhr, textStatus, errorThrown ){
             if (jqXhr.status == 409) {
@@ -93,3 +92,5 @@ function prijavljeni_treninzi(){
     var id = sessionStorage.getItem("id");
     window.location.replace("/account/"+id+"/prijavljeni_treninzi");
 }
+*/
+

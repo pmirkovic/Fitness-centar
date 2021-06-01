@@ -1,5 +1,6 @@
 package com.example.FitnessCetnar.entity;
 
+import com.example.FitnessCetnar.entity.dto.FitnescentarDTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ser.Serializers;
 
@@ -134,6 +135,15 @@ public class FitnessCentar implements Serializable {
         this.korisnik = korisnik;
         this.terminskaListaList = terminskaListaList;
         this.treners = treners;
+    }
+
+    public static FitnessCentar getFitnessCentarByDTO(FitnescentarDTO fitnescentarDTO) {
+        FitnessCentar fitnessCentar=new FitnessCentar();
+        fitnessCentar.setAdresa(fitnescentarDTO.getAdresa());
+        fitnessCentar.setEmail(fitnescentarDTO.getEmail());
+        fitnessCentar.setNaziv(fitnescentarDTO.getNaziv());
+        fitnessCentar.setBrTelefona(fitnescentarDTO.getBrTelefona());
+        return fitnessCentar;
     }
 
     @Override

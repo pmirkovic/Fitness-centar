@@ -1,4 +1,4 @@
-function acc(){
+/*function acc(){
     let id = sessionStorage.getItem("id");
     let offline=document.getElementById("offline");
     let online=document.getElementsByClassName("online");
@@ -62,4 +62,4 @@ function acc(){
         }
         offline.style.display="none";
     }
-}
+}*/

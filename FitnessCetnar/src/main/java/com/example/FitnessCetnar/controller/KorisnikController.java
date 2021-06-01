@@ -19,13 +19,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
-
+@RestController
+@RequestMapping(value = "/api/korisnik")
 public class KorisnikController {
 
-    /*private final KorisnikService korisnikService;*/
+    private final KorisnikService korisnikService;
 
-    @Autowired
+   /* @Autowired
     private KorisnikService korisnikService;
     @Autowired
     private FitnescentarService fitnescentarService;
@@ -70,36 +70,6 @@ public class KorisnikController {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         return new ResponseEntity<Korisnik>(korisnik1,HttpStatus.OK);
-    }
-
-    @PostMapping("/add_fitnescentar")
-    public ResponseEntity<?> add_fitnescentar(@RequestBody FitnescentarDTO fitnescentarDTO){
-        try{
-            korisnikService.addFitnrescentar(fitnescentarDTO);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
-        }
-    }
-
-    @PutMapping("/edit_fitnescentar")
-    public ResponseEntity<?> edit_fitnescentar(@RequestBody FitnessCentar fitnessCentar){
-        try {
-            this.korisnikService.editFitnescentar(fitnessCentar);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-    }
-
-    @DeleteMapping("/delete_fitnescentar/{id}")
-    public ResponseEntity<?> delete_fitnescentar(@PathVariable(name = "id") Long id){
-        try{
-            this.fitnescentarService.deleteFitnescentar(id);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
     }
 
 
@@ -217,9 +187,9 @@ public class KorisnikController {
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-    }
+    }*/
 
-/*
+
     @Autowired
     public KorisnikController(KorisnikService korisnikService) {
         this.korisnikService = korisnikService;
@@ -241,7 +211,7 @@ public class KorisnikController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<KorisnikDTO>> getKorisnik(){
+    public ResponseEntity<List<KorisnikDTO>> getKorisniks(){
         List<Korisnik> korisnikList = this.korisnikService.findAll();
 
         List<KorisnikDTO> korisnikDTOS = new ArrayList<>();
@@ -282,5 +252,5 @@ public class KorisnikController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-*/
+
 }

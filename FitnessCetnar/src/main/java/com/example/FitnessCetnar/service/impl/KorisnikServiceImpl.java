@@ -1,5 +1,4 @@
 package com.example.FitnessCetnar.service.impl;
-/*
 import com.example.FitnessCetnar.entity.Korisnik;
 import com.example.FitnessCetnar.repository.KorisnikRepository;
 import com.example.FitnessCetnar.service.KorisnikService;
@@ -48,4 +47,3 @@ public class KorisnikServiceImpl implements KorisnikService {
     @Override
     public void delete(Long id){this.korisnikRepository.deleteById(id);}
 }
-*/

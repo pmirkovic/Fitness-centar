@@ -1,4 +1,4 @@
-function registracijaTrenera(){
+/*function registracijaTrenera(){
     let email = document.getElementById("email").value;
     let name = document.getElementById('name').value;
     let lastname = document.getElementById('lastname').value;
@@ -59,4 +59,4 @@ function deleteTrener(trener_id){
             window.location.replace("/account"+id+"/trener");
         }
     });
-}
+}*/
