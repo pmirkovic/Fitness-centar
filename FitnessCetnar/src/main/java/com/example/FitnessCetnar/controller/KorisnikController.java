@@ -65,6 +65,7 @@ public class KorisnikController {
         Korisnik korisnik1;
         try{
             korisnik1 = korisnikService.save(korisnik);
+
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }

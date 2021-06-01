@@ -1,24 +1,25 @@
 function login() {
+    // get the form data
+    // there are many ways to get this data using jQuery (you can use the class or id also)
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
-    var fromData = JSON.stringify({
+    var formData = JSON.stringify({
         "email": email,
         "password": password
     });
-    console.log(fromData);
+    console.log(formData);
     $.ajax({
         url: '/login',
         dataType: 'json',
-        type: 'post',
+        type: 'get',
         contentType: 'application/json',
-        data: fromData,
-        success: function (data) {
-            sessionStorage.setItem("id", data["id"]);
-            sessionStorage.setItem("position",data["position"]);
+        data: formData,
+        success: function(data){
 
-            window.location.replace("/account/"+data["id"]);
+            location.window.href = "pocetna.html";
+
         },
-        error: function (jqXhr, textStatus, errorThrown) {
+        error: function( jqXhr, textStatus, errorThrown ){
             if (jqXhr.status == 404) {
                 alert("Email not found!");
                 return;
@@ -29,10 +30,9 @@ function login() {
                 alert("Server error");
                 return;
             }
-            alert("error")
+
         }
     });
-
 }
 function registracija(){
     let email = document.getElementById('email').value;
@@ -52,7 +52,7 @@ function registracija(){
         "username":username,
         "datum":datum,
         "position":0,
-        "aktivan":true
+        "aktivan":true,
 
     });
     console.log(fromData);
