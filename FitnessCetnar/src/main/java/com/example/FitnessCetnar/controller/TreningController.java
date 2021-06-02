@@ -1,5 +1,7 @@
 package com.example.FitnessCetnar.controller;
 
+import com.example.FitnessCetnar.entity.Korisnik;
+import com.example.FitnessCetnar.entity.Trener;
 import com.example.FitnessCetnar.entity.Trening;
 import com.example.FitnessCetnar.entity.dto.TreningDTO;
 import com.example.FitnessCetnar.service.TreningService;
@@ -27,4 +29,7 @@ public class TreningController {
         model.addAttribute("trening",trening);
         return "trening.html";
     }*/
+
+
+
 }

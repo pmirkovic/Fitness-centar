@@ -4,12 +4,8 @@ package com.example.FitnessCetnar.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import javax.xml.crypto.Data;
 import java.io.Serializable;
 import java.util.*;
-
-import static javax.persistence.DiscriminatorType.STRING;
-import static javax.persistence.InheritanceType.SINGLE_TABLE;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @Entity
@@ -17,37 +13,39 @@ public class Korisnik implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     /*----------------------------------------------------------------------*/
 
 
     /*Kolone*/
-    @Column(nullable = false)
+    @Column
     private String username;
 
-    @Column(nullable = false)
+    @Column
     private String ime;
 
-    @Column( nullable = false)
+    @Column
     private String prezime;
 
-    @Column(nullable = false,unique = true)
+    @Column(unique = true)
     private String email;
 
-    @Column( nullable = false)
+    @Column
     private String password;
 
-    @Column(nullable = false,unique = true)
+    @Column(unique = true)
     private Integer telefon;
 
-    @Column( nullable = false)
+
+    @Column
     private Date datum;
 
-    @Column( nullable = false)
+    @Column
     private Position position;
 
-    @Column( nullable = false)
+
+    @Column
     private Boolean aktivan;
 
     /*----------------------------------------------------------------------*/
@@ -68,16 +66,10 @@ public class Korisnik implements Serializable {
     @OneToMany(mappedBy="korisnik",fetch=FetchType.EAGER,orphanRemoval=true)
     Set<Odradjeni_treninzi> odradjeni_treninzis=new HashSet<>();
 
-    public Korisnik(String ime, String prezime, Boolean aktivan, Date datum, Character password, String email, Integer telefon, Position position, String username, FitnessCentar fitnessCentar) {
-    }
-
-    public Korisnik() {
-
-    }
 
     /*----------------------------------------------------------------------*/
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -139,7 +131,7 @@ public class Korisnik implements Serializable {
 
     /*----------------------------------------------------------------------*/
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -200,8 +192,9 @@ public class Korisnik implements Serializable {
     }
 
     /*----------------------------------------------------------------------*/
-    public Korisnik(String firstName, String lastName, Position position){}
-    
+    public Korisnik(){}
+
+    public Korisnik(String ime, String prezime, Position position, Date datum, Boolean aktivan, String username, Integer telefon, String email, String password){}
 
     public Korisnik(long id, String username, String ime, String prezime, String email, String password, Integer telefon, Date datum, Position position, Boolean aktivan, FitnessCentar fitnessCentar, Set<Trening> prijava_treninga, Set<Trener> treners, Set<ClanFitnesCentra> clanFitnesCentras, Set<Odradjeni_treninzi> odradjeni_treninzis) {
         this.id = id;

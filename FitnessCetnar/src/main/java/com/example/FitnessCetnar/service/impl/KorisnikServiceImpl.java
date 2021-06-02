@@ -29,7 +29,11 @@ public class KorisnikServiceImpl implements KorisnikService {
 
     @Override
     public Korisnik create(Korisnik korisnik)throws Exception{
-        throw  new Exception("ID must be null!");
+        if(korisnik.getId() != null) {
+            throw new Exception("ID must be null!");
+        }
+        Korisnik newKorisnik = this.korisnikRepository.save(korisnik);
+        return newKorisnik;
     }
 
     @Override

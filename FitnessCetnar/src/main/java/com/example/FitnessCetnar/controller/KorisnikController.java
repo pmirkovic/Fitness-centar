@@ -3,6 +3,7 @@ package com.example.FitnessCetnar.controller;
 import com.example.FitnessCetnar.entity.FitnessCentar;
 import com.example.FitnessCetnar.entity.Korisnik;
 import com.example.FitnessCetnar.entity.Sala;
+import com.example.FitnessCetnar.entity.Trener;
 import com.example.FitnessCetnar.entity.dto.*;
 import com.example.FitnessCetnar.service.FitnescentarService;
 import com.example.FitnessCetnar.service.KorisnikService;
@@ -206,6 +207,12 @@ public class KorisnikController {
         korisnikDTO.setIme(korisnik.getIme());
         korisnikDTO.setPrezime(korisnik.getPrezime());
         korisnikDTO.setPosition(korisnik.getPosition());
+        korisnikDTO.setPassword(korisnik.getPassword());
+        korisnikDTO.setAktivan(korisnik.getAktivan());
+        korisnikDTO.setTelefon(korisnik.getTelefon());
+        korisnikDTO.setDatum(korisnik.getDatum());
+        korisnikDTO.setEmail(korisnik.getEmail());
+
 
         return new ResponseEntity<>(korisnikDTO,HttpStatus.OK);
     }
@@ -217,7 +224,8 @@ public class KorisnikController {
         List<KorisnikDTO> korisnikDTOS = new ArrayList<>();
 
         for (Korisnik korisnik : korisnikList){
-            KorisnikDTO korisnikDTO=new KorisnikDTO(korisnik.getId(),korisnik.getIme(),korisnik.getPrezime(),korisnik.getPosition());
+            KorisnikDTO korisnikDTO=new KorisnikDTO(korisnik.getId(),korisnik.getIme(),korisnik.getPrezime(),korisnik.getPosition(),
+                                korisnik.getPassword(),korisnik.getAktivan(),korisnik.getDatum(), korisnik.getEmail(), korisnik.getTelefon());
             korisnikDTOS.add(korisnikDTO);
         }
 
@@ -226,23 +234,29 @@ public class KorisnikController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<KorisnikDTO> createKorisnik(@RequestBody KorisnikDTO korisnikDTO) throws Exception{
-        Korisnik korisnik = new Korisnik(korisnikDTO.getIme(),korisnikDTO.getPrezime(),korisnikDTO.getPosition());
+        Korisnik korisnik = new Korisnik(korisnikDTO.getIme(),korisnikDTO.getPrezime(),korisnikDTO.getPosition(),
+                korisnikDTO.getDatum(),korisnikDTO.getAktivan(),korisnikDTO.getUsername(),korisnikDTO.getTelefon(),
+                korisnikDTO.getEmail(),korisnikDTO.getPassword());
 
         Korisnik newKorisnik = korisnikService.create(korisnik);
 
-        KorisnikDTO newKorisnikDTO = new KorisnikDTO(newKorisnik.getId(),newKorisnik.getIme(),newKorisnik.getPrezime(),newKorisnik.getPosition());
+        KorisnikDTO newKorisnikDTO = new KorisnikDTO(newKorisnik.getId(),newKorisnik.getIme(),newKorisnik.getPrezime(),newKorisnik.getPosition(),
+                newKorisnik.getPassword(),newKorisnik.getAktivan(),newKorisnik.getDatum(),newKorisnik.getEmail(),newKorisnik.getTelefon());
 
         return new ResponseEntity<>(newKorisnikDTO,HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<KorisnikDTO> updateKorisnik(@PathVariable Long id,@RequestBody KorisnikDTO korisnikDTO) throws Exception{
-        Korisnik korisnik = new Korisnik(korisnikDTO.getIme(),korisnikDTO.getPrezime(),korisnikDTO.getPosition());
+        Korisnik korisnik = new Korisnik(korisnikDTO.getIme(),korisnikDTO.getPrezime(),korisnikDTO.getPosition(),
+                korisnikDTO.getDatum(),korisnikDTO.getAktivan(),korisnikDTO.getUsername(),korisnikDTO.getTelefon(),
+                korisnikDTO.getEmail(),korisnikDTO.getPassword());
         korisnik.setId(id);
 
         Korisnik updatedKo = korisnikService.update(korisnik);
 
-        KorisnikDTO updatedKoDTO = new KorisnikDTO(updatedKo.getId(),updatedKo.getIme(),updatedKo.getPrezime(),updatedKo.getPosition());
+        KorisnikDTO updatedKoDTO = new KorisnikDTO(updatedKo.getId(),updatedKo.getIme(),updatedKo.getPrezime(),updatedKo.getPosition(),updatedKo.getPassword(),
+                updatedKo.getAktivan(),updatedKo.getDatum(),updatedKo.getEmail(),updatedKo.getTelefon());
 
         return new ResponseEntity<>(updatedKoDTO,HttpStatus.OK);
     }
