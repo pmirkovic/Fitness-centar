@@ -10,7 +10,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TreningRepository extends JpaRepository<Trening,Long> {
 
-    @Modifying
-    @Query("update Trening  set rating = :rating WHERE id = :treningId")
-    void setRating(@Param("treningId") Long id,@Param("rating") double rating);
 }

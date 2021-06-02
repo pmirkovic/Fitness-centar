@@ -1,18 +1,20 @@
 package com.example.FitnessCetnar.service.impl;
 import com.example.FitnessCetnar.entity.Korisnik;
+import com.example.FitnessCetnar.entity.dto.KorisnikDTO;
 import com.example.FitnessCetnar.repository.KorisnikRepository;
 import com.example.FitnessCetnar.service.KorisnikService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-/*
+
 @Service
 public class KorisnikServiceImpl implements KorisnikService {
 
+
     private  final KorisnikRepository korisnikRepository;
 
-    @Autowired
+
     public KorisnikServiceImpl(KorisnikRepository korisnikRepository){this.korisnikRepository=korisnikRepository;}
 
     @Override
@@ -49,5 +51,24 @@ public class KorisnikServiceImpl implements KorisnikService {
     }
 
     @Override
+    public boolean login(KorisnikDTO korisnikDTO, Korisnik korisnik) {
+        if(korisnik.getPassword().equals(korisnikDTO.getPassword())){
+            return  true;
+        }
+        return false;
+    }
+    @Override
+    public Korisnik checkEmail(KorisnikDTO korisnikDTO) {
+        Korisnik user = this.korisnikRepository.findByEmail(korisnikDTO.getEmail());
+        if (user == null)
+            return null;
+        return user;
+    }
+
+    public Korisnik save(Korisnik user) {
+        return this.korisnikRepository.save(user);
+    }
+
+    @Override
     public void delete(Long id){this.korisnikRepository.deleteById(id);}
-}*/
+}

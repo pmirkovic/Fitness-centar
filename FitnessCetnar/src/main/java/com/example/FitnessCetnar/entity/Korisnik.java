@@ -50,6 +50,9 @@ public class Korisnik implements Serializable {
 
     /*----------------------------------------------------------------------*/
 
+    public Korisnik() {
+    }
+
     @ManyToOne(fetch = FetchType.EAGER)
     private FitnessCentar fitnessCentar;
 
@@ -66,7 +69,7 @@ public class Korisnik implements Serializable {
     @OneToMany(mappedBy="korisnik",fetch=FetchType.EAGER,orphanRemoval=true)
     Set<Odradjeni_treninzi> odradjeni_treninzis=new HashSet<>();
 
-    public Korisnik() {
+    public Korisnik(String naziv, String adresa, String email, Integer brTelefona) {
 
     }
 

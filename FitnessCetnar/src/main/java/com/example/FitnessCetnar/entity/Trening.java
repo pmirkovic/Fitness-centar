@@ -15,7 +15,7 @@ public class Trening implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column
     private String naziv;
@@ -31,6 +31,9 @@ public class Trening implements Serializable {
 
     @Column
     private Double rating;
+
+    @Column
+    private Double cena;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Trener trener;
@@ -57,12 +60,23 @@ public class Trening implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     private TerminskaLista cene;
 
+    public Trening(String naziv, String opis, Double cena, Double treningDTOCena) {
+    }
+
     public Trening() {
     }
 
     /*----------------------------------------------------------------------*/
 
-    public long getId() {
+    public Double getCena() {
+        return cena;
+    }
+
+    public void setCena(Double cena) {
+        this.cena = cena;
+    }
+
+    public Long getId() {
         return id;
     }
 
@@ -124,7 +138,7 @@ public class Trening implements Serializable {
 
     /*----------------------------------------------------------------------*/
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -186,13 +200,14 @@ public class Trening implements Serializable {
 
     /*----------------------------------------------------------------------*/
 
-    public Trening(long id, String naziv, String opis, String tipTreninga, Double trajanje, Double rating, Trener trener, List<ClanFitnesCentra> odradjenih, List<ClanFitnesCentra> prijavljenih, List<ClanFitnesCentra> ocena, Set<Korisnik> korisniks, Set<Odradjeni_treninzi> odradjeni_treninzis, List<Sala> salas, TerminskaLista trening, TerminskaLista cene) {
+    public Trening(long id, String naziv, String opis, String tipTreninga, Double trajanje, Double rating, Double cena, Trener trener, List<ClanFitnesCentra> odradjenih, List<ClanFitnesCentra> prijavljenih, List<ClanFitnesCentra> ocena, Set<Korisnik> korisniks, Set<Odradjeni_treninzi> odradjeni_treninzis, List<Sala> salas, TerminskaLista trening, TerminskaLista cene) {
         this.id = id;
         this.naziv = naziv;
         this.opis = opis;
         this.tipTreninga = tipTreninga;
         Trajanje = trajanje;
         this.rating = rating;
+        this.cena = cena;
         this.trener = trener;
         Odradjenih = odradjenih;
         Prijavljenih = prijavljenih;

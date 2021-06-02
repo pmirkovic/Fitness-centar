@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <title>Employees</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/trening.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" media="all"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+
+    <!-- 1. Ukljucivanje jQuery biblioteke -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 2. Ukljucivanje jQuery Validate biblioteke za validaciju polja forme (opciono).
+            O načinu upotrebe pogledati na: https://jqueryvalidation.org/ -->
+    <script src="js/jquery.validate.min.js"></script>
+    <!-- 3. Ukljucivanje naseg JS fajla -->
+    <script src="js/trening.js"></script>
+</head>
+
+<body>
+
+<div id="allEmployees">
+    <h1>Employees</h1>
+    <button onclick="location.href = 'add-employee.html'">Add new employee</button>
+    <br><br>
+    <div class="container">
+        <table id="trening">
+            <tr>
+                <th>Naziv</th>
+                <th>Opis</th>
+                <th>Tip Treninga</th>
+                <th>Trajanje</th>
+                <th>Details</th>
+                <th></th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div id="oneEmployee" hidden>
+    <h2 style="text-align:center">Employee Profile</h2>
+    <div class="card">
+        <img alt="User" src="/images/user.png" />
+        <h1 id="naziv"></h1>
+        <h1 id="opis"></h1>
+        <h1 id="tipTreniga"></h1>
+        <h1 id="trajanje"></h1>
+        <br>
+    </div>
+</div>
+
+</body>
+
+</html>

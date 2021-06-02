@@ -9,9 +9,7 @@ import java.util.List;
 
 @Repository
 public interface KorisnikRepository extends JpaRepository<Korisnik,Long> {
-    Korisnik findByEmail(String email);
-    List<Korisnik> findByPosition(Position position);
-    /*
+
     List<Korisnik> findAllByPositionOrderByIme(String position);
 
 
@@ -21,6 +19,8 @@ public interface KorisnikRepository extends JpaRepository<Korisnik,Long> {
     List<Korisnik> findByImeIgnoreCase(String ime);
 
 
-    List<Korisnik> findByFitnessCentarNaziv(String Naziv);*/
+    List<Korisnik> findByFitnessCentarNaziv(String Naziv);
+
+    Korisnik findByEmail(String email);
 }
 

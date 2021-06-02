@@ -3,6 +3,7 @@ package com.example.FitnessCetnar.entity;
 import com.example.FitnessCetnar.entity.dto.FitnescentarDTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ser.Serializers;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -44,6 +45,9 @@ public class FitnessCentar implements Serializable {
     private List<Trener> treners = new ArrayList<>();
 
     public FitnessCentar(String adresa, Integer brTelefona, String naziv, String email) {
+    }
+
+    public FitnessCentar(String naziv, String adresa, String email, Integer brTelefona) {
     }
 
     /*----------------------------------------------------------------------*/
@@ -160,4 +164,5 @@ public class FitnessCentar implements Serializable {
                 ", treners=" + treners +
                 '}';
     }
+
 }

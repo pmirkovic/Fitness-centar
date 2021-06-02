@@ -36,7 +36,7 @@ function login() {
     });
     console.log(formData);
     $.ajax({
-        url: '/login',
+        url: 'http://localhost:8080/api/korisnik/login',
         dataType: 'json',
         type: 'post',
         contentType: 'application/json',

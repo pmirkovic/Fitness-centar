@@ -9,7 +9,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FitnescentarRepository extends JpaRepository<FitnessCentar,Long> {
-    @Modifying
-    @Query("update FitnessCentar set naziv=:naziv,adresa=:adresa WHERE id =:Id")
-    void updateFitnescentar(@Param("Id") Long id,@Param("naziv") String naziv,@Param("adresa") String adresa);
+
 }

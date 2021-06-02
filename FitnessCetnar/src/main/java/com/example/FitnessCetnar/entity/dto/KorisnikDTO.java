@@ -44,9 +44,11 @@ public class KorisnikDTO {
 
     }
 
-    public KorisnikDTO() {
+    public KorisnikDTO(Long id, String ime, String prezime, Position position) {
 
     }
+
+    public KorisnikDTO(){}
 
 
     public Long getId() {

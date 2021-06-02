@@ -1,35 +1,100 @@
 package com.example.FitnessCetnar.controller;
 
+import com.example.FitnessCetnar.entity.FitnessCentar;
 import com.example.FitnessCetnar.entity.Korisnik;
 import com.example.FitnessCetnar.entity.Trener;
 import com.example.FitnessCetnar.entity.Trening;
+import com.example.FitnessCetnar.entity.dto.FitnescentarDTO;
+import com.example.FitnessCetnar.entity.dto.KorisnikDTO;
 import com.example.FitnessCetnar.entity.dto.TreningDTO;
+import com.example.FitnessCetnar.service.FitnescentarService;
 import com.example.FitnessCetnar.service.TreningService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+@RequestMapping(value = "/api/trening")
 public class TreningController {
-   @Autowired
-    private TreningService treningService;
 
-    @GetMapping("/treninzi")
-    public String treninzi(Model model){
-        TreningDTO treningDTO=this.treningService.getPodaci();
-        model.addAttribute("treningDTO",treningDTO);
-        return "treninzi.html";
+    private final TreningService treningService;
+
+    @Autowired
+    public TreningController(TreningService treningService) {
+        this.treningService = treningService;
     }
 
-    @GetMapping("/trening/{id}")
-    public String getTrening(@PathVariable(name = "id") Long id,Model model){
+    /*Dobavljanje trazenog korisnika*/
+    @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<TreningDTO> getTrening(@PathVariable("id") Long id){
         Trening trening = this.treningService.findOne(id);
-        model.addAttribute("trening",trening);
-        return "trening.html";
+
+        TreningDTO treningDTO = new TreningDTO();
+
+        treningDTO.setId(trening.getId());
+        treningDTO.setNaziv(trening.getNaziv());
+        treningDTO.setTrajanje(trening.getTrajanje());
+        treningDTO.setCena(trening.getCena());
+        treningDTO.setOpis(trening.getOpis());
+
+
+        return new ResponseEntity<>(treningDTO,HttpStatus.OK);
     }
+    /*Dobavljanje svih korisnika*/
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<TreningDTO>> getTrenings(){
+        List<Trening> treningList = this.treningService.findAll();
 
+        List<TreningDTO> treningDTOS = new ArrayList<>();
 
+        for (Trening trening : treningList){
+            TreningDTO treningDTO=new TreningDTO(trening.getId(),trening.getNaziv(),trening.getOpis(),trening.getCena(),trening.getTrajanje());
+            treningDTOS.add(treningDTO);
+        }
 
+        return new ResponseEntity<>(treningDTOS,HttpStatus.OK);
+    }
+    /*Kreiranje novog zaposlenog*/
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<TreningDTO> createTrening(@RequestBody TreningDTO treningDTO) throws Exception{
+        Trening trening = new Trening(treningDTO.getNaziv(),treningDTO.getOpis(),treningDTO.getCena(),
+                treningDTO.getCena());
+
+        Trening newTrening = treningService.create(trening);
+
+        TreningDTO newTreningDTO = new TreningDTO(newTrening.getId(),newTrening.getNaziv(),newTrening.getOpis(),newTrening.getCena(),
+                newTrening.getTrajanje());
+
+        return new ResponseEntity<>(newTreningDTO,HttpStatus.CREATED);
+    }
+    /*update postojeceg korisnika*/
+    @PutMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<TreningDTO> updateTrening(@PathVariable Long id,@RequestBody TreningDTO treningDTO) throws Exception{
+        Trening trening = new Trening(treningDTO.getNaziv(),treningDTO.getOpis(),treningDTO.getCena(),
+                treningDTO.getTrajanje());
+        trening.setId(id);
+
+        Trening updatedT = treningService.update(trening);
+
+        TreningDTO updatedTDTO = new TreningDTO(updatedT.getId(),updatedT.getNaziv(),
+                updatedT.getOpis(),updatedT.getCena(),updatedT.getTrajanje());
+
+        return new ResponseEntity<>(updatedTDTO,HttpStatus.OK);
+    }
+    /*brisanje korisnika*/
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> deleteFitnesCentar(@PathVariable Long id){
+        this.treningService.delete(id);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
+
+
