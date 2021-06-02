@@ -14,7 +14,7 @@ import java.util.List;
 
 @Controller
 public class FitnessCentarController {
-   /* @Autowired
+    @Autowired
     private FitnescentarService fitnescentarService;
 
     @GetMapping("/fitnesscentar")
@@ -56,6 +56,6 @@ public class FitnessCentarController {
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-    }*/
+    }
 
 }

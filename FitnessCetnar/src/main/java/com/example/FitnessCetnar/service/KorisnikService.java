@@ -17,10 +17,10 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 
+@Service
+public class KorisnikService{
 
-public interface KorisnikService{
-
-   /* @Autowired
+    @Autowired
     private KorisnikRepository korisnikRepository;
     @Autowired
     private FitnescentarService fitnescentarService;
@@ -103,9 +103,9 @@ public interface KorisnikService{
         Trening trening = this.treningService.findOne(trening_id);
         korisnik.getPrijava_treninga().remove(trening);
         return;
-    }*/
+    }
 
-
+/*
     Korisnik findOne(Long id);
 
     List<Korisnik> findAll();
@@ -114,6 +114,6 @@ public interface KorisnikService{
 
     Korisnik update(Korisnik employee) throws Exception;
 
-    void delete(Long id);
+    void delete(Long id);*/
 
 }

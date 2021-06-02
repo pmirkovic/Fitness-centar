@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class TreningController {
-  /* @Autowired
+   @Autowired
     private TreningService treningService;
 
     @GetMapping("/treninzi")
@@ -28,7 +28,7 @@ public class TreningController {
         Trening trening = this.treningService.findOne(id);
         model.addAttribute("trening",trening);
         return "trening.html";
-    }*/
+    }
 
 
 

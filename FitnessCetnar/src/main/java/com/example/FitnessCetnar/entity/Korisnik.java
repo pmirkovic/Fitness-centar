@@ -66,6 +66,10 @@ public class Korisnik implements Serializable {
     @OneToMany(mappedBy="korisnik",fetch=FetchType.EAGER,orphanRemoval=true)
     Set<Odradjeni_treninzi> odradjeni_treninzis=new HashSet<>();
 
+    public Korisnik() {
+
+    }
+
 
     /*----------------------------------------------------------------------*/
 
@@ -192,7 +196,7 @@ public class Korisnik implements Serializable {
     }
 
     /*----------------------------------------------------------------------*/
-    public Korisnik(){}
+    public Korisnik(String ime, String prezime, Boolean aktivan, Date datum, Character password, String email, Integer telefon, Position position, String username, FitnessCentar fitnessCentar){}
 
     public Korisnik(String ime, String prezime, Position position, Date datum, Boolean aktivan, String username, Integer telefon, String email, String password){}
 

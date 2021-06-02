@@ -11,8 +11,8 @@ import java.util.List;
 
 @Repository
 public interface Odradjeni_treninziRepository extends JpaRepository<Odradjeni_treninzi,Long> {
-    /*List<Odradjeni_treninzi> findByTreningId(Long id);
+    List<Odradjeni_treninzi> findByTreningId(Long id);
     @Modifying
     @Query("update Odradjeni_treninzi set ocena=:ocena WHERE id=:id")
-    void setOcena(@Param("id")Long id,@Param("ocena") Long ocena);*/
+    void setOcena(@Param("id")Long id,@Param("ocena") Long ocena);
 }

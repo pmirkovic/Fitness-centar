@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class Odradjeni_treninziService {
-  /*  @Autowired
+    @Autowired
     private Odradjeni_treninziRepository odradjeni_treninziRepository;
 
     public Odradjeni_treninzi findOne(Long id){
@@ -44,5 +44,5 @@ public class Odradjeni_treninziService {
         }
         avg=avg/brojac;
         return avg;
-    }*/
+    }
 }

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+/*
 @Service
 public class KorisnikServiceImpl implements KorisnikService {
 
@@ -50,4 +50,4 @@ public class KorisnikServiceImpl implements KorisnikService {
 
     @Override
     public void delete(Long id){this.korisnikRepository.deleteById(id);}
-}
+}*/

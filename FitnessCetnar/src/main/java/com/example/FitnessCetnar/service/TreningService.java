@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class TreningService {
 
- /*  @Autowired
+   @Autowired
     private TreningRepository treningRepository;
 
     public Trening findOne(Long id){
@@ -35,6 +35,6 @@ public class TreningService {
             }
         }
         return new TreningDTO(trenings,tip);
-    }*/
+    }
 
 }

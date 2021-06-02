@@ -16,36 +16,35 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
 $(document).on("submit","#addKorisnikForm",function (event){
     event.preventDefault();
 
-    let email = document.getElementById('email').value;
-    let ime = document.getElementById('ime').value;
-    let prezime = document.getElementById('prezime').value;
-    let telefon = document.getElementById('telefon').value;
-    let password = document.getElementById('password').value;
-    let username = document.getElementById('username').value;
-    let datum = document.getElementById('datum').value;
+    let email =     $("#email").val();
+    let ime =       $("#ime").val();
+    let prezime =   $("#prezime").val();
+    let telefon =   $("#telefon").val();
+    let password =  $("#password").val();
+    let username =  $("#username").val();
+    let datum =     $("#datu").val();
 
-    var formData = JSON.stringify({
-        "email":email,
-        "ime":ime,
-        "telefon":telefon,
-        "prezime":prezime,
-        "password":password,
-        "username":username,
-        "datum":datum,
-        "position":0,
-        "aktivan":true,
+    let newKorisnik = {
+        email,
+        ime,
+        telefon,
+        prezime,
+        password,
+        username,
+        datum,
+        position: 0,
+        aktivan: true
 
-    });
-    console.log(formData);
+    }
     $.ajax({
-        url: "http://localhost:8080/api/korisnik",
+        url: "/registracija-korisnik",
         type: "POST",
         dataType:"json",
         contentType: "application/json",
-        data: formData,
+        data: JSON.stringify(),
         success:function (response){
             console.log(response);
-            alert("Uspesno ste se registorvali" + response.id);
+            alert("Uspesno ste se registorvali " + response.id);
             window.location.href = "pocetna.html";
         },
         error:function (){

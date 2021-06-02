@@ -9,24 +9,18 @@ import java.util.List;
 
 @Repository
 public interface KorisnikRepository extends JpaRepository<Korisnik,Long> {
-    /*Korisnik findByEmail(String email);
-
-    List<Korisnik> findByPosition(Position position);*/
+    Korisnik findByEmail(String email);
+    List<Korisnik> findByPosition(Position position);
+    /*
     List<Korisnik> findAllByPositionOrderByIme(String position);
 
-    /*
-        Traži sve zaposlene po imenu ili prezimenu.
-     */
+
     List<Korisnik> findByImeOrPrezime(String ime, String prezime);
 
-    /*
-        Traži sve zaposlene po imenu, ignorišu se mala i velika slova.
-     */
+
     List<Korisnik> findByImeIgnoreCase(String ime);
 
-    /*
-        Traži sve zaposlene po nazivu departmana.
-     */
-    List<Korisnik> findByFitnessCentarNaziv(String Naziv);
+
+    List<Korisnik> findByFitnessCentarNaziv(String Naziv);*/
 }
 

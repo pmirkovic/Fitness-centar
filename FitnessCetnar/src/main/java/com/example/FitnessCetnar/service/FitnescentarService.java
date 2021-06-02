@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class FitnescentarService {
-  /*  @Autowired
+    @Autowired
     private FitnescentarRepository fitnescentarRepository;
 
 
@@ -27,6 +27,6 @@ public class FitnescentarService {
     public void deleteFitnescentar(Long id){
         this.fitnescentarRepository.deleteById(id);
 
-    }*/
+    }
 
 }

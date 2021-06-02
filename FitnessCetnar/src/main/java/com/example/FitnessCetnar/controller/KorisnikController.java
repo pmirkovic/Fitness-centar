@@ -20,13 +20,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
-@RequestMapping(value = "/api/korisnik")
+@Controller
 public class KorisnikController {
 
-    private final KorisnikService korisnikService;
 
-   /* @Autowired
+
+    @Autowired
     private KorisnikService korisnikService;
     @Autowired
     private FitnescentarService fitnescentarService;
@@ -188,8 +187,10 @@ public class KorisnikController {
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-    }*/
+    }
 
+    /*
+    private final KorisnikService korisnikService;
 
     @Autowired
     public KorisnikController(KorisnikService korisnikService) {
@@ -265,6 +266,6 @@ public class KorisnikController {
         this.korisnikService.delete(id);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+    }*/
 
 }
