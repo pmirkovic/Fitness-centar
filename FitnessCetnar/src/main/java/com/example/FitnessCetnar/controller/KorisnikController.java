@@ -55,8 +55,8 @@ public class KorisnikController {
         List<KorisnikDTO> korisnikDTOS = new ArrayList<>();
 
         for (Korisnik korisnik : korisnikList){
-            KorisnikDTO korisnikDTO=new KorisnikDTO(korisnik.getId(),korisnik.getIme(),korisnik.getPrezime(),korisnik.getPosition(),
-                                korisnik.getPassword(),korisnik.getAktivan(),korisnik.getDatum(), korisnik.getEmail(), korisnik.getTelefon());
+            KorisnikDTO korisnikDTO=new KorisnikDTO(korisnik.getId(),korisnik.getIme(),korisnik.getPrezime(),korisnik.getPosition(),korisnik.getUsername(),
+                    korisnik.getEmail(), korisnik.getTelefon(),korisnik.getDatum(),korisnik.getAktivan(), korisnik.getPassword());
             korisnikDTOS.add(korisnikDTO);
         }
 
@@ -101,8 +101,8 @@ public class KorisnikController {
 
         Korisnik updatedKo = korisnikService.update(korisnik);
 
-        KorisnikDTO updatedKoDTO = new KorisnikDTO(updatedKo.getId(),updatedKo.getIme(),updatedKo.getPrezime(),updatedKo.getPosition(),updatedKo.getPassword(),
-                updatedKo.getAktivan(),updatedKo.getDatum(),updatedKo.getEmail(),updatedKo.getTelefon());
+        KorisnikDTO updatedKoDTO = new KorisnikDTO(updatedKo.getId(),updatedKo.getIme(),updatedKo.getPrezime(),updatedKo.getPosition(),updatedKo.getUsername(),
+                updatedKo.getEmail(), updatedKo.getTelefon(),updatedKo.getDatum(),updatedKo.getAktivan(), updatedKo.getPassword());
 
         return new ResponseEntity<>(updatedKoDTO,HttpStatus.OK);
     }

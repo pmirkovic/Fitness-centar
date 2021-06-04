@@ -10,8 +10,7 @@
             O načinu upotrebe pogledati na: https://jqueryvalidation.org/ -->
     <script src="js/jquery.validate.min.js"></script>
     <!-- 3. Ukljucivanje naseg JS fajla -->
-    <script src="js/trening.js"></script>
-    <script src="js/sort.js"></script>
+    <script src="js/trener.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/trening.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
@@ -58,12 +57,12 @@
     <div class="container">
         <table id="responseElement">
             <tr>
-
-                <th   onclick="sortTable(1)">Naziv <i id="th1" class="fa fa-fw fa-sort"></i></th>
-                <th   onclick="sortTable(2)">Opis<i id="th2" class="fa fa-fw fa-sort"></i></th>
-                <th   onclick="sortTable(3)">Tip Treninga<i id="th3" class="fa fa-fw fa-sort"></i></th>
-                <th   onclick="sortTable(4)">Trajanje(minutes)<i id="th4" class="fa fa-fw fa-sort"></i></th>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>Email</th>
+                <th>Position</th>
                 <th>Details</th>
+                <th></th>
             </tr>
         </table>
     </div>
@@ -72,10 +71,10 @@
 <div id="oneEmployee" hidden>
     <h2 style="text-align:center">Employee Profile</h2>
     <div class="card">
-        <h1 id="naziv" value="0"></h1>
-        <h1 id="opis" value="0"></h1>
-        <h1 id="tipTreniga" value="0"></h1>
-        <h1 id="trajanje" value="0"></h1>
+        <h1 id="ime" value="0"></h1>
+        <h1 id="prezime" value="0"></h1>
+        <h1 id="email" value="0"></h1>
+        <h1 id="position" value="0"></h1>
         <br>
     </div>
 </div>

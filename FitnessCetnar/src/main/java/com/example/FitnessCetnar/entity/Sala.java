@@ -8,7 +8,10 @@ import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @Entity
 public class Sala implements Serializable {
@@ -40,6 +43,8 @@ public class Sala implements Serializable {
     inverseJoinColumns = @JoinColumn(name = "trening_id",referencedColumnName = "id"))
     private List<Trening> trenings = new ArrayList<>();
 
+    @OneToMany(mappedBy="sala",fetch=FetchType.EAGER,cascade = CascadeType.ALL)
+    Set<TerminskaLista> terminskaListas=new HashSet<>();
 
     public Sala(Integer kapacitet, Integer salaDTOKapacitet, Trening trening, FitnessCentar centar) {
     }
@@ -53,51 +58,56 @@ public class Sala implements Serializable {
         return id;
     }
 
-    public Integer getKapacitet() {
-        return kapacitet;
-    }
-
-    public Integer getOznakaSale() {
-        return oznakaSale;
-    }
-
-    public FitnessCentar getFitnessCentar() {
-        return fitnessCentar;
-    }
-
-    public List<Trening> getTrenings() {
-        return trenings;
-    }
-
-    public TerminskaLista getTrening() {
-        return trening;
-    }
-
-    /*----------------------------------------------------------------------*/
-
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Integer getKapacitet() {
+        return kapacitet;
     }
 
     public void setKapacitet(Integer kapacitet) {
         this.kapacitet = kapacitet;
     }
 
+    public Integer getOznakaSale() {
+        return oznakaSale;
+    }
+
     public void setOznakaSale(Integer oznakaSale) {
         this.oznakaSale = oznakaSale;
+    }
+
+    public FitnessCentar getFitnessCentar() {
+        return fitnessCentar;
     }
 
     public void setFitnessCentar(FitnessCentar fitnessCentar) {
         this.fitnessCentar = fitnessCentar;
     }
 
+    public TerminskaLista getTrening() {
+        return trening;
+    }
+
+    public void setTrening(TerminskaLista trening) {
+        this.trening = trening;
+    }
+
+    public List<Trening> getTrenings() {
+        return trenings;
+    }
 
     public void setTrenings(List<Trening> trenings) {
         this.trenings = trenings;
     }
 
-    public void setTrening(TerminskaLista trening) {
-        this.trening = trening;
+    public Set<TerminskaLista> getTerminskaListas() {
+        return terminskaListas;
+    }
+
+    public void setTerminskaListas(Set<TerminskaLista> terminskaListas) {
+        this.terminskaListas = terminskaListas;
     }
 
     /*----------------------------------------------------------------------*/

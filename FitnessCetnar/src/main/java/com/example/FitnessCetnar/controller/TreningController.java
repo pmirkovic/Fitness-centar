@@ -43,9 +43,11 @@ public class TreningController {
         treningDTO.setTrajanje(trening.getTrajanje());
         treningDTO.setCena(trening.getCena());
         treningDTO.setOpis(trening.getOpis());
+        treningDTO.setTipTreninga(trening.getTipTreninga());
 
 
         return new ResponseEntity<>(treningDTO,HttpStatus.OK);
+
     }
     /*Dobavljanje svih korisnika*/
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -55,7 +57,7 @@ public class TreningController {
         List<TreningDTO> treningDTOS = new ArrayList<>();
 
         for (Trening trening : treningList){
-            TreningDTO treningDTO=new TreningDTO(trening.getId(),trening.getNaziv(),trening.getOpis(),trening.getCena(),trening.getTrajanje());
+            TreningDTO treningDTO=new TreningDTO(trening.getId(),trening.getNaziv(),trening.getOpis(),trening.getCena(),trening.getTrajanje(),trening.getTipTreninga());
             treningDTOS.add(treningDTO);
         }
 
@@ -65,12 +67,12 @@ public class TreningController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<TreningDTO> createTrening(@RequestBody TreningDTO treningDTO) throws Exception{
         Trening trening = new Trening(treningDTO.getNaziv(),treningDTO.getOpis(),treningDTO.getCena(),
-                treningDTO.getCena());
+                treningDTO.getCena(),treningDTO.getTipTreninga());
 
         Trening newTrening = treningService.create(trening);
 
         TreningDTO newTreningDTO = new TreningDTO(newTrening.getId(),newTrening.getNaziv(),newTrening.getOpis(),newTrening.getCena(),
-                newTrening.getTrajanje());
+                newTrening.getTrajanje(),newTrening.getTipTreninga());
 
         return new ResponseEntity<>(newTreningDTO,HttpStatus.CREATED);
     }
@@ -78,13 +80,13 @@ public class TreningController {
     @PutMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<TreningDTO> updateTrening(@PathVariable Long id,@RequestBody TreningDTO treningDTO) throws Exception{
         Trening trening = new Trening(treningDTO.getNaziv(),treningDTO.getOpis(),treningDTO.getCena(),
-                treningDTO.getTrajanje());
+                treningDTO.getTrajanje(),treningDTO.getTipTreninga());
         trening.setId(id);
 
         Trening updatedT = treningService.update(trening);
 
         TreningDTO updatedTDTO = new TreningDTO(updatedT.getId(),updatedT.getNaziv(),
-                updatedT.getOpis(),updatedT.getCena(),updatedT.getTrajanje());
+                updatedT.getOpis(),updatedT.getCena(),updatedT.getTrajanje(),updatedT.getTipTreninga());
 
         return new ResponseEntity<>(updatedTDTO,HttpStatus.OK);
     }

@@ -55,18 +55,66 @@ public class Trening implements Serializable {
     @ManyToMany(mappedBy="trenings",cascade=CascadeType.ALL)
     private List<Sala> salas=new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private TerminskaLista trening;
-    @ManyToOne(fetch = FetchType.EAGER)
-    private TerminskaLista cene;
+    @OneToMany(mappedBy="trening",fetch=FetchType.EAGER,cascade = CascadeType.ALL)
+    Set<TerminskaLista> terminskaListas=new HashSet<>();
+
+
 
     public Trening(String naziv, String opis, Double cena, Double treningDTOCena) {
     }
 
-    public Trening() {
+    public Trening(String naziv, String opis, Double cena, Double trajanje, String tipTreninga) {
     }
 
     /*----------------------------------------------------------------------*/
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNaziv() {
+        return naziv;
+    }
+
+    public void setNaziv(String naziv) {
+        this.naziv = naziv;
+    }
+
+    public String getOpis() {
+        return opis;
+    }
+
+    public void setOpis(String opis) {
+        this.opis = opis;
+    }
+
+    public String getTipTreninga() {
+        return tipTreninga;
+    }
+
+    public void setTipTreninga(String tipTreninga) {
+        this.tipTreninga = tipTreninga;
+    }
+
+    public Double getTrajanje() {
+        return Trajanje;
+    }
+
+    public void setTrajanje(Double trajanje) {
+        Trajanje = trajanje;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
+    }
 
     public Double getCena() {
         return cena;
@@ -76,131 +124,73 @@ public class Trening implements Serializable {
         this.cena = cena;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getNaziv() {
-        return naziv;
-    }
-
-    public String getOpis() {
-        return opis;
-    }
-
-    public String getTipTreninga() {
-        return tipTreninga;
-    }
-
-    public Double getTrajanje() {
-        return Trajanje;
-    }
-
     public Trener getTrener() {
         return trener;
-    }
-
-    public List<ClanFitnesCentra> getOdradjenih() {
-        return Odradjenih;
-    }
-
-    public List<ClanFitnesCentra> getPrijavljenih() {
-        return Prijavljenih;
-    }
-
-    public List<ClanFitnesCentra> getOcena() {
-        return Ocena;
-    }
-
-    public TerminskaLista getTrening() {
-        return trening;
-    }
-
-    public TerminskaLista getCene() {
-        return cene;
-    }
-
-    public List<Sala> getSalas() {
-        return salas;
-    }
-
-    public Double getRating() {
-        return rating;
-    }
-
-    public Set<Korisnik> getKorisniks() {
-        return korisniks;
-    }
-
-    public Set<Odradjeni_treninzi> getOdradjeni_treninzis() {
-        return odradjeni_treninzis;
-    }
-
-    /*----------------------------------------------------------------------*/
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setNaziv(String naziv) {
-        this.naziv = naziv;
-    }
-
-    public void setOpis(String opis) {
-        this.opis = opis;
-    }
-
-    public void setTipTreninga(String tipTreninga) {
-        this.tipTreninga = tipTreninga;
-    }
-
-    public void setTrajanje(Double trajanje) {
-        Trajanje = trajanje;
     }
 
     public void setTrener(Trener trener) {
         this.trener = trener;
     }
 
+    public List<ClanFitnesCentra> getOdradjenih() {
+        return Odradjenih;
+    }
+
     public void setOdradjenih(List<ClanFitnesCentra> odradjenih) {
         Odradjenih = odradjenih;
+    }
+
+    public List<ClanFitnesCentra> getPrijavljenih() {
+        return Prijavljenih;
     }
 
     public void setPrijavljenih(List<ClanFitnesCentra> prijavljenih) {
         Prijavljenih = prijavljenih;
     }
 
+    public List<ClanFitnesCentra> getOcena() {
+        return Ocena;
+    }
+
     public void setOcena(List<ClanFitnesCentra> ocena) {
         Ocena = ocena;
     }
 
-    public void setTrening(TerminskaLista trening) {
-        this.trening = trening;
-    }
-
-    public void setCene(TerminskaLista cene) {
-        this.cene = cene;
-    }
-
-    public void setSalas(List<Sala> salas) {
-        this.salas = salas;
-    }
-
-    public void setRating(Double rating) {
-        this.rating = rating;
-    }
-
-    public void setOdradjeni_treninzis(Set<Odradjeni_treninzi> odradjeni_treninzis) {
-        this.odradjeni_treninzis = odradjeni_treninzis;
+    public Set<Korisnik> getKorisniks() {
+        return korisniks;
     }
 
     public void setKorisniks(Set<Korisnik> korisniks) {
         this.korisniks = korisniks;
     }
 
+    public Set<Odradjeni_treninzi> getOdradjeni_treninzis() {
+        return odradjeni_treninzis;
+    }
+
+    public void setOdradjeni_treninzis(Set<Odradjeni_treninzi> odradjeni_treninzis) {
+        this.odradjeni_treninzis = odradjeni_treninzis;
+    }
+
+    public List<Sala> getSalas() {
+        return salas;
+    }
+
+    public void setSalas(List<Sala> salas) {
+        this.salas = salas;
+    }
+
+    public Set<TerminskaLista> getTerminskaListas() {
+        return terminskaListas;
+    }
+
+    public void setTerminskaListas(Set<TerminskaLista> terminskaListas) {
+        this.terminskaListas = terminskaListas;
+    }
+
     /*----------------------------------------------------------------------*/
 
-    public Trening(long id, String naziv, String opis, String tipTreninga, Double trajanje, Double rating, Double cena, Trener trener, List<ClanFitnesCentra> odradjenih, List<ClanFitnesCentra> prijavljenih, List<ClanFitnesCentra> ocena, Set<Korisnik> korisniks, Set<Odradjeni_treninzi> odradjeni_treninzis, List<Sala> salas, TerminskaLista trening, TerminskaLista cene) {
+    public Trening(Long id, String naziv, String opis, String tipTreninga, Double trajanje, Double rating, Double cena, Trener trener, List<ClanFitnesCentra> odradjenih, List<ClanFitnesCentra> prijavljenih, List<ClanFitnesCentra> ocena, Set<Korisnik> korisniks, Set<Odradjeni_treninzi> odradjeni_treninzis, List<Sala> salas, Set<TerminskaLista> terminskaListas) {
         this.id = id;
         this.naziv = naziv;
         this.opis = opis;
@@ -215,7 +205,9 @@ public class Trening implements Serializable {
         this.korisniks = korisniks;
         this.odradjeni_treninzis = odradjeni_treninzis;
         this.salas = salas;
-        this.trening = trening;
-        this.cene = cene;
+        this.terminskaListas = terminskaListas;
+    }
+
+    public Trening() {
     }
 }

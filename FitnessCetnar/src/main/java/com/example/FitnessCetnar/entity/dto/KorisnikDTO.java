@@ -38,17 +38,20 @@ public class KorisnikDTO {
     private Boolean aktivan;
     private String password;
 
-
-
-    public KorisnikDTO(long id, String ime, String prezime, Position position, String password, Boolean aktivan, Date datum, String email, Integer telefon) {
-
-    }
-
-    public KorisnikDTO(Long id, String ime, String prezime, Position position) {
-
-    }
-
     public KorisnikDTO(){}
+
+    public KorisnikDTO(Long id, String ime, String prezime, Position position, String username, String email, Integer telefon, Date datum, Boolean aktivan, String password) {
+        this.id = id;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.position = position;
+        this.username = username;
+        this.email = email;
+        this.telefon = telefon;
+        this.datum = datum;
+        this.aktivan = aktivan;
+        this.password = password;
+    }
 
 
     public Long getId() {
@@ -130,4 +133,6 @@ public class KorisnikDTO {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 }

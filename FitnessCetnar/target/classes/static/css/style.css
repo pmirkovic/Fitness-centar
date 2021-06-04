@@ -248,3 +248,31 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .about .text1 p,h1{
     text-align: center;
 }
+
+#allEmployees{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#responseElement{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+
+
+}
+#responseElement th{
+    padding: 20px;
+    border-bottom: #54e346 solid 1px;
+    font-size: 30px;
+}
+#responseElement td{
+    padding: 20px;
+    font-size: 20px;
+}

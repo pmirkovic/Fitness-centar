@@ -62,12 +62,7 @@ public class Korisnik implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "trening_id", referencedColumnName = "id"))
     Set<Trening> prijava_treninga=new HashSet<>();
 
-    @OneToMany(mappedBy = "korisnik",fetch = FetchType.EAGER,orphanRemoval = true)
-    Set<Trener> treners=new HashSet<>();
-    @OneToMany(mappedBy = "korisnik",fetch = FetchType.EAGER,orphanRemoval = true)
-    Set<ClanFitnesCentra> clanFitnesCentras=new HashSet<>();
-    @OneToMany(mappedBy="korisnik",fetch=FetchType.EAGER,orphanRemoval=true)
-    Set<Odradjeni_treninzi> odradjeni_treninzis=new HashSet<>();
+
 
     public Korisnik(String naziv, String adresa, String email, Integer brTelefona) {
 
@@ -120,17 +115,7 @@ public class Korisnik implements Serializable {
         return fitnessCentar;
     }
 
-    public Set<Trener> getTreners() {
-        return treners;
-    }
 
-    public Set<ClanFitnesCentra> getClanFitnesCentras() {
-        return clanFitnesCentras;
-    }
-
-    public Set<Odradjeni_treninzi> getOdradjeni_treninzis() {
-        return odradjeni_treninzis;
-    }
 
     public Set<Trening> getPrijava_treninga() {
         return prijava_treninga;
@@ -182,17 +167,6 @@ public class Korisnik implements Serializable {
         this.fitnessCentar = fitnessCentar;
     }
 
-    public void setTreners(Set<Trener> treners) {
-        this.treners = treners;
-    }
-
-    public void setClanFitnesCentras(Set<ClanFitnesCentra> clanFitnesCentras) {
-        this.clanFitnesCentras = clanFitnesCentras;
-    }
-
-    public void setOdradjeni_treninzis(Set<Odradjeni_treninzi> odradjeni_treninzis) {
-        this.odradjeni_treninzis = odradjeni_treninzis;
-    }
 
     public void setPrijava_treninga(Set<Trening> prijava_treninga) {
         this.prijava_treninga = prijava_treninga;
@@ -216,9 +190,7 @@ public class Korisnik implements Serializable {
         this.aktivan = aktivan;
         this.fitnessCentar = fitnessCentar;
         this.prijava_treninga = prijava_treninga;
-        this.treners = treners;
-        this.clanFitnesCentras = clanFitnesCentras;
-        this.odradjeni_treninzis = odradjeni_treninzis;
+
     }
 
     @Override
@@ -235,10 +207,6 @@ public class Korisnik implements Serializable {
                 ", position=" + position +
                 ", aktivan=" + aktivan +
                 ", fitnessCentar=" + fitnessCentar +
-                ", prijava_treninga=" + prijava_treninga +
-                ", treners=" + treners +
-                ", clanFitnesCentras=" + clanFitnesCentras +
-                ", odradjeni_treninzis=" + odradjeni_treninzis +
                 '}';
     }
 }

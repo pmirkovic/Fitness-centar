@@ -11,17 +11,28 @@ public class TreningDTO {
     private String opis;
     private Double trajanje;
     private Double cena;
+    private String tipTreninga;
 
 
-    public TreningDTO(Long id, String naziv, String opis, String tipTreninga, Double trajanje) {
-    }
-
-    public TreningDTO(Long id, String naziv, String opis, Double cena, Double trajanje) {
-
+    public TreningDTO(Long id, String naziv, String opis, Double trajanje, Double cena, String tipTreninga) {
+        this.id = id;
+        this.naziv = naziv;
+        this.opis = opis;
+        this.trajanje = trajanje;
+        this.cena = cena;
+        this.tipTreninga = tipTreninga;
     }
 
     public TreningDTO() {
 
+    }
+
+    public String getTipTreninga() {
+        return tipTreninga;
+    }
+
+    public void setTipTreninga(String tipTreninga) {
+        this.tipTreninga = tipTreninga;
     }
 
     public Double getCena() {
@@ -64,27 +75,7 @@ public class TreningDTO {
         this.trajanje = trajanje;
     }
 
-    private List<Trening> treningList;
-    private List<String> tipTreninga;
 
-    public List<Trening> getTreningList() {
-        return treningList;
-    }
 
-    public void setTreningList(List<Trening> treningList) {
-        this.treningList = treningList;
-    }
 
-    public List<String> getTipTreninga() {
-        return tipTreninga;
-    }
-
-    public void setTipTreninga(List<String> tipTreninga) {
-        this.tipTreninga = tipTreninga;
-    }
-
-    public TreningDTO(List<Trening> treningList, List<String> tipTreninga) {
-        this.treningList = treningList;
-        this.tipTreninga = tipTreninga;
-    }
 }

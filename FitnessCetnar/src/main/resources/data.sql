@@ -10,7 +10,9 @@ INSERT INTO CLAN_FITNES_CENTRA(korisnik_id) VALUES (2);
 
 INSERT INTO TERMINSKA_LISTA(broj_clanova,cena,dan,fitness_centar_id) VALUES ('30','50','utorak',1);
 
-INSERT INTO TRENING(trajanje,naziv,cena,opis,tip_treninga,cene_id,trener_id,trening_id) VALUES ('2.5','ultrax','50','grudiramena','personalni',1,1,1);
+INSERT INTO TRENING(trajanje,naziv,cena,opis,tip_treninga,trener_id) VALUES ('2.5','aultrax','520','f32','gersonalni',1);
+INSERT INTO TRENING(trajanje,naziv,cena,opis,tip_treninga,trener_id) VALUES ('3.5','bultrax','530','truewrwediramena','tersonalni',1);
+INSERT INTO TRENING(trajanje,naziv,cena,opis,tip_treninga,trener_id) VALUES ('4.5','cultrax','540','yrudssdiramena','hersonalni',1);
 
 INSERT INTO LISTA_ODRADJENIH_TRENINGA (clan_id,termin_id) VALUES (1,1);
 

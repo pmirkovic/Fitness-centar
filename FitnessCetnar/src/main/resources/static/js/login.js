@@ -62,47 +62,7 @@ function login() {
         }
     });
 }
-function registracija(){
-    let email = document.getElementById('email').value;
-    let ime = document.getElementById('ime').value;
-    let prezime = document.getElementById('prezime').value;
-    let telefon = document.getElementById('telefon').value;
-    let password = document.getElementById('password').value;
-    let username = document.getElementById('username').value;
-    let datum = document.getElementById('datum').value;
 
-    var formData = JSON.stringify({
-        "email":email,
-        "ime":ime,
-        "telefon":telefon,
-        "prezime":prezime,
-        "password":password,
-        "username":username,
-        "datum":datum,
-        "position":0,
-        "aktivan":true,
-
-    });
-    console.log(formData);
-    $.ajax({
-        url: '/registracija-korisnik',
-        dataType: 'json',
-        type: 'post',
-        contentType: 'application/json',
-        data:formData,
-        success:function (){
-            console.log("success");
-
-            window.location.replace("/pocetna");
-        },
-        error: function( jqXhr, textStatus, errorThrown ){
-            if (jqXhr.status == 409) {
-                alert("Something went wrong!");
-                return;
-            }
-        }
-    });
-}
 
 function logOut(){
     sessionStorage.clear();

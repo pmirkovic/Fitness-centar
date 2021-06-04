@@ -6,6 +6,7 @@ import com.example.FitnessCetnar.entity.Position;
 import java.util.Date;
 
 public class TrenerDTO {
+    private Long id;
     private Long fitness_centar_id;
     private String username;
     private String ime;
@@ -18,6 +19,14 @@ public class TrenerDTO {
     private Boolean aktivan;
 
     public TrenerDTO(){}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
