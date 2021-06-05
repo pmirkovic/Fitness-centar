@@ -28,7 +28,7 @@ public class Korisnik implements Serializable {
     @Column
     private String prezime;
 
-    @Column
+    @Column(unique = true)
     private String email;
 
     @Column
