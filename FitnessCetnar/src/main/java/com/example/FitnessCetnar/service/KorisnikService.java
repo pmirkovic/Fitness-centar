@@ -1,19 +1,10 @@
 package com.example.FitnessCetnar.service;
 
 import com.example.FitnessCetnar.entity.*;
-import com.example.FitnessCetnar.entity.dto.FitnescentarDTO;
-import com.example.FitnessCetnar.entity.dto.KorisnikDTO;
-import com.example.FitnessCetnar.entity.dto.SalaDTO;
-import com.example.FitnessCetnar.entity.dto.TrenerDTO;
-import com.example.FitnessCetnar.repository.KorisnikRepository;
-import com.example.FitnessCetnar.repository.TreningRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import com.example.FitnessCetnar.entity.dto.*;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 
@@ -31,9 +22,10 @@ public interface KorisnikService{
 
     void delete(Long id);
 
-    boolean login(KorisnikDTO korisnikDTO,Korisnik korisnik);
+    boolean login(KorisnikDTO korisnikDTO, Korisnik korisnik);
 
     Korisnik checkEmail(KorisnikDTO korisnikDTO)  throws Exception;
-    public Korisnik save(Korisnik user) throws Exception;
+    public Korisnik save(Korisnik korisnik) throws Exception;
+
 
 }

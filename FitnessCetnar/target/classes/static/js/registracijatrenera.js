@@ -17,8 +17,8 @@ $(document).on("submit","#addKorisnikForm",function (event){
         password,
         username,
         datum,
-        position: 0,
-        aktivan: true
+        position: 2,
+        aktivan: false
 
     }
     $.ajax({
@@ -30,7 +30,7 @@ $(document).on("submit","#addKorisnikForm",function (event){
         success:function (response){
             console.log(response);
 
-            alert("Uspesno ste se registorvali " + response.id);
+            alert("Poslali ste prijavu za registraciju " + response.id);
             window.location.href = "pocetna.html";
         },
         error:function (){

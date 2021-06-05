@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,7 @@ public class KorisnikController {
         korisnikDTO.setPrezime(korisnik.getPrezime());
         korisnikDTO.setPosition(korisnik.getPosition());
         korisnikDTO.setEmail(korisnik.getEmail());
+        korisnikDTO.setAktivan(korisnik.getAktivan());
 
 
         return new ResponseEntity<>(korisnikDTO,HttpStatus.OK);
@@ -64,14 +66,14 @@ public class KorisnikController {
     }
     /*Kreiranje novog zaposlenog*/
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> register_korisnik(@RequestBody Korisnik user) {
-        Korisnik user1;
+    public ResponseEntity<?> register_korisnik(@RequestBody Korisnik korisnik) {
+        Korisnik korisnik1;
         try {
-            user1=korisnikService.save(user);
+            korisnik1=korisnikService.save(korisnik);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
-        return new ResponseEntity<Korisnik>(user1, HttpStatus.OK);
+        return new ResponseEntity<Korisnik>(korisnik1, HttpStatus.OK);
     }
 
     @PostMapping(value = "/login",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -95,8 +97,8 @@ public class KorisnikController {
     @PutMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<KorisnikDTO> updateKorisnik(@PathVariable Long id,@RequestBody KorisnikDTO korisnikDTO) throws Exception{
         Korisnik korisnik = new Korisnik(korisnikDTO.getIme(),korisnikDTO.getPrezime(),korisnikDTO.getPosition(),
-                korisnikDTO.getDatum(),korisnikDTO.getAktivan(),korisnikDTO.getUsername(),korisnikDTO.getTelefon(),
-                korisnikDTO.getEmail(),korisnikDTO.getPassword());
+                korisnikDTO.getUsername(),korisnikDTO.getEmail(),korisnikDTO.getTelefon(),korisnikDTO.getDatum(),korisnikDTO.getAktivan(),
+                korisnikDTO.getPassword());
         korisnik.setId(id);
 
         Korisnik updatedKo = korisnikService.update(korisnik);
@@ -106,6 +108,8 @@ public class KorisnikController {
 
         return new ResponseEntity<>(updatedKoDTO,HttpStatus.OK);
     }
+
+
     /*brisanje korisnika*/
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> deleteKorisnik(@PathVariable Long id){

@@ -7,7 +7,7 @@ $(document).on("submit","#addKorisnikForm",function (event){
     let telefon =   $("#telefon").val();
     let password =  $("#password").val();
     let username =  $("#username").val();
-    let datum =     $("#datu").val();
+    let datum =     $("#datum").val();
 
     let newKorisnik = {
         email,

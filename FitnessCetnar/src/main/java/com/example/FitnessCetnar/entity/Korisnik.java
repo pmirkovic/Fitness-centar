@@ -68,6 +68,9 @@ public class Korisnik implements Serializable {
 
     }
 
+    public Korisnik(String ime, String prezime, Position position, String username, String email, Integer telefon, Date datum, Boolean aktivan, String password) {
+    }
+
 
     /*----------------------------------------------------------------------*/
 

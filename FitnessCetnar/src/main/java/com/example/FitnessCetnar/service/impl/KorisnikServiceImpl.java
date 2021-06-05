@@ -3,7 +3,6 @@ import com.example.FitnessCetnar.entity.Korisnik;
 import com.example.FitnessCetnar.entity.dto.KorisnikDTO;
 import com.example.FitnessCetnar.repository.KorisnikRepository;
 import com.example.FitnessCetnar.service.KorisnikService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -59,15 +58,17 @@ public class KorisnikServiceImpl implements KorisnikService {
     }
     @Override
     public Korisnik checkEmail(KorisnikDTO korisnikDTO) {
-        Korisnik user = this.korisnikRepository.findByEmail(korisnikDTO.getEmail());
-        if (user == null)
+        Korisnik korisnik = this.korisnikRepository.findByEmail(korisnikDTO.getEmail());
+        if (korisnik == null)
             return null;
-        return user;
+        return korisnik;
     }
 
-    public Korisnik save(Korisnik user) {
-        return this.korisnikRepository.save(user);
+    @Override
+    public Korisnik save(Korisnik korisnik) {
+        return this.korisnikRepository.save(korisnik);
     }
+
 
     @Override
     public void delete(Long id){this.korisnikRepository.deleteById(id);}

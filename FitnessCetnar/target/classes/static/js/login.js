@@ -36,12 +36,15 @@ function login() {
     });
     console.log(formData);
     $.ajax({
-        url: 'http://localhost:8080/api/korisnik/login',
+        url: 'http://localhost:8080/api/korisnik',
         dataType: 'json',
         type: 'post',
         contentType: 'application/json',
         data: formData,
         success: function(data){
+
+            sessionStorage.setItem("id", data["id"]);
+            sessionStorage.setItem("position",data["position"]);
 
             alert("Uspesni ste se prijavili "+ data.id);
             location.window.href = "pocetna.html";

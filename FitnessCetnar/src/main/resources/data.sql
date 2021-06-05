@@ -1,8 +1,9 @@
 INSERT INTO FITNESS_CENTAR (adresa,br_telefona,email,naziv) VALUES ('herojaPinkija','123123123','best@gmail.com','BestFit');
 
-INSERT INTO KORISNIK(aktivan,datum,email,ime,password,position,prezime,telefon,username,fitness_centar_id) VALUES (true,'2000-05-07','dsmirkovic@gmail.com','Predrag','Pedja-2000',0,'Mirkovic','0666224414','pedja123',1);
-INSERT INTO KORISNIK(aktivan,datum,email,ime,password,position,prezime,telefon,username,fitness_centar_id) VALUES (true,'2000-05-07','dsmirko2ic@gmail.com','Dejan','Pedja-2000',1,'Mirkovic','0666324414','pedja1234',1);
-INSERT INTO KORISNIK(aktivan,datum,email,ime,password,position,prezime,telefon,username,fitness_centar_id) VALUES (true,'2000-05-07','dsmirko23ic@gmail.com','Dejan','Pedja-2000',2,'Mirkovic','0663324414','pedja1234',1);
+INSERT INTO KORISNIK(aktivan,datum,email,ime,password,position,prezime,telefon,username,fitness_centar_id) VALUES (true,'2000-05-07','dsmirkovic@gmail.com','Predrag','Pedja-2000',0,'Mirkovic','0624414','pedja123',1);
+INSERT INTO KORISNIK(aktivan,datum,email,ime,password,position,prezime,telefon,username,fitness_centar_id) VALUES (true,'2000-05-07','dsmirko2ic@gmail.com','Dejan','Pedja-2000',1,'Mirkovic','0666414','pedja1234',1);
+INSERT INTO KORISNIK(aktivan,datum,email,ime,password,position,prezime,telefon,username,fitness_centar_id) VALUES (false ,'2000-05-07','dsmi3o23ic@gmail.com','Dejan','Pedja-2000',2,'Mirkovic','0364414','pedja1234',1);
+
 
 INSERT INTO TRENER(fitness_centar_id,korisnik_id) VALUES (1,1);
 
