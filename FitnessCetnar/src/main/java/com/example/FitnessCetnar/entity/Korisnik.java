@@ -195,7 +195,7 @@ public class Korisnik implements Serializable {
         this.prijava_treninga = prijava_treninga;
 
     }
-
+/*
     @Override
     public String toString() {
         return "Korisnik{" +
@@ -212,5 +212,6 @@ public class Korisnik implements Serializable {
                 ", fitnessCentar=" + fitnessCentar +
                 '}';
     }
+ */
 }
 

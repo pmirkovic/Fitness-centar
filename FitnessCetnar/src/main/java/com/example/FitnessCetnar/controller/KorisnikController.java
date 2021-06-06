@@ -77,12 +77,14 @@ public class KorisnikController {
     }
 
     @PostMapping(value = "/login",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> login(@RequestBody KorisnikDTO korisnikDTO){
+    public ResponseEntity<KorisnikDTO> login(@RequestBody KorisnikDTO korisnikDTO){
+        System.out.println("proba");
+
         Korisnik korisnik;
         try {
             korisnik=this.korisnikService.checkEmail(korisnikDTO);
         }catch (Exception e){
-            return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
         if(korisnik==null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -90,7 +92,11 @@ public class KorisnikController {
         if(!(this.korisnikService.login(korisnikDTO, korisnik))) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<Korisnik>(korisnik, HttpStatus.OK);
+        KorisnikDTO retDTO = new KorisnikDTO(korisnik.getId(), korisnik.getIme(), korisnik.getPrezime(), korisnik.getPosition(),
+                korisnik.getUsername(), korisnik.getEmail(), korisnik.getTelefon(), korisnik.getDatum(), korisnik.getAktivan(),
+                korisnik.getPassword());
+
+        return new ResponseEntity<>(retDTO, HttpStatus.OK);
     }
 
     /*update postojeceg korisnika*/

@@ -36,7 +36,7 @@ function login() {
     });
     console.log(formData);
     $.ajax({
-        url: 'http://localhost:8080/api/korisnik',
+        url: 'http://localhost:8080/api/korisnik/login',
         dataType: 'json',
         type: 'post',
         contentType: 'application/json',
@@ -47,7 +47,7 @@ function login() {
             sessionStorage.setItem("position",data["position"]);
 
             alert("Uspesni ste se prijavili "+ data.id);
-            location.window.href = "pocetna.html";
+            window.location.href = "pocetna.html";
 
         },
         error: function( jqXhr, textStatus, errorThrown ){
