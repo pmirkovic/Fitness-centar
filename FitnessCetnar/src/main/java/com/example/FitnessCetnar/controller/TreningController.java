@@ -1,11 +1,9 @@
 package com.example.FitnessCetnar.controller;
 
-import com.example.FitnessCetnar.entity.FitnessCentar;
-import com.example.FitnessCetnar.entity.Korisnik;
-import com.example.FitnessCetnar.entity.Trener;
-import com.example.FitnessCetnar.entity.Trening;
+import com.example.FitnessCetnar.entity.*;
 import com.example.FitnessCetnar.entity.dto.FitnescentarDTO;
 import com.example.FitnessCetnar.entity.dto.KorisnikDTO;
+import com.example.FitnessCetnar.entity.dto.TerminskaListaDTO;
 import com.example.FitnessCetnar.entity.dto.TreningDTO;
 import com.example.FitnessCetnar.service.FitnescentarService;
 import com.example.FitnessCetnar.service.TreningService;
@@ -30,6 +28,7 @@ public class TreningController {
     public TreningController(TreningService treningService) {
         this.treningService = treningService;
     }
+
 
     /*Dobavljanje trazenog korisnika*/
     @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
@@ -63,6 +62,7 @@ public class TreningController {
 
         return new ResponseEntity<>(treningDTOS,HttpStatus.OK);
     }
+
     /*Kreiranje novog zaposlenog*/
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<TreningDTO> createTrening(@RequestBody TreningDTO treningDTO) throws Exception{

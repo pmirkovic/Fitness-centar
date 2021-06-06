@@ -43,11 +43,11 @@ function login() {
         data: formData,
         success: function(data){
 
-            sessionStorage.setItem("id", data["id"]);
-            sessionStorage.setItem("position",data["position"]);
+                sessionStorage.setItem("id", data["id"]);
+                sessionStorage.setItem("position", data["position"]);
 
-            alert("Uspesni ste se prijavili "+ data.id);
-            window.location.href = "pocetna.html";
+                alert("Uspesni ste se prijavili " + data.id);
+                window.location.href = "pocetna.html";
 
         },
         error: function( jqXhr, textStatus, errorThrown ){

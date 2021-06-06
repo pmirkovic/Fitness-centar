@@ -12,14 +12,11 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
             for (let responseElement of response) {                        // prolazimo kroz listu svih zaposlenih
                 let row = "<tr>";                                   // kreiramo red za tabelu
                 row += "<td>" + responseElement.naziv + "</td>";       // ubacujemo podatke jednog zaposlenog u polja
-                row += "<td>" + responseElement.opis + "</td>";
+                row += "<td>" + responseElement.cena + "</td>";
                 row += "<td>" + responseElement.tipTreninga + "</td>";
                 row += "<td>" + responseElement.trajanje + "</td>";
                 // kreiramo button i definisemo custom data atribut id = id zaposlenog
-                let btn = "<button class='btnSeeMore' data-id=" + responseElement.id + ">See More</button>";
-                row += "<td>" + btn + "</td>";                      // ubacujemo button u poslednju ćeliju reda
-                btn = "<button class='btnDelete' data-id=" + responseElement.id + ">Delete</button>";
-                row += "<td>" + btn + "</td>";
+
                 row += "</tr>";                                     // završavamo kreiranje reda
 
                 $('#responseElement').append(row);                        // ubacujemo kreirani red u tabelu čiji je id = employees
@@ -51,7 +48,7 @@ $(document).on('click', '.btnSeeMore', function () {            // kada je klikn
             console.log("SUCCESS:\n", response);                // ispisujemo u konzoli povratnu vrednost radi provere
 
             $('#naziv').text(response.naziv);
-            $('#opis').text(response.opis);
+            $('#opis').text(response.cena);
             $('#tipTreninga').text(response.tipTreninga);
             $('#trajanje').text(response.trajanje);
 

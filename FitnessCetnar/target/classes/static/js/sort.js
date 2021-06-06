@@ -50,3 +50,39 @@ function sortTable(n) {
         }
     }
 }
+
+function filterData(treningDTO)
+{
+    var naziv=document.getElementById("moviename").value;
+    var tip=document.getElementById("time").value;
+    var trajanje=document.getElementById("rating").value;
+    var filter=[];
+    var trening=treningDTO.trening;
+    for(let i=0;i<trening.length;i++)
+    {
+        document.getElementById(trening[i].id).style.display="";
+    }
+    if(naziv!="")
+        filter["naziv"]=naziv;
+
+
+    if(tip!="")
+        filter["tip"]=tip;
+
+
+    if(trajanje!="")
+        filter["trajanje"]=trajanje;
+
+
+    for (const [key, value] of Object.entries(filter)) {
+        filterOne(trening,key,value);
+    }
+}
+
+function filterOne(trening,key,value)
+{
+    for(let i=0;i<trening.length;i++)
+    {
+        finalFilter(trening[i],key,value);
+    }
+}

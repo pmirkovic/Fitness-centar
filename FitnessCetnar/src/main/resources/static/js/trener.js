@@ -22,7 +22,8 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
                         // kreiramo button i definisemo custom data atribut id = id zaposlenog
                         let btn = "<button class='btnSeeMore' data-id=" + responseElement.id + ">Odobri</button>";
                         row += "<td>" + btn + "</td>";                      // ubacujemo button u poslednju ćeliju reda
-
+                        btn = "<button class='btnDelete' data-id=" + responseElement.id + ">Delete</button>";
+                        row += "<td>" + btn + "</td>";
                         row += "</tr>";                                     // završavamo kreiranje reda
 
                         $('#responseElement').append(row);
@@ -42,26 +43,26 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
 // Prikaz detalja o odabranom zaposlenom
 $(document).on('click', '.btnSeeMore', function () {            // kada je kliknut button čija je klasa class = btnSeeMore
                                            // sakrivamo taj element
-
+    let pozicija    = true;
     // this je referenca na HTML element koji predstavlja kliknuto dugme See More
     // dataset je kolekcija svih custom data atributa datog HTML elementa iz koje uzimamo id
     // više o data atributima na: https://css-tricks.com/a-complete-guide-to-data-attributes/
     let employeeId = this.dataset.id;
 
     var formData = JSON.stringify({
-        "aktivan":true
+        aktivan:pozicija
     });
 
     // ajax poziv za dobavljanje traženog zaposlenog sa backend-a i prikaz na stranici
     $.ajax({
-        url: "http://localhost:8080/api/korisnik/" + employeeId,
         type: "put",
+        url: "http://localhost:8080/api/korisnik/" + employeeId,
         dataType: "json",
         contentType:'application/json',
         data:formData,
         complete: function (xhr, status) {
             if (status === 'error') {
-                alert("Something's wrong!");
+                alert("Something's wrong!" + employeeId);
             }
             else {
                 window.location.href='pocetna.html';
@@ -70,3 +71,20 @@ $(document).on('click', '.btnSeeMore', function () {            // kada je klikn
     });
 });
 
+
+$(document).on('click', '.btnDelete', function () {
+    let employeeId = this.dataset.id;
+
+    $.ajax({
+        type: "DELETE",
+        url: "http://localhost:8080/api/korisnik/" + employeeId,
+        dataType: "json",
+        success: function () {
+            console.log("SUCCESS");
+            $('[data-id="' + employeeId + '"]').parent().parent().remove();  // ukloni red tabele u kom se nalazi element sa data-id atributom = employeeId
+        },
+        error: function () {
+            alert("Greška prilikom brisanja zaposlenog!");
+        }
+    });
+});

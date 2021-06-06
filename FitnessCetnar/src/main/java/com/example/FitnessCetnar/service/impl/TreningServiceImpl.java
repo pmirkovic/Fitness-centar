@@ -1,6 +1,7 @@
 package com.example.FitnessCetnar.service.impl;
 
 import com.example.FitnessCetnar.entity.Korisnik;
+import com.example.FitnessCetnar.entity.TerminskaLista;
 import com.example.FitnessCetnar.entity.Trening;
 import com.example.FitnessCetnar.repository.KorisnikRepository;
 import com.example.FitnessCetnar.repository.TreningRepository;
@@ -28,6 +29,7 @@ public class TreningServiceImpl implements TreningService {
         List<Trening> trenings = this.treningRepository.findAll();
         return trenings;
     }
+
 
     @Override
     public Trening create(Trening trening)throws Exception{

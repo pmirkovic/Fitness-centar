@@ -3,6 +3,7 @@ import com.example.FitnessCetnar.entity.Korisnik;
 import com.example.FitnessCetnar.entity.dto.KorisnikDTO;
 import com.example.FitnessCetnar.repository.KorisnikRepository;
 import com.example.FitnessCetnar.service.KorisnikService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +11,9 @@ import java.util.List;
 @Service
 public class KorisnikServiceImpl implements KorisnikService {
 
+/*
+    @Autowired
+    private KorisnikRepository korisnikRepository;*/
 
     private  final KorisnikRepository korisnikRepository;
 
@@ -63,6 +67,21 @@ public class KorisnikServiceImpl implements KorisnikService {
             return null;
         return korisnik;
     }
+
+    public Korisnik getUser(Long id) {
+        return korisnikRepository.findById(id).get();
+    }
+
+    public void saveUser(Korisnik user) {
+        korisnikRepository.save(user);
+    }
+
+    public void editKorisnik(Korisnik korisnik) {
+        this.korisnikRepository.updateKorisnik(korisnik.getId(),korisnik.getIme(), korisnik.getPrezime(), korisnik.getPosition(),
+                korisnik.getUsername(), korisnik.getEmail(), korisnik.getTelefon(), korisnik.getDatum(), korisnik.getAktivan(),
+                korisnik.getPassword());
+    }
+
 
     @Override
     public Korisnik save(Korisnik korisnik) {

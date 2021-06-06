@@ -9,13 +9,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
 public interface KorisnikRepository extends JpaRepository<Korisnik,Long> {
 
     List<Korisnik> findAllByPositionOrderByIme(String position);
-
 
     List<Korisnik> findByImeOrPrezime(String ime, String prezime);
 
@@ -27,5 +27,10 @@ public interface KorisnikRepository extends JpaRepository<Korisnik,Long> {
 
     Korisnik findByEmail(String email);
 
+    @Modifying
+    @Query("update Korisnik set ime = :ime, prezime=:prezime,position=:position,username=:username,email=:email,telefon=:telefon,datum=:datum,aktivan=:aktivan,password=:password WHERE id = :Id")
+    void updateKorisnik(@Param("Id") Long id,@Param("ime") String ime,@Param("prezime") String prezime,@Param("position") Position position,
+                        @Param("username") String username,@Param("email") String email,
+                        @Param("telefon") Integer telefon,@Param("datum") Date datum,@Param("aktivan") Boolean aktivan,@Param("password") String password);
 }
 

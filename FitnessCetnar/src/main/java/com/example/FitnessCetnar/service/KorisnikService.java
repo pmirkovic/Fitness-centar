@@ -24,6 +24,11 @@ public interface KorisnikService{
 
     boolean login(KorisnikDTO korisnikDTO, Korisnik korisnik);
 
+    void saveUser(Korisnik user);
+
+    Korisnik getUser(Long id);
+    void editKorisnik(Korisnik korisnik);
+
     Korisnik checkEmail(KorisnikDTO korisnikDTO)  throws Exception;
     public Korisnik save(Korisnik korisnik) throws Exception;
 

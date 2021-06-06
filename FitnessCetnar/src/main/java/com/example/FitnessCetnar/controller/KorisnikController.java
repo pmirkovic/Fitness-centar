@@ -20,6 +20,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping(value = "/api/korisnik")
@@ -100,7 +101,7 @@ public class KorisnikController {
     }
 
     /*update postojeceg korisnika*/
-    @PutMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+   /* @PutMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<KorisnikDTO> updateKorisnik(@PathVariable Long id,@RequestBody KorisnikDTO korisnikDTO) throws Exception{
         Korisnik korisnik = new Korisnik(korisnikDTO.getIme(),korisnikDTO.getPrezime(),korisnikDTO.getPosition(),
                 korisnikDTO.getUsername(),korisnikDTO.getEmail(),korisnikDTO.getTelefon(),korisnikDTO.getDatum(),korisnikDTO.getAktivan(),
@@ -113,7 +114,19 @@ public class KorisnikController {
                 updatedKo.getEmail(), updatedKo.getTelefon(),updatedKo.getDatum(),updatedKo.getAktivan(), updatedKo.getPassword());
 
         return new ResponseEntity<>(updatedKoDTO,HttpStatus.OK);
+    }*/
+   @PutMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> update(@RequestBody Korisnik user, @PathVariable Long id) {
+        try {
+            Korisnik existUser = korisnikService.getUser(id);
+            user.setId(id);
+            korisnikService.saveUser(user);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
+
 
 
     /*brisanje korisnika*/

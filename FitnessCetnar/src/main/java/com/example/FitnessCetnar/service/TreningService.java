@@ -1,6 +1,7 @@
 package com.example.FitnessCetnar.service;
 
 import com.example.FitnessCetnar.entity.Korisnik;
+import com.example.FitnessCetnar.entity.TerminskaLista;
 import com.example.FitnessCetnar.entity.Trening;
 import com.example.FitnessCetnar.entity.dto.TreningDTO;
 import com.example.FitnessCetnar.repository.TreningRepository;
@@ -16,6 +17,7 @@ public interface TreningService {
     Trening findOne(Long id);
 
     List<Trening> findAll();
+
 
     Trening create(Trening trening) throws Exception;
 
