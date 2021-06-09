@@ -53,6 +53,15 @@
     <div class="centered"><h1 style="color: #54e346;font-weight: bold;font-size: 10em;">PONUDA TRENINGA</h1></div>
 </div>
 
+<h3 style="margin: 10px;color: white;text-align: center">PRETRAGA</h3>
+<div class="forma" style="text-align: center; display: block">
+<form class="form-inline" style="display: inline-block">
+    <input class="form-control mr-sm-2" id="ime" type="search" onkeyup="myFunctioni()" placeholder="ime" aria-label="Search">
+    <input class="form-control mr-sm-2" id="cena" type="search" onkeyup="myFunctionc()" placeholder="cena" aria-label="Search">
+    <input class="form-control mr-sm-2" id="tip" type="search" onkeyup="myFunctiont()" placeholder="tip" aria-label="Search">
+    <input class="form-control mr-sm-2" id="trajanje2" type="search" onkeyup="myFunctionctr()" placeholder="trajanje2" aria-label="Search">
+</form>
+</div>
 <div id="allEmployees" >
 
     <div class="container">
@@ -60,9 +69,10 @@
             <tr>
 
                 <th   onclick="sortTable(1)">Naziv <i id="th1" class="fa fa-fw fa-sort"></i></th>
-                <th   onclick="sortTable(2)">Cena<i id="th2" class="fa fa-fw fa-sort"></i></th>
+                <th   onclick="sortTable(2)">Trajanje(minutes)<i id="th2" class="fa fa-fw fa-sort"></i></th>
                 <th   onclick="sortTable(3)">Tip Treninga<i id="th3" class="fa fa-fw fa-sort"></i></th>
-                <th   onclick="sortTable(4)">Trajanje(minutes)<i id="th4" class="fa fa-fw fa-sort"></i></th>
+                <th   onclick="sortTable(4)">Cena<i id="th4" class="fa fa-fw fa-sort"></i></th>
+                <th></th>
 
             </tr>
         </table>

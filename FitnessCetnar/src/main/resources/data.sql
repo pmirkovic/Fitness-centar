@@ -11,9 +11,10 @@ INSERT INTO CLAN_FITNES_CENTRA(korisnik_id) VALUES (2);
 
 INSERT INTO TERMINSKA_LISTA(broj_clanova,cena,dan,fitness_centar_id) VALUES ('30','50','utorak',1);
 
-INSERT INTO TRENING(trajanje,naziv,cena,opis,tip_treninga,trener_id) VALUES ('2.5','aultrax','520','f32','gersonalni',1);
-INSERT INTO TRENING(trajanje,naziv,cena,opis,tip_treninga,trener_id) VALUES ('3.5','bultrax','530','truewrwediramena','tersonalni',1);
-INSERT INTO TRENING(trajanje,naziv,cena,opis,tip_treninga,trener_id) VALUES ('4.5','cultrax','540','yrudssdiramena','hersonalni',1);
+INSERT INTO TRENING(trajanje,naziv,cena,opis,tip_treninga,trener_id) VALUES ('60','Aerobic','800','sve','grupni',1);
+INSERT INTO TRENING(trajanje,naziv,cena,opis,tip_treninga,trener_id) VALUES ('120','Push','2000','grudi','personalni',1);
+INSERT INTO TRENING(trajanje,naziv,cena,opis,tip_treninga,trener_id) VALUES ('90','Leg','1500','noge','personalni',1);
+
 
 INSERT INTO LISTA_ODRADJENIH_TRENINGA (clan_id,termin_id) VALUES (1,1);
 

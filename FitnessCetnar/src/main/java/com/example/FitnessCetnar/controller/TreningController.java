@@ -97,6 +97,9 @@ public class TreningController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+
+
 }
 
 
