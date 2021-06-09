@@ -22,6 +22,7 @@ public class TerminskaLista implements Serializable {
 
     @Column
     private Integer brojClanova;
+
     /*----------------------------------------------------------------------*/
 
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
