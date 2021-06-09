@@ -16,7 +16,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/api/trening")
@@ -58,6 +60,7 @@ public class TreningController {
         for (Trening trening : treningList){
             TreningDTO treningDTO=new TreningDTO(trening.getId(),trening.getNaziv(),trening.getOpis(),trening.getCena(),trening.getTrajanje(),trening.getTipTreninga());
             treningDTOS.add(treningDTO);
+            
         }
 
         return new ResponseEntity<>(treningDTOS,HttpStatus.OK);

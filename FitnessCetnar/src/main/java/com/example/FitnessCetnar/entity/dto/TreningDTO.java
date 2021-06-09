@@ -1,8 +1,10 @@
 package com.example.FitnessCetnar.entity.dto;
 
+import com.example.FitnessCetnar.entity.TerminskaLista;
 import com.example.FitnessCetnar.entity.Trening;
 
 import java.util.List;
+import java.util.Set;
 
 public class TreningDTO {
     
@@ -12,9 +14,20 @@ public class TreningDTO {
     private Double trajanje;
     private Double cena;
     private String tipTreninga;
+    private Set<TerminskaListaDTO> terminskaListaDTOS;
 
 
-    public TreningDTO(Long id, String naziv, String opis, Double trajanje, Double cena, String tipTreninga) {
+    public TreningDTO(Long id, String naziv, String opis, Double trajanje, Double cena, String tipTreninga, Set<TerminskaListaDTO> terminskaListaDTOS) {
+        this.id = id;
+        this.naziv = naziv;
+        this.opis = opis;
+        this.trajanje = trajanje;
+        this.cena = cena;
+        this.tipTreninga = tipTreninga;
+        this.terminskaListaDTOS = terminskaListaDTOS;
+    }
+
+    public TreningDTO(Long id, String naziv, String opis, Double cena, Double trajanje, String tipTreninga) {
         this.id = id;
         this.naziv = naziv;
         this.opis = opis;
@@ -26,6 +39,7 @@ public class TreningDTO {
     public TreningDTO() {
 
     }
+
 
     public String getTipTreninga() {
         return tipTreninga;
@@ -75,7 +89,11 @@ public class TreningDTO {
         this.trajanje = trajanje;
     }
 
+    public Set<TerminskaListaDTO> getTerminskaListaDTOS() {
+        return terminskaListaDTOS;
+    }
 
-
-
+    public void setTerminskaListaDTOS(Set<TerminskaListaDTO> terminskaListaDTOS) {
+        this.terminskaListaDTOS = terminskaListaDTOS;
+    }
 }

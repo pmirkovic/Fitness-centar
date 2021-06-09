@@ -15,6 +15,7 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
                 row += "<td>" + responseElement.cena + "</td>";
                 row += "<td>" + responseElement.tipTreninga + "</td>";
                 row += "<td>" + responseElement.trajanje + "</td>";
+                row += "<td>" + responseElement.dan + "</td>";
                 // kreiramo button i definisemo custom data atribut id = id zaposlenog
 
                 row += "</tr>";                                     // završavamo kreiranje reda
