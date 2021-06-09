@@ -60,7 +60,7 @@ public class TreningController {
         for (Trening trening : treningList){
             TreningDTO treningDTO=new TreningDTO(trening.getId(),trening.getNaziv(),trening.getOpis(),trening.getCena(),trening.getTrajanje(),trening.getTipTreninga());
             treningDTOS.add(treningDTO);
-            
+
         }
 
         return new ResponseEntity<>(treningDTOS,HttpStatus.OK);

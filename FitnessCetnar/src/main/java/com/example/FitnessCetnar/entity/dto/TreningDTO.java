@@ -14,27 +14,19 @@ public class TreningDTO {
     private Double trajanje;
     private Double cena;
     private String tipTreninga;
-    private Set<TerminskaListaDTO> terminskaListaDTOS;
 
 
-    public TreningDTO(Long id, String naziv, String opis, Double trajanje, Double cena, String tipTreninga, Set<TerminskaListaDTO> terminskaListaDTOS) {
+
+    public TreningDTO(Long id, String naziv, String opis, Double trajanje, Double cena, String tipTreninga) {
         this.id = id;
         this.naziv = naziv;
         this.opis = opis;
         this.trajanje = trajanje;
         this.cena = cena;
         this.tipTreninga = tipTreninga;
-        this.terminskaListaDTOS = terminskaListaDTOS;
+
     }
 
-    public TreningDTO(Long id, String naziv, String opis, Double cena, Double trajanje, String tipTreninga) {
-        this.id = id;
-        this.naziv = naziv;
-        this.opis = opis;
-        this.trajanje = trajanje;
-        this.cena = cena;
-        this.tipTreninga = tipTreninga;
-    }
 
     public TreningDTO() {
 
@@ -89,11 +81,5 @@ public class TreningDTO {
         this.trajanje = trajanje;
     }
 
-    public Set<TerminskaListaDTO> getTerminskaListaDTOS() {
-        return terminskaListaDTOS;
-    }
 
-    public void setTerminskaListaDTOS(Set<TerminskaListaDTO> terminskaListaDTOS) {
-        this.terminskaListaDTOS = terminskaListaDTOS;
-    }
 }
