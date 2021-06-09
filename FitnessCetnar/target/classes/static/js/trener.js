@@ -44,27 +44,12 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
 $(document).on('click', '.btnSeeMore', function () {            // kada je kliknut button čija je klasa class = btnSeeMore
                                            // sakrivamo taj element
     let pozicija    = true;
-    let ime         = document.getElementsByClassName("ime");
-    let prezime     = document.getElementsByClassName("prezime");
-    let datum       = document.getElementsByClassName("datum");
-    let telefon     = document.getElementsByClassName("telefon");
-    let password    = document.getElementsByClassName("password");
-    let email       = document.getElementsByClassName("email");
-    let username    = document.getElementsByClassName("username");
     // this je referenca na HTML element koji predstavlja kliknuto dugme See More
     // dataset je kolekcija svih custom data atributa datog HTML elementa iz koje uzimamo id
     // više o data atributima na: https://css-tricks.com/a-complete-guide-to-data-attributes/
     let employeeId = this.dataset.id;
 
     var formData = JSON.stringify({
-        ime,
-        prezime,
-        datum,
-        telefon,
-        password,
-        email,
-        username,
-        position:2,
         aktivan:pozicija
     });
 
