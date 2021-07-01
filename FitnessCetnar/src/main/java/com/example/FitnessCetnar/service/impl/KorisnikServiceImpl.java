@@ -1,7 +1,10 @@
 package com.example.FitnessCetnar.service.impl;
 import com.example.FitnessCetnar.entity.Korisnik;
+import com.example.FitnessCetnar.entity.Sala;
+import com.example.FitnessCetnar.entity.TerminskaLista;
 import com.example.FitnessCetnar.entity.dto.KorisnikDTO;
 import com.example.FitnessCetnar.repository.KorisnikRepository;
+import com.example.FitnessCetnar.repository.TerminskaListaRepository;
 import com.example.FitnessCetnar.service.KorisnikService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +17,7 @@ public class KorisnikServiceImpl implements KorisnikService {
 /*
     @Autowired
     private KorisnikRepository korisnikRepository;*/
+
 
     private  final KorisnikRepository korisnikRepository;
 

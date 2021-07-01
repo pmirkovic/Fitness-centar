@@ -29,6 +29,8 @@ public interface KorisnikService{
     Korisnik getUser(Long id);
     void editKorisnik(Korisnik korisnik);
 
+
+
     Korisnik checkEmail(KorisnikDTO korisnikDTO)  throws Exception;
     public Korisnik save(Korisnik korisnik) throws Exception;
 

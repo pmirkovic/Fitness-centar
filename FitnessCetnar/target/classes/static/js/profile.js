@@ -1,7 +1,7 @@
 
 
 $(document).ready(function (){
-    function profil(){
+
         let korisnikid = sessionStorage.getItem("id");
 
         $.ajax({
@@ -24,5 +24,5 @@ $(document).ready(function (){
                 console.log("ERROR:\n", response);
             }
         });
-    }
+
 });

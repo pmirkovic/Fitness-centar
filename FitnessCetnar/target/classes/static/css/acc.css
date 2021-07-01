@@ -1,0 +1,13 @@
+ #info span{
+    background-color:#54e346;
+    padding:5px;
+ }
+#naslov{
+    font-weight:bold;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    font-size:32px;
+}
+h5{
+    margin:10px 0 10px 15px;
+}

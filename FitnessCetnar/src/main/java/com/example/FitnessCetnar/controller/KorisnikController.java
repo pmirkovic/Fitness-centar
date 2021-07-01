@@ -126,8 +126,20 @@ public class KorisnikController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
-
+/*
+    @PostMapping("/odabitTreninga")
+    public ResponseEntity<?> reserve_ticket(@RequestBody PrijavaDTO prijavaDTO){
+        boolean flag=false;
+        try {
+            flag=this.korisnikService.addTrening(prijavaDTO.getKorisnik_id(),prijavaDTO.getTerminskaLista_id());
+            if(flag)
+                return new ResponseEntity<>(HttpStatus.OK);
+            else
+                return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }catch(Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }*/
 
     /*brisanje korisnika*/
     @DeleteMapping(value = "/{id}")
