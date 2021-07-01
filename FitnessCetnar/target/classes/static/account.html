@@ -4,26 +4,27 @@
 <head>
     <title>Employees</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/employees.css" />
+
     <!-- 1. Ukljucivanje jQuery biblioteke -->
-    <script src="js/jquery.min.js"></script>
+
+    <script src="js/jquery.min.js" type="text/javascript"></script>
     <!-- 2. Ukljucivanje jQuery Validate biblioteke za validaciju polja forme (opciono).
             O načinu upotrebe pogledati na: https://jqueryvalidation.org/ -->
     <script src="js/jquery.validate.min.js"></script>
     <!-- 3. Ukljucivanje naseg JS fajla -->
     <script src="js/profile.js"></script>
+    <script src="js/login.js"></script>
 </head>
 
-<body>
+<body onload="profil()">
 
 
 <div id="oneEmployee">
     <h2 style="text-align:center">Employee Profile</h2>
     <div class="card">
-        <img alt="User" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fpokemonrevolution.net%2Fforum%2Ftopic%2F91152-introduction-vuurvlammetje-dutch%2F&psig=AOvVaw0tnfCvp1MTUxRV8y3CyXmE&ust=1622674972655000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLih_77F9_ACFQAAAAAdAAAAABAD" />
         <h1 id="firstName"></h1>
         <h1 id="lastName"></h1>
-        <p class="title" id="position"></p>
+        <p  id="email"></p>
         <br>
     </div>
 </div>

@@ -30,8 +30,8 @@ $(document).on("submit","#addKorisnikForm",function (event){
         success:function (response){
             console.log(response);
 
-            sessionStorage.setItem("id", data["id"]);
-            sessionStorage.setItem("position",data["position"]);
+            sessionStorage.setItem("id", response["id"]);
+            sessionStorage.setItem("position",response["position"]);
 
             alert("Uspesno ste se registorvali " + response.id);
             window.location.href = "pocetna.html";
