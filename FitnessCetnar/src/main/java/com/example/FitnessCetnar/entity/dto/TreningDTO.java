@@ -14,6 +14,7 @@ public class TreningDTO {
     private Double trajanje;
     private Double cena;
     private String tipTreninga;
+    private List<TerminskaListaDTO> terminskaListaDTOS;
 
 
 
@@ -27,11 +28,27 @@ public class TreningDTO {
 
     }
 
+    public TreningDTO(Long id, String naziv, String opis, Double trajanje, Double cena, String tipTreninga, List<TerminskaListaDTO> terminskaListaDTOS) {
+        this.id = id;
+        this.naziv = naziv;
+        this.opis = opis;
+        this.trajanje = trajanje;
+        this.cena = cena;
+        this.tipTreninga = tipTreninga;
+        this.terminskaListaDTOS = terminskaListaDTOS;
+    }
 
     public TreningDTO() {
 
     }
 
+    public List<TerminskaListaDTO> getTerminskaListaDTOS() {
+        return terminskaListaDTOS;
+    }
+
+    public void setTerminskaListaDTOS(List<TerminskaListaDTO> terminskaListaDTOS) {
+        this.terminskaListaDTOS = terminskaListaDTOS;
+    }
 
     public String getTipTreninga() {
         return tipTreninga;

@@ -1,13 +1,11 @@
 package com.example.FitnessCetnar.controller;
 
-import com.example.FitnessCetnar.entity.FitnessCentar;
-import com.example.FitnessCetnar.entity.Korisnik;
-import com.example.FitnessCetnar.entity.Sala;
-import com.example.FitnessCetnar.entity.Trener;
+import com.example.FitnessCetnar.entity.*;
 import com.example.FitnessCetnar.entity.dto.*;
 import com.example.FitnessCetnar.service.FitnescentarService;
 import com.example.FitnessCetnar.service.KorisnikService;
 import com.example.FitnessCetnar.service.SalaService;
+import com.example.FitnessCetnar.service.TreningService;
 import org.aspectj.weaver.patterns.ExactAnnotationTypePattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,10 +25,12 @@ import java.util.NoSuchElementException;
 public class KorisnikController {
 
     private final KorisnikService korisnikService;
+    private final TreningService treningService;
 
     @Autowired
-    public KorisnikController(KorisnikService korisnikService) {
+    public KorisnikController(KorisnikService korisnikService,TreningService treningService) {
         this.korisnikService = korisnikService;
+        this.treningService = treningService;
     }
 
     /*Dobavljanje trazenog korisnika*/
@@ -125,6 +125,32 @@ public class KorisnikController {
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+    @GetMapping(value = "/terms", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<TreningDTO>> getTerms(){
+
+        List<Trening> trainingList = this.treningService.findAll();
+        List<TreningDTO> trainingDTOS = new ArrayList<>();
+
+        for (Trening training : trainingList) {
+            TreningDTO trainingDTO = new TreningDTO();
+            trainingDTO.setId(training.getId());
+            trainingDTO.setNaziv(training.getNaziv());
+            trainingDTO.setOpis(training.getOpis());
+            trainingDTO.setTipTreninga(training.getTipTreninga());
+            trainingDTO.setTrajanje(training.getTrajanje());
+            List<TerminskaListaDTO> listTermsDTO = new ArrayList<>();
+            for(TerminskaLista terms : training.getTerminskaListas()){
+                TerminskaListaDTO termsDTO = new TerminskaListaDTO();
+                termsDTO.setId(terms.getId());
+                termsDTO.setCena(terms.getCena());
+                termsDTO.setDan(terms.getDan());
+                listTermsDTO.add(termsDTO);
+            }
+            trainingDTO.setTerminskaListaDTOS(listTermsDTO);
+            trainingDTOS.add(trainingDTO);
+        }
+        return new ResponseEntity<>(trainingDTOS, HttpStatus.OK);
     }
 /*
     @PostMapping("/odabitTreninga")

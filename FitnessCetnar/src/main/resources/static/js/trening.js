@@ -3,25 +3,28 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
     // ajax poziv za dobavljanje svih zaposlenih sa backend-a i prikaz u tabeli
     $.ajax({
         type: "GET",                                                // HTTP metoda
-        url: "http://localhost:8080/api/trening",                 // URL koji se gađa
+        url: "http://localhost:8080/api/korisnik/terms",                 // URL koji se gađa
         dataType: "json",
         // tip povratne vrednosti
         success: function (response) {                              // ova f-ja se izvršava posle uspešnog zahteva
-                                // ispisujemo u konzoli povratnu vrednost radi provere
+            // ispisujemo u konzoli povratnu vrednost radi provere
 
-            for (let responseElement of response) {                        // prolazimo kroz listu svih zaposlenih
-                let row = "<tr>";                                   // kreiramo red za tabelu
-                row += "<td>" + responseElement.naziv + "</td>";       // ubacujemo podatke jednog zaposlenog u polja
-                row += "<td>" + responseElement.cena + "</td>";
-                row += "<td>" + responseElement.tipTreninga + "</td>";
-                row += "<td>" + responseElement.trajanje + "</td>";
-                // kreiramo button i definisemo custom data atribut id = id zaposlenog
-                let btn = "<button class='btnSeeMore' data-id=" + responseElement.id + ">See More</button>";
-                row += "<td>" + btn + "</td>";
+            for (let responseElement of response) {
+                for (let terms of responseElement.terminskaListaDTOS){// prolazimo kroz listu svih zaposlenih
+                    let row = "<tr>";                                   // kreiramo red za tabelu
+                    row += "<td>" + responseElement.naziv + "</td>";       // ubacujemo podatke jednog zaposlenog u polja
+                    row += "<td>" + responseElement.tipTreninga + "</td>";
+                    row += "<td>" + responseElement.trajanje + "</td>";
+                    row += "<td>" + terms.cena + "</td>";
+                    row += "<td>" + terms.dan + "</td>";
+                    // kreiramo button i definisemo custom data atribut id = id zaposlenog
+                    let btn = "<button class='btnSeeMore' data-id=" + responseElement.id + ">See More</button>";
+                    row += "<td>" + btn + "</td>";
 
-                row += "</tr>";                                     // završavamo kreiranje reda
+                    row += "</tr>";                                     // završavamo kreiranje reda
 
-                $('#responseElement').append(row);                        // ubacujemo kreirani red u tabelu čiji je id = employees
+                    $('#responseElement').append(row);                        // ubacujemo kreirani red u tabelu čiji je id = employees
+                }
             }
             console.log("SUCCESS:\n", response);
         },
@@ -32,7 +35,7 @@ $(document).ready(function () {    // Čeka se trenutak kada je DOM(Document Obj
 });
 
 $(document).on('click','.btnSeeMore',function (){
-
+    var id = sessionStorage.getItem("id")
 });
 
 function myFunctioni() {
