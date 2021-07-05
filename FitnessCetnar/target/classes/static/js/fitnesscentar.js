@@ -61,18 +61,18 @@ $(document).ready(function () {
 });
 
 $(document).on('click', '.btnDelete', function () {
-    let employeeId = this.dataset.id;
+    let fcId = this.dataset.id;
 
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:8080/api/fitnesscentar" + employeeId,
+        url: "http://localhost:8080/api/fitnesscentar" + fcId,
         dataType: "json",
         success: function () {
             console.log("SUCCESS");
-            $('[data-id="' + employeeId + '"]').parent().parent().remove();
+            $('[data-id="' + fcId + '"]').parent().parent().remove();
         },
         error: function () {
-            alert("Greška prilikom brisanja zaposlenog!");
+            alert("Greška prilikom brisanja centra!");
         }
     });
 });
