@@ -1,12 +1,20 @@
 package com.example.FitnessCetnar.entity.dto;
 
-import javax.persistence.Column;
-
 public class SalaDTO {
+    private Long id;
     private Integer kapacitet;
     private Integer oznakaSale;
     private Long fitness_centar_id;
-    public SalaDTO(){}
+
+    public SalaDTO(Long id, Integer kapacitet, Integer oznakaSale) {
+        this.id = id;
+        this.kapacitet = kapacitet;
+        this.oznakaSale = oznakaSale;
+    }
+
+    public SalaDTO() {
+
+    }
 
     public Integer getKapacitet() {
         return kapacitet;
@@ -30,5 +38,13 @@ public class SalaDTO {
 
     public void setFitness_centar_id(Long fitness_centar_id) {
         this.fitness_centar_id = fitness_centar_id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

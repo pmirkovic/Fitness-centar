@@ -63,12 +63,22 @@ public class Korisnik implements Serializable {
     Set<Trening> prijava_treninga=new HashSet<>();
 
 
+    @OneToMany(mappedBy="korisnik",fetch=FetchType.EAGER,orphanRemoval=true)
+    Set<Odradjeni_treninzi> odradjeni_treninzis=new HashSet<>();
 
     public Korisnik(String naziv, String adresa, String email, Integer brTelefona) {
 
     }
 
     public Korisnik(String ime, String prezime, Position position, String username, String email, Integer telefon, Date datum, Boolean aktivan, String password) {
+    }
+
+    public Set<Odradjeni_treninzi> getOdradjeni_treninzis() {
+        return odradjeni_treninzis;
+    }
+
+    public void setOdradjeni_treninzis(Set<Odradjeni_treninzi> odradjeni_treninzis) {
+        this.odradjeni_treninzis = odradjeni_treninzis;
     }
 
 
@@ -173,6 +183,10 @@ public class Korisnik implements Serializable {
 
     public void setPrijava_treninga(Set<Trening> prijava_treninga) {
         this.prijava_treninga = prijava_treninga;
+    }
+
+    public Korisnik(Set<Odradjeni_treninzi> odradjeni_treninzis) {
+        this.odradjeni_treninzis = odradjeni_treninzis;
     }
 
     /*----------------------------------------------------------------------*/

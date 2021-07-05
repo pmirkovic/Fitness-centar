@@ -8,19 +8,19 @@ $(document).ready(function (){
             type: "GET",
             url: "http://localhost:8080/api/korisnik/" + korisnikid,
             dataType: "json",
-            success: function (response) {                          // ova f-ja se izvršava posle uspešnog zahteva
-                console.log("SUCCESS:\n", response);                // ispisujemo u konzoli povratnu vrednost radi provere
+            success: function (response) {
+                console.log("SUCCESS:\n", response);
 
                 $('#firstName').text(response.ime);
                 $('#lastName').text(response.prezime);
                 $('#email').text(response.email);
 
 
-                let employeeDiv = $("#oneEmployee");                // dobavljamo element čiji je id = oneEmployee
-                                                   // prikazujemo taj element
+                let employeeDiv = $("#oneEmployee");
+
 
             },
-            error: function (response) {                            // ova f-ja se izvršava posle neuspešnog zahteva
+            error: function (response) {
                 console.log("ERROR:\n", response);
             }
         });

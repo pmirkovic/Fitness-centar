@@ -174,5 +174,18 @@ public class KorisnikController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+/*
+    @PostMapping(value = "/add_trening")
+    public ResponseEntity<?> add_trening(@RequestBody TreningDTO treningDTO) {
+        try {
+            this.treningService.addTrening(treningDTO);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+
+    }*/
+
+
 
 }

@@ -52,8 +52,8 @@ public class FitnessCentarController {
         List<FitnescentarDTO> fitnescentarDTOS = new ArrayList<>();
 
         for (FitnessCentar fitnessCentar : fitnessCentarList){
-            FitnescentarDTO fitnescentarDTO=new FitnescentarDTO(fitnessCentar.getId(),fitnessCentar.getNaziv(),fitnessCentar.getAdresa(),fitnessCentar.getEmail(),
-                    fitnessCentar.getBrTelefona());
+            FitnescentarDTO fitnescentarDTO=new FitnescentarDTO(fitnessCentar.getId(),fitnessCentar.getNaziv(),fitnessCentar.getAdresa(),fitnessCentar.getBrTelefona(),fitnessCentar.getEmail()
+                    );
             fitnescentarDTOS.add(fitnescentarDTO);
         }
 
@@ -80,7 +80,7 @@ public class FitnessCentarController {
         FitnessCentar updatedFC = fitnescentarService.update(fitnessCentar);
 
         FitnescentarDTO updatedFCDTO = new FitnescentarDTO(updatedFC.getId(),updatedFC.getNaziv(),
-                updatedFC.getEmail(),updatedFC.getAdresa(),updatedFC.getBrTelefona());
+                updatedFC.getEmail(),updatedFC.getBrTelefona(),updatedFC.getAdresa());
 
         return new ResponseEntity<>(updatedFCDTO,HttpStatus.OK);
     }

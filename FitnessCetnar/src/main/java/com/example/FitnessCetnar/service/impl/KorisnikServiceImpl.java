@@ -2,15 +2,18 @@ package com.example.FitnessCetnar.service.impl;
 import com.example.FitnessCetnar.entity.Korisnik;
 import com.example.FitnessCetnar.entity.Sala;
 import com.example.FitnessCetnar.entity.TerminskaLista;
+import com.example.FitnessCetnar.entity.Trening;
 import com.example.FitnessCetnar.entity.dto.KorisnikDTO;
 import com.example.FitnessCetnar.repository.KorisnikRepository;
 import com.example.FitnessCetnar.repository.TerminskaListaRepository;
 import com.example.FitnessCetnar.service.KorisnikService;
+import com.example.FitnessCetnar.service.TreningService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
-
+@Transactional
 @Service
 public class KorisnikServiceImpl implements KorisnikService {
 
@@ -23,6 +26,9 @@ public class KorisnikServiceImpl implements KorisnikService {
 
 
     public KorisnikServiceImpl(KorisnikRepository korisnikRepository){this.korisnikRepository=korisnikRepository;}
+
+    @Autowired
+    private TreningService treningService;
 
     @Override
     public Korisnik findOne(Long id){
@@ -84,6 +90,22 @@ public class KorisnikServiceImpl implements KorisnikService {
         this.korisnikRepository.updateKorisnik(korisnik.getId(),korisnik.getIme(), korisnik.getPrezime(), korisnik.getPosition(),
                 korisnik.getUsername(), korisnik.getEmail(), korisnik.getTelefon(), korisnik.getDatum(), korisnik.getAktivan(),
                 korisnik.getPassword());
+    }
+
+    public boolean addTrening(Long korisnik_id,Long trening_id){
+        Korisnik korisnik = this.korisnikRepository.findById(korisnik_id).get();
+        Trening trening = this.treningService.findOne(trening_id);
+        if(korisnik.getPrijava_treninga().contains(trening)){
+            return false;
+        }
+
+        for(Sala sala:trening.getSalas()){
+            if(sala.getKapacitet()-trening.getKorisniks().size()>0){
+                korisnik.getPrijava_treninga().add(trening);
+                return true;
+            }
+        }
+        return false;
     }
 
 

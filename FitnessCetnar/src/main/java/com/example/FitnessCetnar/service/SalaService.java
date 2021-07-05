@@ -9,6 +9,18 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class SalaService {
+public interface SalaService {
+
+    Sala findOne(Long id);
+
+    List<Sala> findAll();
+
+    Sala create(Sala sala) throws Exception;
+
+    Sala update(Sala fc) throws Exception;
+
+    void delete(Long id);
+
+    Sala save(Sala sala) throws Exception;
 
 }

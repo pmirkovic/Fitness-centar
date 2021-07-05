@@ -14,11 +14,17 @@ public class Prijava_treningaDTO {
         this.korisnik_id = korisnik_id;
     }
 
-    public Long getTrening_id() {
+    public Long getTrening_id(Long id) {
         return trening_id;
     }
 
     public void setTrening_id(Long trening_id) {
+        this.trening_id = trening_id;
+    }
+
+    public Prijava_treningaDTO(Long korisnik_id, Long trening_id) {
+        super();
+        this.korisnik_id = korisnik_id;
         this.trening_id = trening_id;
     }
 }

@@ -1,5 +1,7 @@
 package com.example.FitnessCetnar.entity;
 
+import com.example.FitnessCetnar.entity.dto.FitnescentarDTO;
+import com.example.FitnessCetnar.entity.dto.SalaDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +20,7 @@ public class Sala implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column
     private Integer kapacitet;
@@ -46,19 +48,20 @@ public class Sala implements Serializable {
     @OneToMany(mappedBy="sala",fetch=FetchType.EAGER,cascade = CascadeType.ALL)
     Set<TerminskaLista> terminskaListas=new HashSet<>();
 
-    public Sala(Integer kapacitet, Integer salaDTOKapacitet, Trening trening, FitnessCentar centar) {
+    public Sala(Integer kapacitet, Integer oznakaSale) {
+        this.kapacitet = kapacitet;
+        this.oznakaSale = oznakaSale;
     }
-
 
     public FitnessCentar getFitnesCentar(){return  fitnessCentar;}
     public void setFitnesCentar(FitnessCentar fitnessCentar){this.fitnessCentar=fitnessCentar;}
     /*----------------------------------------------------------------------*/
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -112,26 +115,34 @@ public class Sala implements Serializable {
 
     /*----------------------------------------------------------------------*/
 
-    public Sala() {
-    }
-
-    public Sala(long id, Integer kapacitet, Integer oznakaSale, FitnessCentar fitnessCentar, TerminskaLista trening, List<Trening> trenings) {
+    public Sala(Long id, Integer kapacitet, Integer oznakaSale, FitnessCentar fitnessCentar, TerminskaLista trening, List<Trening> trenings, Set<TerminskaLista> terminskaListas) {
         this.id = id;
         this.kapacitet = kapacitet;
         this.oznakaSale = oznakaSale;
         this.fitnessCentar = fitnessCentar;
         this.trening = trening;
         this.trenings = trenings;
+        this.terminskaListas = terminskaListas;
     }
 
-    @Override
-    public String toString() {
-        return "Sala{" +
-                "id=" + id +
-                ", kapacitet=" + kapacitet +
-                ", oznakaSale=" + oznakaSale +
-                ", fitnessCentar=" + fitnessCentar +
-                ", trenings=" + trenings +
-                '}';
+    public Sala() {
     }
+
+    public Sala(Long id, Integer kapacitet, Integer oznakaSale) {
+        this.id = id;
+        this.kapacitet = kapacitet;
+        this.oznakaSale = oznakaSale;
+    }
+
+
+
+    /*
+    public static Sala getSalaByDTO(SalaDTO salaDTO) {
+        Sala sala=new Sala();
+        sala.setKapacitet(salaDTO.getKapacitet());
+        sala.setOznakaSale(salaDTO.getOznakaSale());
+        return sala;
+    }*/
+
+
 }

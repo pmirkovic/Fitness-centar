@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <title>Trener</title>
+    <meta charset="utf-8" />
+    <!-- 1. Ukljucivanje jQuery biblioteke -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 2. Ukljucivanje jQuery Validate biblioteke za validaciju polja forme (opciono).
+            O načinu upotrebe pogledati na: https://jqueryvalidation.org/ -->
+    <script src="js/jquery.validate.min.js"></script>
+    <!-- 3. Ukljucivanje naseg JS fajla -->
+    <script src="js/sala.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/trening.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/fitness-1606621-1363487.png" alt="" width="30" height="24">
+        </a>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">Pocetna</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">FitnessCentra</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Sale</a></li>
+                    <li><a class="dropdown-item" onclick="location.href='trening.html'">Treninzi</a></li>
+                    <li><a class="dropdown-item" href="#">Treneri</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" class="btnSeeMore" onclick="location.href=''">Profil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="cursor: pointer" onclick="location.href='index.html'" tabindex="-1" aria-disabled="true">LogOut</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container1">
+    <img src="images/trener.jpg" alt="Snow" style="width:100%;filter: blur(2px)">
+    <div class="centered"><h1 style="color: #54e346;font-weight: bold;font-size: 7em;">PREGLED ZAHTEVA ZA REGISTRACIJU TRENERA</h1></div>
+</div>
+
+<div id="allEmployees" >
+
+    <div class="container">
+        <table id="responseElement">
+            <tr>
+                <th>Kapacitet</th>
+                <th>Oznaka Sale</th>
+
+                <th>edit</th>
+                <th>delete</th>
+
+
+                <th></th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+</body>
+
+</html>

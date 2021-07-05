@@ -30,3 +30,49 @@ $(document).on("submit","#addFitnesscentarForm",function (event){
         }
     });
 });
+
+$(document).ready(function () {
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/api/fitnesscentar",
+        dataType: "json",
+
+        success: function (response) {
+
+            for (let responseElement of response) {
+                    let row = "<tr>";
+                    row += "<td>" + responseElement.naziv + "</td>";
+                    row += "<td>" + responseElement.email + "</td>";
+                    let btn = "<button class='btnSeeMore' data-id=" + responseElement.id + ">Edit</button>";
+                    row += "<td>" + btn + "</td>";
+                    btn = "<button class='btnDelete' data-id=" + responseElement.id + ">Delete</button>";
+                    row += "<td>" + btn + "</td>";
+                    row += "</tr>";
+                    $('#responseElement').append(row);
+            }
+
+            console.log("SUCCESS:\n", response);
+        },
+        error: function (response) {
+            console.log("ERROR:\n", response);
+        }
+    });
+});
+
+$(document).on('click', '.btnDelete', function () {
+    let employeeId = this.dataset.id;
+
+    $.ajax({
+        type: "DELETE",
+        url: "http://localhost:8080/api/fitnesscentar" + employeeId,
+        dataType: "json",
+        success: function () {
+            console.log("SUCCESS");
+            $('[data-id="' + employeeId + '"]').parent().parent().remove();
+        },
+        error: function () {
+            alert("Greška prilikom brisanja zaposlenog!");
+        }
+    });
+});

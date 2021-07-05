@@ -9,11 +9,17 @@ public class FitnescentarDTO {
     private Integer brTelefona;
     private String email;
 
-    public FitnescentarDTO(Long id, String naziv, String adresa, String email, Integer brTelefona) {
-    }
 
     public FitnescentarDTO() {
 
+    }
+
+    public FitnescentarDTO(Long id, String naziv, String adresa, Integer brTelefona, String email) {
+        this.id = id;
+        this.naziv = naziv;
+        this.adresa = adresa;
+        this.brTelefona = brTelefona;
+        this.email = email;
     }
 
     public Long getId() {

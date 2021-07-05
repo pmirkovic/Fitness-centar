@@ -37,7 +37,7 @@ function sortTable(n) {
             }
         }
     }
-    for (i = 1; i <4 ; i++)
+    for (i = 1; i < 4 ; i++)
     {
         var trows=document.getElementById("th"+i);
         if(i!=n)
