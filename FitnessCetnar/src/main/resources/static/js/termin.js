@@ -29,8 +29,7 @@ $(document).on('click','#prijava',function (e){
 
     var formData = JSON.stringify({
         "termin_id": {"id":idTermina},
-        "korisnik_id": {"id": idKorisnika},
-        "trening_id" : 1;
+        "korisnik_id": {"id": idKorisnika}
     });
     console.log(formData);
     $.ajax({
