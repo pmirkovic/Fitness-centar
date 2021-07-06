@@ -1,6 +1,7 @@
 package com.example.FitnessCetnar.entity;
 
 import com.example.FitnessCetnar.entity.dto.FitnescentarDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ser.Serializers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,15 +33,19 @@ public class FitnessCentar implements Serializable {
     private String email;
 
 
+    @JsonIgnore
     @OneToMany(mappedBy="fitnessCentar",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Sala> sale = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy="fitnessCentar",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Korisnik> korisnik = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy="fitnessCentar",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<TerminskaLista> terminskaListaList = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy="fitnessCentar",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Trener> treners = new ArrayList<>();
 

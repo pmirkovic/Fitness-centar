@@ -17,7 +17,7 @@ $(document).ready(function () {
 
                     row += "<td>" + terms.cena + "</td>";
                     row += "<td>" + terms.dan + "</td>";
-                    let btn = "<button class='btnSeeMore' data-id=" + responseElement.id + ">Prijava</button>";
+                    let btn = "<form> <input type='hidden' value='" + terms.id + "'> <input type='submit' value='Prijava'> </form>"
                     row += "<td>" + btn + "</td>";
                     row += "</tr>";                                     // završavamo kreiranje reda
                     $('#responseElement').append(row);
@@ -31,6 +31,7 @@ $(document).ready(function () {
     });
 });
 
+/*
 $(document).on('click','.btnSeeMore',function (){
     let treningId = this.dataset.id;
 
@@ -46,6 +47,18 @@ $(document).on('click','.btnSeeMore',function (){
             console.log("ERROR:\n", response);
         }
     });
+});
+ */
+
+$(document).on('submit','form',function (e){
+    e.preventDefault();
+
+    var id = $(this).find('input:hidden').val();
+    sessionStorage.setItem("idTermina", id);
+    window.location.replace("http://localhost:8080/termin.html");
+
+
+
 });
 
 function myFunctioni() {

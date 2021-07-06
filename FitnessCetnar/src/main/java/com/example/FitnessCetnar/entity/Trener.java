@@ -21,6 +21,7 @@ public class Trener implements Serializable {
     private Korisnik korisnik;
 
 
+    @JsonIgnore
     @OneToMany(mappedBy="trener", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Trening> ListaTreningaKojeDrzi = new ArrayList<>();
 

@@ -194,7 +194,7 @@ public class Korisnik implements Serializable {
 
     public Korisnik(String ime, String prezime, Position position, Date datum, Boolean aktivan, String username, Integer telefon, String email, String password){}
 
-    public Korisnik(long id, String username, String ime, String prezime, String email, String password, Integer telefon, Date datum, Position position, Boolean aktivan, FitnessCentar fitnessCentar, Set<Trening> prijava_treninga, Set<Trener> treners, Set<ClanFitnesCentra> clanFitnesCentras, Set<Odradjeni_treninzi> odradjeni_treninzis) {
+    public Korisnik(long id, String username, String ime, String prezime, String email, String password, Integer telefon, Date datum, Position position, Boolean aktivan, FitnessCentar fitnessCentar, Set<Trening> prijava_treninga, Set<Trener> treners,  Set<Odradjeni_treninzi> odradjeni_treninzis) {
         this.id = id;
         this.username = username;
         this.ime = ime;

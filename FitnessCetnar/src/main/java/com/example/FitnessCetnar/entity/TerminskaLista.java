@@ -106,7 +106,7 @@ public class TerminskaLista implements Serializable {
         this.trening = trening;
         this.fitnessCentar = fitnessCentar;
     }
-
+/*
     @Override
     public String toString() {
         return "TerminskaLista{" +
@@ -117,4 +117,6 @@ public class TerminskaLista implements Serializable {
                 ", fitnessCentar=" + fitnessCentar +
                 '}';
     }
+    */
+
 }

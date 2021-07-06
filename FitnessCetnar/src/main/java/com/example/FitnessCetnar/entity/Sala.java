@@ -45,6 +45,7 @@ public class Sala implements Serializable {
     inverseJoinColumns = @JoinColumn(name = "trening_id",referencedColumnName = "id"))
     private List<Trening> trenings = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy="sala",fetch=FetchType.EAGER,cascade = CascadeType.ALL)
     Set<TerminskaLista> terminskaListas=new HashSet<>();
 

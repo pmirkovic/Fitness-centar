@@ -35,26 +35,24 @@ public class Trening implements Serializable {
     @Column
     private Double cena;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     private Trener trener;
 
-    @ManyToMany(mappedBy = "ListaOdradjenihTreninga")
-    private List<ClanFitnesCentra> Odradjenih = new ArrayList<>();
-    @ManyToMany(mappedBy = "ListaPrijavljenihTreninga")
-    private List<ClanFitnesCentra> Prijavljenih = new ArrayList<>();
-    @ManyToMany(mappedBy = "OcenaOdradjenihTreninga")
-    private List<ClanFitnesCentra> Ocena = new ArrayList<>();
 
     @JsonIgnore
     @ManyToMany(mappedBy="prijava_treninga")
     private Set<Korisnik> korisniks=new HashSet<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy="trening",fetch=FetchType.EAGER,orphanRemoval=true)
     Set<Odradjeni_treninzi> odradjeni_treninzis=new HashSet<>();
 
+    @JsonIgnore
     @ManyToMany(mappedBy="trenings",cascade=CascadeType.ALL)
     private List<Sala> salas=new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy="trening",fetch=FetchType.EAGER,cascade = CascadeType.ALL)
     Set<TerminskaLista> terminskaListas=new HashSet<>();
 
@@ -132,29 +130,6 @@ public class Trening implements Serializable {
         this.trener = trener;
     }
 
-    public List<ClanFitnesCentra> getOdradjenih() {
-        return Odradjenih;
-    }
-
-    public void setOdradjenih(List<ClanFitnesCentra> odradjenih) {
-        Odradjenih = odradjenih;
-    }
-
-    public List<ClanFitnesCentra> getPrijavljenih() {
-        return Prijavljenih;
-    }
-
-    public void setPrijavljenih(List<ClanFitnesCentra> prijavljenih) {
-        Prijavljenih = prijavljenih;
-    }
-
-    public List<ClanFitnesCentra> getOcena() {
-        return Ocena;
-    }
-
-    public void setOcena(List<ClanFitnesCentra> ocena) {
-        Ocena = ocena;
-    }
 
     public Set<Korisnik> getKorisniks() {
         return korisniks;
@@ -190,7 +165,7 @@ public class Trening implements Serializable {
 
     /*----------------------------------------------------------------------*/
 
-    public Trening(Long id, String naziv, String opis, String tipTreninga, Double trajanje, Double rating, Double cena, Trener trener, List<ClanFitnesCentra> odradjenih, List<ClanFitnesCentra> prijavljenih, List<ClanFitnesCentra> ocena, Set<Korisnik> korisniks, Set<Odradjeni_treninzi> odradjeni_treninzis, List<Sala> salas, Set<TerminskaLista> terminskaListas) {
+    public Trening(Long id, String naziv, String opis, String tipTreninga, Double trajanje, Double rating, Double cena, Trener trener,  Set<Korisnik> korisniks, Set<Odradjeni_treninzi> odradjeni_treninzis, List<Sala> salas, Set<TerminskaLista> terminskaListas) {
         this.id = id;
         this.naziv = naziv;
         this.opis = opis;
@@ -199,9 +174,6 @@ public class Trening implements Serializable {
         this.rating = rating;
         this.cena = cena;
         this.trener = trener;
-        Odradjenih = odradjenih;
-        Prijavljenih = prijavljenih;
-        Ocena = ocena;
         this.korisniks = korisniks;
         this.odradjeni_treninzis = odradjeni_treninzis;
         this.salas = salas;

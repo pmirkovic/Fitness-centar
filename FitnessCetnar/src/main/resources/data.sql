@@ -8,15 +8,12 @@ INSERT INTO KORISNIK(aktivan,datum,email,ime,password,position,prezime,telefon,u
 
 INSERT INTO TRENER(fitness_centar_id,korisnik_id) VALUES (1,1);
 
-INSERT INTO CLAN_FITNES_CENTRA(korisnik_id) VALUES (2);
-
 INSERT INTO TRENING(trajanje,naziv,cena,opis,tip_treninga,trener_id) VALUES ('60','Aerobic','800','sve','grupni',1);
 
 INSERT INTO TRENING(trajanje,naziv,cena,opis,tip_treninga,trener_id) VALUES ('120','Push','2000','grudi','personalni',1);
 
 INSERT INTO TRENING(trajanje,naziv,cena,opis,tip_treninga,trener_id) VALUES ('90','Leg','1500','noge','personalni',1);
 
-INSERT INTO OCENA_ODRADJENIH_TRENINGA (clan_id,termin_id) VALUES (1,1);
 
 INSERT INTO TERMINSKA_LISTA(broj_clanova,cena,dan,fitness_centar_id,trening_id) VALUES ('30','50','utorak',1,1);
 

@@ -1,13 +1,11 @@
-package com.example.FitnessCetnar.entity;
+/*package com.example.FitnessCetnar.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.Date;import java.util.List;
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @Entity
 
@@ -21,18 +19,23 @@ public class ClanFitnesCentra implements Serializable{
     @ManyToOne
     private Korisnik korisnik;
 
+    @JsonIgnore
     @Column
     @ManyToMany
     @JoinTable(name = "Lista_odradjenih_treninga",
             joinColumns = @JoinColumn(name = "Clan_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "Termin_id", referencedColumnName = "id"))
     private List<Trening> ListaOdradjenihTreninga = new ArrayList<>();
+
+    @JsonIgnore
     @Column
     @ManyToMany
     @JoinTable(name = "Lista_Prijavljenih_treninga",
             joinColumns = @JoinColumn(name = "Clan_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "Termin_id", referencedColumnName = "id"))
     private List<Trening> ListaPrijavljenihTreninga = new ArrayList<>();
+
+    @JsonIgnore
     @Column
     @ManyToMany
     @JoinTable(name = "Ocena_Odradjenih_treninga",
@@ -43,7 +46,7 @@ public class ClanFitnesCentra implements Serializable{
     public ClanFitnesCentra() {
     }
 
-    /*----------------------------------------------------------------------*/
+
 
     public Long getId() {
         return id;
@@ -65,7 +68,7 @@ public class ClanFitnesCentra implements Serializable{
         return OcenaOdradjenihTreninga;
     }
 
-    /*----------------------------------------------------------------------*/
+
 
     public void setId(Long id) {
         this.id = id;
@@ -87,7 +90,7 @@ public class ClanFitnesCentra implements Serializable{
         OcenaOdradjenihTreninga = ocenaOdradjenihTreninga;
     }
 
-    /*----------------------------------------------------------------------*/
+
 
     public ClanFitnesCentra(Long id, Korisnik korisnik, List<Trening> listaOdradjenihTreninga, List<Trening> listaPrijavljenihTreninga, List<Trening> ocenaOdradjenihTreninga) {
         this.id = id;
@@ -108,3 +111,4 @@ public class ClanFitnesCentra implements Serializable{
                 '}';
     }
 }
+*/
