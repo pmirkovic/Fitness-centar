@@ -27,4 +27,3 @@ INSERT INTO SALA (kapacitet,oznaka_sale,fitness_centar_id,trening_id) VALUES ('2
 
 INSERT INTO ODRADJENI_TRENINZI (ocena,korisnik_id,trening_id) VALUES ('5',1,1);
 
-INSERT INTO PRIJAVA (korisnik_id,termin_id,trening_id) VALUES (1,1,1);

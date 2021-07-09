@@ -29,7 +29,6 @@ public interface KorisnikService{
     Korisnik getUser(Long id);
     void editKorisnik(Korisnik korisnik);
 
-    public boolean addTrening(Long korisnik_id,Long trening_id);
 
     Korisnik checkEmail(KorisnikDTO korisnikDTO)  throws Exception;
     public Korisnik save(Korisnik korisnik) throws Exception;

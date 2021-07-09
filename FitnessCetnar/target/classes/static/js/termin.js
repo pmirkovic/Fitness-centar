@@ -24,17 +24,16 @@ $(document).ready(function () {
 $(document).on('click','#prijava',function (e){
     e.preventDefault();
 
-    var idTermina = $("#idTermina").val();
-    var idKorisnika = sessionStorage.getItem("id");
+    let idTermina = $("#idTermina").val();
+    let idKorisnika = sessionStorage.getItem("id");
 
-    var formData = JSON.stringify({
-        "termin_id": {"id":idTermina},
-        "korisnik_id": {"id": idKorisnika},
-        "trening_id" : 1;
+    let formData = JSON.stringify({
+        "termin": {"id":idTermina},
+        "korisnik": {"id": idKorisnika},
     });
     console.log(formData);
     $.ajax({
-        url: 'http://localhost:8080/api/prijava/',
+        url: 'http://localhost:8080/api/prijava',
         dataType: 'json',
         type: 'post',
         contentType: 'application/json',

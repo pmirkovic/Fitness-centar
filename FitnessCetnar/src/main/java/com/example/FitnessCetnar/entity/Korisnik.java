@@ -56,11 +56,7 @@ public class Korisnik implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     private FitnessCentar fitnessCentar;
 
-    @ManyToMany(cascade=CascadeType.ALL)
-    @JoinTable(name = "Prijava",
-            joinColumns = @JoinColumn(name = "korisnik_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "trening_id", referencedColumnName = "id"))
-    Set<Trening> prijava_treninga=new HashSet<>();
+
 
 
     @OneToMany(mappedBy="korisnik",fetch=FetchType.EAGER,orphanRemoval=true)
@@ -130,9 +126,6 @@ public class Korisnik implements Serializable {
 
 
 
-    public Set<Trening> getPrijava_treninga() {
-        return prijava_treninga;
-    }
 
     /*----------------------------------------------------------------------*/
 
@@ -181,9 +174,7 @@ public class Korisnik implements Serializable {
     }
 
 
-    public void setPrijava_treninga(Set<Trening> prijava_treninga) {
-        this.prijava_treninga = prijava_treninga;
-    }
+
 
     public Korisnik(Set<Odradjeni_treninzi> odradjeni_treninzis) {
         this.odradjeni_treninzis = odradjeni_treninzis;
@@ -194,7 +185,7 @@ public class Korisnik implements Serializable {
 
     public Korisnik(String ime, String prezime, Position position, Date datum, Boolean aktivan, String username, Integer telefon, String email, String password){}
 
-    public Korisnik(long id, String username, String ime, String prezime, String email, String password, Integer telefon, Date datum, Position position, Boolean aktivan, FitnessCentar fitnessCentar, Set<Trening> prijava_treninga, Set<Trener> treners,  Set<Odradjeni_treninzi> odradjeni_treninzis) {
+    public Korisnik(long id, String username, String ime, String prezime, String email, String password, Integer telefon, Date datum, Position position, Boolean aktivan, FitnessCentar fitnessCentar, Set<Trener> treners,  Set<Odradjeni_treninzi> odradjeni_treninzis) {
         this.id = id;
         this.username = username;
         this.ime = ime;
@@ -206,7 +197,7 @@ public class Korisnik implements Serializable {
         this.position = position;
         this.aktivan = aktivan;
         this.fitnessCentar = fitnessCentar;
-        this.prijava_treninga = prijava_treninga;
+
 
     }
 /*

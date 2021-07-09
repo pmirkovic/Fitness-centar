@@ -276,3 +276,42 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 20px;
     font-size: 20px;
 }
+.termindizajn{
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    justify-content: center;
+    padding: 20px;
+}
+.termindizajn h1{
+    color: #54e346;
+}
+
+.termindizajn p{
+
+}
+
+#prijava{
+    width: 30%;
+    height: 50px;
+    border: 1px solid #54e346;
+    border-radius: 25px;
+    background-color: transparent;
+    font-size: 18px;
+    color:black;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+}
+
+.prijavadiz tr th td{
+    color: black;
+}
+
+#otkazivanje{
+    color: black;
+}
+
+#odradjen{
+    color: black;
+}

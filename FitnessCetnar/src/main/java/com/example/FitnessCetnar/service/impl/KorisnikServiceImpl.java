@@ -92,21 +92,6 @@ public class KorisnikServiceImpl implements KorisnikService {
                 korisnik.getPassword());
     }
 
-    public boolean addTrening(Long korisnik_id,Long trening_id){
-        Korisnik korisnik = this.korisnikRepository.findById(korisnik_id).get();
-        Trening trening = this.treningService.findOne(trening_id);
-        if(korisnik.getPrijava_treninga().contains(trening)){
-            return false;
-        }
-
-        for(Sala sala:trening.getSalas()){
-            if(sala.getKapacitet()-trening.getKorisniks().size()>0){
-                korisnik.getPrijava_treninga().add(trening);
-                return true;
-            }
-        }
-        return false;
-    }
 
 
     @Override

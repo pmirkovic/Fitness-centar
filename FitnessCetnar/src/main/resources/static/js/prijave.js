@@ -1,27 +1,25 @@
 
 $(document).ready(function () {
-
+    var idKorisnika = sessionStorage.getItem("id");
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/api/korisnik/terms",
+        url: "http://localhost:8080/api/prijava/korisnik/"+idKorisnika,
         dataType: "json",
 
         success: function (response) {
 
             for (let responseElement of response) {
-                for (let terms of responseElement.terminskaListaDTOS){
                     let row = "<tr>";
-                    row += "<td>" + responseElement.naziv + "</td>";
-                    row += "<td>" + responseElement.trajanje + "</td>";
-                    row += "<td>" + responseElement.tipTreninga + "</td>";
+                    row += "<td>" + responseElement.id + "</td>";
+                    row += "<td>" + responseElement.trening.naziv + "</td>";
 
-                    row += "<td>" + terms.cena + "</td>";
-                    row += "<td>" + terms.dan + "</td>";
-                    let btn = "<form> <input type='hidden' value='" + terms.id + "'> <input type='submit' value='Prijava'> </form>"
+                    let btn = "<form id='otkazivanje'> <input type='hidden' value='" + responseElement.id + "'> <input type='submit' value='Otkazi'> </form>"
                     row += "<td>" + btn + "</td>";
+
+                    let btn2 = "<form id='odradjen'> <input type='hidden' value='" + responseElement.id + "'> <input type='submit' value='Odradjen'> </form>"
+                    row += "<td>" + btn2 + "</td>";
                     row += "</tr>";                                     // završavamo kreiranje reda
                     $('#responseElement').append(row);
-                }
             }
             console.log("SUCCESS:\n", response);
         },
@@ -31,25 +29,47 @@ $(document).ready(function () {
     });
 });
 
-/*
-$(document).on('click','.btnSeeMore',function (){
-    let treningId = this.dataset.id;
+
+$(document).on('submit','#otkazivanje',function (){
+    e.preventDefault();
+
+    var id = $(this).find('input:hidden').val();
 
     $.ajax({
-        type: "POST",
-        url:"http://localhost:8080/api/korisnik/prijava_treninga",
+        type: "DELETE",
+        url:"http://localhost:8080/api/prijava/"+id,
         dataType: "json",
         success: function (response){
             console.log("SUCCESS:\n",response);
-            window.location.href="account.html";
+            location.reload();
         },
         error:function (response){
             console.log("ERROR:\n", response);
         }
     });
 });
- */
 
+$(document).on('submit','#odradjen',function (){
+    e.preventDefault();
+
+    var id = $(this).find('input:hidden').val();
+
+    $.ajax({
+        type: "DELETE",
+        url:"http://localhost:8080/api/prijava/"+id,
+        dataType: "json",
+        success: function (response){
+            console.log("SUCCESS:\n",response);
+            location.reload();
+        },
+        error:function (response){
+            console.log("ERROR:\n", response);
+        }
+    });
+});
+
+
+/*
 $(document).on('submit','form',function (e){
     e.preventDefault();
 
@@ -58,7 +78,7 @@ $(document).on('submit','form',function (e){
     window.location.replace("http://localhost:8080/termin.html");
 
 });
-
+*/
 function myFunctioni() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("ime");

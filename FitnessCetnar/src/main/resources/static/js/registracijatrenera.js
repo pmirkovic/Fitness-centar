@@ -18,7 +18,7 @@ $(document).on("submit","#addKorisnikForm",function (event){
         username,
         datum,
         position: 2,
-        aktivan: false
+        aktivan: true
 
     }
     $.ajax({

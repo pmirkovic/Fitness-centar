@@ -6,7 +6,7 @@ $(document).on("submit","#addFitnesscentarForm",function (event){
 
     let newKorisnik = {
         kapacitet,
-        oznaka
+        "oznaka_sale": oznaka
 
     }
     $.ajax({
@@ -40,7 +40,7 @@ $(document).ready(function () {
                 let row = "<tr>";
                 row += "<td>" + responseElement.kapacitet + "</td>";
                 row += "<td>" + responseElement.oznakaSale + "</td>";
-                let btn = "<button class='btnSeeMore' data-id=" + responseElement.id + ">Edit</button>";
+                let btn = "<form> <input type='hidden' value='" + responseElement.id + "'> <input type='submit' value='Edit'> </form>";
                 row += "<td>" + btn + "</td>";
                 btn = "<button class='btnDelete' data-id=" + responseElement.id + ">Delete</button>";
                 row += "<td>" + btn + "</td>";
@@ -55,6 +55,16 @@ $(document).ready(function () {
         }
     });
 });
+
+$(document).on('submit','form',function (e){
+    e.preventDefault();
+
+    var id = $(this).find('input:hidden').val();
+    sessionStorage.setItem("idSale", id);
+    window.location.replace("http://localhost:8080/saleedit.html");
+
+});
+
 
 $(document).on('click', '.btnDelete', function () {
     let salaId = this.dataset.id;

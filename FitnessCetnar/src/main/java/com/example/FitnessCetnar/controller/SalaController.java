@@ -87,4 +87,14 @@ public class SalaController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @PutMapping(value = "/edit_sala/{id}")
+    public ResponseEntity<?> edit_sala(@RequestBody Sala sala){
+        try{
+            this.salaService.editSala(sala);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch(Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }

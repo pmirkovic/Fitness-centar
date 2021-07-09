@@ -2,6 +2,8 @@ package com.example.FitnessCetnar.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.lang.NonNull;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,6 +16,13 @@ public class Prijava implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+    @Column
+    private int ocena;
+
+    @Column
+    private boolean odradjen;
+
     @ManyToOne(fetch = FetchType.EAGER)
     private Korisnik korisnik;
 
@@ -21,6 +30,14 @@ public class Prijava implements Serializable {
     private TerminskaLista termin;
 
     public Prijava() {
+    }
+
+    public Prijava(Long id, int ocena, boolean odradjen, Korisnik korisnik, TerminskaLista termin) {
+        this.id = id;
+        this.ocena = ocena;
+        this.odradjen = odradjen;
+        this.korisnik = korisnik;
+        this.termin = termin;
     }
 
     public Prijava(Long id, Korisnik korisnik, TerminskaLista termin) {
@@ -53,7 +70,19 @@ public class Prijava implements Serializable {
         this.termin = termin;
     }
 
+    public int getOcena() {
+        return ocena;
+    }
 
+    public void setOcena(int ocena) {
+        this.ocena = ocena;
+    }
 
+    public boolean isOdradjen() {
+        return odradjen;
+    }
 
+    public void setOdradjen(boolean odradjen) {
+        this.odradjen = odradjen;
+    }
 }

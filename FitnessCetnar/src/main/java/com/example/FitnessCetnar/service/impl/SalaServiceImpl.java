@@ -36,6 +36,10 @@ public class SalaServiceImpl implements SalaService {
         return newSala;
     }
 
+    public void editSala(Sala sala) {
+        this.salaRepository.updateSala(sala.getId(),sala.getKapacitet(),sala.getOznakaSale());
+    }
+
     @Override
     public Sala update(Sala sala) throws Exception{
         Sala sala1 = this.salaRepository.getOne(sala.getId());
@@ -49,9 +53,11 @@ public class SalaServiceImpl implements SalaService {
     }
 
     public Sala save(Sala sala) {
+
         return this.salaRepository.save(sala);
     }
 
     @Override
-    public void delete(Long id){this.salaRepository.deleteById(id);}
+    public void delete(Long id){
+        this.salaRepository.deleteById(id);}
 }

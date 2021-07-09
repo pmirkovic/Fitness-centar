@@ -40,9 +40,7 @@ public class Trening implements Serializable {
     private Trener trener;
 
 
-    @JsonIgnore
-    @ManyToMany(mappedBy="prijava_treninga")
-    private Set<Korisnik> korisniks=new HashSet<>();
+
 
     @JsonIgnore
     @OneToMany(mappedBy="trening",fetch=FetchType.EAGER,orphanRemoval=true)
@@ -131,13 +129,6 @@ public class Trening implements Serializable {
     }
 
 
-    public Set<Korisnik> getKorisniks() {
-        return korisniks;
-    }
-
-    public void setKorisniks(Set<Korisnik> korisniks) {
-        this.korisniks = korisniks;
-    }
 
     public Set<Odradjeni_treninzi> getOdradjeni_treninzis() {
         return odradjeni_treninzis;
@@ -174,7 +165,6 @@ public class Trening implements Serializable {
         this.rating = rating;
         this.cena = cena;
         this.trener = trener;
-        this.korisniks = korisniks;
         this.odradjeni_treninzis = odradjeni_treninzis;
         this.salas = salas;
         this.terminskaListas = terminskaListas;

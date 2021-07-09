@@ -23,4 +23,6 @@ public interface SalaService {
 
     Sala save(Sala sala) throws Exception;
 
+    public void editSala(Sala sala);
+
 }

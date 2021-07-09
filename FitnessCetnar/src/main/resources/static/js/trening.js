@@ -57,8 +57,6 @@ $(document).on('submit','form',function (e){
     sessionStorage.setItem("idTermina", id);
     window.location.replace("http://localhost:8080/termin.html");
 
-
-
 });
 
 function myFunctioni() {
@@ -80,24 +78,6 @@ function myFunctioni() {
     }
 }
 
-function myFunctionc() {
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("cena");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("responseElement");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[1];
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-        }
-    }
-}
 
 function myFunctiont() {
     var input, filter, table, tr, td, i, txtValue;
@@ -106,7 +86,7 @@ function myFunctiont() {
     table = document.getElementById("responseElement");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[2];
+        td = tr[i].getElementsByTagName("td")[1];
         if (td) {
             txtValue = td.textContent || td.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -125,7 +105,45 @@ function myFunctionctr() {
     table = document.getElementById("responseElement");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[2];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+function myFunctioncp() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("price");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("responseElement");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td")[3];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+function myFunctioncd() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("dan");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("responseElement");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[4];
         if (td) {
             txtValue = td.textContent || td.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
