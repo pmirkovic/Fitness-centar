@@ -10,7 +10,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery.min.js" type="text/javascript"></script>
-    <script src="js/fitnesscentaredit.js" type="text/javascript"></script>
+    <script src="js/termin_dodaj.js" type="text/javascript"></script>
     <title>Document</title>
 </head>
 <body>
@@ -20,22 +20,33 @@
 
 
 <div class="centar">
-    <h1>Fitnes Centar</h1>
-    <h2>EDIT</h2>
+    <h1>Termin</h1>
+    <h2>ADD</h2>
     <h2>New</h2>
-    <form id="editFitnesscentarForm">
-
+    <form id="addTerminForm">
+        <div class="polje">
+            <input type="text" id="dan" required>
+            <label>Dan</label>
+        </div>
+        <div class="polje">
+            <input type="number" id="cena" required>
+            <label>Cena</label>
+        </div>
+        <div class="polje">
+            <input type="number" id="salaId" required>
+            <label>Sala Id</label>
+        </div>
         <div class="polje">
             <input type="text" id="naziv" required>
             <label>Naziv</label>
         </div>
-
         <div class="polje">
-            <input type="email" id="email" required>
-            <label>E-mail</label>
+            <input type="text" id="opis" required>
+            <label>Opis</label>
         </div>
-        <input type="hidden" id="idFt">
-        <input type="submit" value="Edit">
+
+
+        <input type="submit" value="Add">
 
         <div class="registracija">Vrati se na pocetnu -><a onclick="location.href='pocetna.html'">Pocetna</a></div>
     </form>

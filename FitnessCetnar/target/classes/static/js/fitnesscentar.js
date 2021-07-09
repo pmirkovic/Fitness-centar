@@ -46,8 +46,8 @@ $(document).ready(function () {
                     row += "<td>" + responseElement.email + "</td>";
                     let btn = "<form id='izmena'> <input type='hidden' value='" + responseElement.id + "'> <input type='submit' value='Edit'> </form>";
                     row += "<td>" + btn + "</td>";
-                    btn = "<button class='btnDelete' data-id=" + responseElement.id + ">Delete</button>";
-                    row += "<td>" + btn + "</td>";
+                    let btn2 = "<form id='brisanje'> <input type='hidden' value='" + responseElement.id + "'> <input type='submit' value='Obrisi'> </form>";
+                    row += "<td>" + btn2 + "</td>";
                     row += "</tr>";
                     $('#responseElement').append(row);
             }
@@ -69,19 +69,22 @@ $(document).on('submit','#izmena',function (e){
 
 });
 
-$(document).on('click', '.btnDelete', function () {
-    let fcId = this.dataset.id;
+
+$(document).on('submit', '#brisanje', function (e) {
+    e.preventDefault();
+    var fitnessCentarId = $(this).find('input:hidden').val();
 
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:8080/api/fitnesscentar" + fcId,
-        dataType: "json",
+        url: "http://localhost:8080/api/fitnesscentar/" + fitnessCentarId,
         success: function () {
             console.log("SUCCESS");
-            $('[data-id="' + fcId + '"]').parent().parent().remove();
+            alert("Uspešno obrisan fitness centar.")
+            //$('[data-id="' + salaId + '"]').parent().parent().remove();
+            location.reload();
         },
         error: function () {
-            alert("Greška prilikom brisanja centra!");
+            alert("Greška prilikom brisanja fitness centra!");
         }
     });
 });

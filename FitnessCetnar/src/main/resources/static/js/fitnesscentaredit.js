@@ -34,7 +34,7 @@ $(document).on('submit', '#editFitnesscentarForm', function (e) {
         "email": email,
     });
     $.ajax({
-        url: 'http://localhost:8080/api/sala/edit_ft/' + idFt,
+        url: 'http://localhost:8080/api/fitnesscentar/edit_ft/' + idFt,
         dataType: 'json',
         type: 'put',
         contentType: 'application/json',

@@ -87,10 +87,10 @@ public class FitnessCentarController {
     }
     /*brisanje korisnika*/
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> deleteFitnesCentar(@PathVariable Long id){
+    public ResponseEntity<HttpStatus> deleteFitnesCentar(@PathVariable Long id){
         this.fitnescentarService.delete(id);
 
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping(value = "/edit_ft/{id}")

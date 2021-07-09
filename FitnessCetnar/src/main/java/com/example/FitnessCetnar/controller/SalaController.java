@@ -81,10 +81,10 @@ public class SalaController {
     }
     /*brisanje korisnika*/
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> deleteSala(@PathVariable Long id){
+    public ResponseEntity<HttpStatus> deleteSala(@PathVariable Long id){
         this.salaService.delete(id);
 
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping(value = "/edit_sala/{id}")

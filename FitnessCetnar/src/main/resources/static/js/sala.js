@@ -42,8 +42,8 @@ $(document).ready(function () {
                 row += "<td>" + responseElement.oznakaSale + "</td>";
                 let btn = "<form id='izmena'> <input type='hidden' value='" + responseElement.id + "'> <input type='submit' value='Edit'> </form>";
                 row += "<td>" + btn + "</td>";
-                btn = "<button class='btnDelete' data-id=" + responseElement.id + ">Delete</button>";
-                row += "<td>" + btn + "</td>";
+                btn2 = "<form id='brisanje'> <input type='hidden' value='" + responseElement.id + "'> <input type='submit' value='Obrisi'> </form>";
+                row += "<td>" + btn2 + "</td>";
                 row += "</tr>";
                 $('#responseElement').append(row);
             }
@@ -66,16 +66,18 @@ $(document).on('submit','#izmena',function (e){
 });
 
 
-$(document).on('click', '.btnDelete', function () {
-    let salaId = this.dataset.id;
+$(document).on('submit', '#brisanje', function (e) {
+    e.preventDefault();
+    var salaId = $(this).find('input:hidden').val();
 
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:8080/api/sala" + salaId,
-        dataType: "json",
+        url: "http://localhost:8080/api/sala/" + salaId,
         success: function () {
             console.log("SUCCESS");
-            $('[data-id="' + salaId + '"]').parent().parent().remove();
+            alert("Uspešno obrisana sala.")
+            //$('[data-id="' + salaId + '"]').parent().parent().remove();
+            location.reload();
         },
         error: function () {
             alert("Greška prilikom brisanja sale!");
