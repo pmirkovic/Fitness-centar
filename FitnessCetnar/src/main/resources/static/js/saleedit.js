@@ -1,4 +1,28 @@
-$(document).on('submit', '#prijava', function (e) {
+$(document).ready(function () {
+    var id = sessionStorage.getItem("idSale");
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/api/sala/"+id,
+        dataType: "json",
+
+        success: function (response) {
+            $("#idSale").val(id);
+            $("#kapacitet").val(response.kapacitet);
+            $("#oznaka").val(response.oznakaSale);
+
+
+            console.log("SUCCESS:\n", response);
+        },
+        error: function (response) {
+            console.log("ERROR:\n", response);
+        }
+    });
+});
+
+
+
+
+$(document).on('submit', '#editFitnesscentarForm', function (e) {
 
     e.preventDefault();
     let idSale = $("#idSale").val();
@@ -7,10 +31,10 @@ $(document).on('submit', '#prijava', function (e) {
     let oznaka=document.getElementById("oznaka").value;
     var formData = JSON.stringify({
         "kapacitet": kapacitet,
-        "oznaka_sale": oznaka,
+        "oznakaSale": oznaka,
     });
     $.ajax({
-        url: 'http://localhost:8080/api/sala/' + idSale,
+        url: 'http://localhost:8080/api/sala/edit_sala/' + idSale,
         dataType: 'json',
         type: 'put',
         contentType: 'application/json',
@@ -20,7 +44,7 @@ $(document).on('submit', '#prijava', function (e) {
                 alert("Something's wrong!");
             }
             else {
-                window.location.href="pocetna.html";
+                alert("Uspešno izmenjena sala.")
             }
         }
     });

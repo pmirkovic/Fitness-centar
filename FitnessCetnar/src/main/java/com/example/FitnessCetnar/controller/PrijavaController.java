@@ -23,7 +23,7 @@ public class PrijavaController {
 
     @PostMapping("")
     public ResponseEntity<Prijava> postPrijava(@RequestBody Prijava prijava){
-
+        prijava.setOdradjen(false);
         return new ResponseEntity<>(prijavaService.save(prijava), HttpStatus.OK);
     }
 
@@ -36,14 +36,24 @@ public class PrijavaController {
         prijavaService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    @GetMapping("/{id}/odradjen")
-    public ResponseEntity<HttpStatus> postaviOdradjenPrijava(@PathVariable Long id){
+    @GetMapping("/odradjen/{id}")
+    public ResponseEntity<Prijava> postaviOdradjenPrijava(@PathVariable Long id){
         // izvuci prijavu sa tim id-em
-        Prijava prijava = this.prijavaService.findOne(id);
+        Prijava prijava = prijavaService.findOne(id);
         // postaviti status da je odradjen true
         prijava.setOdradjen(true);
         // i sacuvati u bazu podataka
         prijavaService.save(prijava);
-        return new ResponseEntity<>(HttpStatus.OK);
+        System.out.println("zahtev");
+        return new ResponseEntity<>(prijava, HttpStatus.OK);
     }
+
+    @GetMapping("/ocenjivanje/")
+    public ResponseEntity<Prijava> postaviOcenu(@RequestParam Long id, @RequestParam int ocena){
+        Prijava prijava = prijavaService.findOne(id);
+        prijava.setOcena(ocena);
+        prijavaService.save(prijava);
+        return new ResponseEntity<>(prijava, HttpStatus.OK);
+    }
+
 }

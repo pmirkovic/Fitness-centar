@@ -31,24 +31,7 @@ $(document).ready(function () {
     });
 });
 
-/*
-$(document).on('click','.btnSeeMore',function (){
-    let treningId = this.dataset.id;
-
-    $.ajax({
-        type: "POST",
-        url:"http://localhost:8080/api/korisnik/prijava_treninga",
-        dataType: "json",
-        success: function (response){
-            console.log("SUCCESS:\n",response);
-            window.location.href="account.html";
-        },
-        error:function (response){
-            console.log("ERROR:\n", response);
-        }
-    });
-});
- */
++
 
 $(document).on('submit','form',function (e){
     e.preventDefault();

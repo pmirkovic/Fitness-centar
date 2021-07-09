@@ -28,7 +28,7 @@ public class PrijavaServiceImpl implements PrijavaService {
     }
 
     public Prijava findOne(Long id) {
-        Prijava prijava = this.prijavaRepository.findById(id).get();
+        Prijava prijava = prijavaRepository.getOne(id);
         return prijava;
     }
 }

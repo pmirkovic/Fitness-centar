@@ -44,7 +44,7 @@ $(document).ready(function () {
                     let row = "<tr>";
                     row += "<td>" + responseElement.naziv + "</td>";
                     row += "<td>" + responseElement.email + "</td>";
-                    let btn = "<button class='btnSeeMore' data-id=" + responseElement.id + ">Edit</button>";
+                    let btn = "<form id='izmena'> <input type='hidden' value='" + responseElement.id + "'> <input type='submit' value='Edit'> </form>";
                     row += "<td>" + btn + "</td>";
                     btn = "<button class='btnDelete' data-id=" + responseElement.id + ">Delete</button>";
                     row += "<td>" + btn + "</td>";
@@ -58,6 +58,15 @@ $(document).ready(function () {
             console.log("ERROR:\n", response);
         }
     });
+});
+
+$(document).on('submit','#izmena',function (e){
+    e.preventDefault();
+
+    var id = $(this).find('input:hidden').val();
+    sessionStorage.setItem("idFt", id);
+    window.location.replace("http://localhost:8080/fitnescentriedit.html");
+
 });
 
 $(document).on('click', '.btnDelete', function () {

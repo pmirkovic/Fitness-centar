@@ -6,7 +6,7 @@ $(document).on("submit","#addFitnesscentarForm",function (event){
 
     let newKorisnik = {
         kapacitet,
-        "oznaka_sale": oznaka
+        "oznakaSale": oznaka
 
     }
     $.ajax({
@@ -40,7 +40,7 @@ $(document).ready(function () {
                 let row = "<tr>";
                 row += "<td>" + responseElement.kapacitet + "</td>";
                 row += "<td>" + responseElement.oznakaSale + "</td>";
-                let btn = "<form> <input type='hidden' value='" + responseElement.id + "'> <input type='submit' value='Edit'> </form>";
+                let btn = "<form id='izmena'> <input type='hidden' value='" + responseElement.id + "'> <input type='submit' value='Edit'> </form>";
                 row += "<td>" + btn + "</td>";
                 btn = "<button class='btnDelete' data-id=" + responseElement.id + ">Delete</button>";
                 row += "<td>" + btn + "</td>";
@@ -56,7 +56,7 @@ $(document).ready(function () {
     });
 });
 
-$(document).on('submit','form',function (e){
+$(document).on('submit','#izmena',function (e){
     e.preventDefault();
 
     var id = $(this).find('input:hidden').val();

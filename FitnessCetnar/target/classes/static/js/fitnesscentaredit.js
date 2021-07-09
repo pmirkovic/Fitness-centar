@@ -1,14 +1,14 @@
 $(document).ready(function () {
-    var id = sessionStorage.getItem("idSale");
+    var id = sessionStorage.getItem("idFt");
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/api/sala/"+id,
+        url: "http://localhost:8080/api/fitnesscentar/"+id,
         dataType: "json",
 
         success: function (response) {
-            $("#idSale").val(id);
-            $("#kapacitet").val(response.kapacitet);
-            $("#oznaka").val(response.oznakaSale);
+            $("#idFt").val(id);
+            $("#naziv").val(response.naziv);
+            $("#email").val(response.email);
 
 
             console.log("SUCCESS:\n", response);
@@ -25,16 +25,16 @@ $(document).ready(function () {
 $(document).on('submit', '#editFitnesscentarForm', function (e) {
 
     e.preventDefault();
-    let idSale = $("#idSale").val();
+    let idFt = $("#idFt").val();
 
-    let kapacitet=document.getElementById("kapacitet").value;
-    let oznaka=document.getElementById("oznaka").value;
+    let naziv=document.getElementById("naziv").value;
+    let email=document.getElementById("email").value;
     var formData = JSON.stringify({
-        "kapacitet": kapacitet,
-        "oznakaSale": oznaka,
+        "naziv": naziv,
+        "email": email,
     });
     $.ajax({
-        url: 'http://localhost:8080/api/sala/edit_sala/' + idSale,
+        url: 'http://localhost:8080/api/sala/edit_ft/' + idFt,
         dataType: 'json',
         type: 'put',
         contentType: 'application/json',
@@ -44,7 +44,7 @@ $(document).on('submit', '#editFitnesscentarForm', function (e) {
                 alert("Something's wrong!");
             }
             else {
-                alert("Uspešno izmenjena sala.")
+                alert("Uspešno izmenjena ftc.")
             }
         }
     });

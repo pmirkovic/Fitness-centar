@@ -2,6 +2,7 @@ package com.example.FitnessCetnar.controller;
 
 import com.example.FitnessCetnar.entity.FitnessCentar;
 import com.example.FitnessCetnar.entity.Korisnik;
+import com.example.FitnessCetnar.entity.Sala;
 import com.example.FitnessCetnar.entity.dto.FitnescentarDTO;
 import com.example.FitnessCetnar.entity.dto.KorisnikDTO;
 import com.example.FitnessCetnar.service.FitnescentarService;
@@ -90,5 +91,16 @@ public class FitnessCentarController {
         this.fitnescentarService.delete(id);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping(value = "/edit_ft/{id}")
+    public ResponseEntity<?> edit_sala(@PathVariable Long id, @RequestBody FitnessCentar fitnessCentar){
+        fitnessCentar.setId(id);
+        try{
+            this.fitnescentarService.save(fitnessCentar);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch(Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 }

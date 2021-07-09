@@ -88,9 +88,10 @@ public class SalaController {
     }
 
     @PutMapping(value = "/edit_sala/{id}")
-    public ResponseEntity<?> edit_sala(@RequestBody Sala sala){
+    public ResponseEntity<?> edit_sala(@PathVariable Long id, @RequestBody Sala sala){
+        sala.setId(id);
         try{
-            this.salaService.editSala(sala);
+            this.salaService.save(sala);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch(Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

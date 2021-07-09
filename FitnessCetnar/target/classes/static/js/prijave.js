@@ -11,13 +11,29 @@ $(document).ready(function () {
             for (let responseElement of response) {
                     let row = "<tr>";
                     row += "<td>" + responseElement.id + "</td>";
-                    row += "<td>" + responseElement.trening.naziv + "</td>";
+                    row += "<td>" + responseElement.termin.trening.naziv + "</td>";
 
                     let btn = "<form id='otkazivanje'> <input type='hidden' value='" + responseElement.id + "'> <input type='submit' value='Otkazi'> </form>"
                     row += "<td>" + btn + "</td>";
+                    console.log(responseElement.odradjen);
+                    if(responseElement.odradjen == false) {
+                        let btn2 = "<form id='odradjen'> <input type='hidden' value='" + responseElement.id + "'> <input type='submit' value='Odradjen'> </form>"
+                        row += "<td>" + btn2 + "</td>";
+                    }
+                    else{
+                        row += "<td>" + "Odradjen" +  "</td>";
 
-                    let btn2 = "<form id='odradjen'> <input type='hidden' value='" + responseElement.id + "'> <input type='submit' value='Odradjen'> </form>"
-                    row += "<td>" + btn2 + "</td>";
+                    }
+                    if(responseElement.ocena == 0){
+                        let btn3 = "<form id='ocenjivanje'> <input type='hidden' value='" + responseElement.id + "'> <input type='number' id='ocena'> <input type='submit' value='Oceni'> </form>"
+                        row += "<td>" + btn3 + "</td>";
+
+                    }
+                    else{
+                        row += "<td>" + responseElement.ocena + "</td>";
+
+                    }
+
                     row += "</tr>";                                     // završavamo kreiranje reda
                     $('#responseElement').append(row);
             }
@@ -49,21 +65,45 @@ $(document).on('submit','#otkazivanje',function (){
     });
 });
 
-$(document).on('submit','#odradjen',function (){
+$(document).on('submit','#odradjen',function (e){
     e.preventDefault();
 
     var id = $(this).find('input:hidden').val();
 
     $.ajax({
-        type: "DELETE",
-        url:"http://localhost:8080/api/prijava/"+id,
+        type: "GET",
+        url:"http://localhost:8080/api/prijava/odradjen/"+id,
         dataType: "json",
         success: function (response){
             console.log("SUCCESS:\n",response);
+            alert("Prijava je uspešno postavljena na status odradjen.")
             location.reload();
         },
         error:function (response){
             console.log("ERROR:\n", response);
+            alert("Zahtev nije uspešan.")
+        }
+    });
+});
+$(document).on('submit','#ocenjivanje',function (e){
+    e.preventDefault();
+
+    var id = $(this).find('input:hidden').val();
+    var ocena = $(this).find('#ocena').val();
+
+
+    $.ajax({
+        type: "GET",
+        url:"http://localhost:8080/api/prijava/ocenjivanje/?id="+id+"&ocena="+ocena,
+        dataType: "json",
+        success: function (response){
+            console.log("SUCCESS:\n",response);
+            alert("Prijava je uspešno ocenjena.")
+            location.reload();
+        },
+        error:function (response){
+            console.log("ERROR:\n", response);
+            alert("Zahtev nije uspešan.")
         }
     });
 });
